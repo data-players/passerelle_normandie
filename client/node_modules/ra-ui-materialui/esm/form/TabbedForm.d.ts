@@ -1,0 +1,116 @@
+import * as React from 'react';
+import { FC, ReactElement, ReactNode, HtmlHTMLAttributes } from 'react';
+import { FormWithRedirectProps, Record, RedirectionSideEffect } from 'ra-core';
+import { FormRenderProps } from 'react-final-form';
+import { ClassesOverride } from '../types';
+/**
+ * Form layout where inputs are divided by tab, one input per line.
+ *
+ * Pass FormTab components as children.
+ *
+ * @example
+ *
+ * import * as React from "react";
+ * import {
+ *     Edit,
+ *     TabbedForm,
+ *     FormTab,
+ *     Datagrid,
+ *     TextField,
+ *     DateField,
+ *     TextInput,
+ *     ReferenceManyField,
+ *     NumberInput,
+ *     DateInput,
+ *     BooleanInput,
+ *     EditButton
+ * } from 'react-admin';
+ *
+ * export const PostEdit = (props) => (
+ *     <Edit {...props}>
+ *         <TabbedForm>
+ *             <FormTab label="summary">
+ *                 <TextInput disabled label="Id" source="id" />
+ *                 <TextInput source="title" validate={required()} />
+ *                 <TextInput multiline source="teaser" validate={required()} />
+ *             </FormTab>
+ *             <FormTab label="body">
+ *                 <RichTextInput source="body" validate={required()} addLabel={false} />
+ *             </FormTab>
+ *             <FormTab label="Miscellaneous">
+ *                 <TextInput label="Password (if protected post)" source="password" type="password" />
+ *                 <DateInput label="Publication date" source="published_at" />
+ *                 <NumberInput source="average_note" validate={[ number(), minValue(0) ]} />
+ *                 <BooleanInput label="Allow comments?" source="commentable" defaultValue />
+ *                 <TextInput disabled label="Nb views" source="views" />
+ *             </FormTab>
+ *             <FormTab label="comments">
+ *                 <ReferenceManyField reference="comments" target="post_id" addLabel={false}>
+ *                     <Datagrid>
+ *                         <TextField source="body" />
+ *                         <DateField source="created_at" />
+ *                         <EditButton />
+ *                     </Datagrid>
+ *                 </ReferenceManyField>
+ *             </FormTab>
+ *         </TabbedForm>
+ *     </Edit>
+ * );
+ *
+ * @typedef {Object} Props the props you can use (other props are injected by Create or Edit)
+ * @prop {ReactElement[]} FormTab elements
+ * @prop {Object} initialValues
+ * @prop {Function} validate
+ * @prop {boolean} submitOnEnter
+ * @prop {string} redirect
+ * @prop {ReactElement} toolbar The element displayed at the bottom of the form, containing the SaveButton
+ * @prop {string} variant Apply variant to all inputs. Possible values are 'standard', 'outlined', and 'filled' (default)
+ * @prop {string} margin Apply variant to all inputs. Possible values are 'none', 'normal', and 'dense' (default)
+ * @prop {boolean} sanitizeEmptyValues Wether or not deleted record attributes should be recreated with a `null` value (default: true)
+ *
+ * @param {Prop} props
+ */
+declare const TabbedForm: FC<TabbedFormProps>;
+export interface TabbedFormProps extends Omit<FormWithRedirectProps, 'render'>, Omit<HtmlHTMLAttributes<HTMLFormElement>, 'defaultValue' | 'onSubmit' | 'children'> {
+    basePath?: string;
+    children: ReactNode;
+    className?: string;
+    initialValues?: any;
+    margin?: 'none' | 'normal' | 'dense';
+    record?: Record;
+    redirect?: RedirectionSideEffect;
+    resource?: string;
+    sanitizeEmptyValues?: boolean;
+    save?: (data: Partial<Record>, redirectTo: RedirectionSideEffect, options?: {
+        onSuccess?: (data?: any) => void;
+        onFailure?: (error: any) => void;
+    }) => void;
+    submitOnEnter?: boolean;
+    tabs?: ReactElement;
+    toolbar?: ReactElement;
+    undoable?: boolean;
+    variant?: 'standard' | 'outlined' | 'filled';
+    warnWhenUnsavedChanges?: boolean;
+}
+declare const useStyles: (props?: any) => globalThis.Record<"content" | "errorTabButton", string>;
+export declare const TabbedFormView: FC<TabbedFormViewProps>;
+export interface TabbedFormViewProps extends FormRenderProps {
+    basePath?: string;
+    classes?: ClassesOverride<typeof useStyles>;
+    className?: string;
+    margin?: 'none' | 'normal' | 'dense';
+    handleSubmitWithRedirect?: (redirectTo: RedirectionSideEffect) => void;
+    record?: Record;
+    redirect?: RedirectionSideEffect;
+    resource?: string;
+    save?: () => void;
+    saving?: boolean;
+    tabs?: ReactElement;
+    toolbar?: ReactElement;
+    undoable?: boolean;
+    variant?: 'standard' | 'outlined' | 'filled';
+    submitOnEnter?: boolean;
+    __versions?: any;
+}
+export declare const findTabsWithErrors: (children: any, errors: any) => string | number | {} | React.ReactElement<any, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)>) | (new (props: any) => React.Component<any, any, any>)> | React.ReactNodeArray | React.ReactPortal;
+export default TabbedForm;

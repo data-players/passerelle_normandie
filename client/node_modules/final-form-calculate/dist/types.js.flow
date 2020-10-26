@@ -1,0 +1,19 @@
+// @flow
+type FieldName = string
+export type FieldPattern = FieldName | RegExp | FieldName[]
+export type UpdatesByName = {
+  [FieldName]: (value: any, allValues: ?Object, prevValues: ?Object,) => any
+}
+export type UpdatesForAll = (
+  value: any,
+  field: string,
+  allValues: ?Object,
+  prevValues: ?Object
+) => { [FieldName]: any }
+export type Updates = UpdatesByName | UpdatesForAll
+
+export type Calculation = {
+  field: FieldPattern,
+  isEqual?: (any, any) => boolean,
+  updates: Updates
+}

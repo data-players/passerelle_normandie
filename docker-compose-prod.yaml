@@ -51,7 +51,7 @@ services:
       - SEMAPPS_MAIN_DATASET=localData
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=admin
-      - SEMAPPS_HOME_URL=http://51.83.108.8/middleware/
+      - SEMAPPS_HOME_URL=http://51.210.188.136/middleware/
     networks:
       - semapps
     ports:
@@ -61,10 +61,10 @@ services:
     command: bash -c "npm install && npm start"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.middleware.rule=Host(`51.83.108.8`) && PathPrefix(`/middleware/`)"
+      - "traefik.http.routers.middleware.rule=Host(`51.210.188.136`) && PathPrefix(`/middleware/`)"
       - "traefik.http.middlewares.middleware-stripprefix.stripprefix.prefixes=/middleware"
       - "traefik.http.routers.middleware.middlewares=middleware-stripprefix"
-      - "traefik.http.routers.middleware.entrypoints=websecure"
+      - "traefik.http.routers.middleware.entrypoints=web"
       - "traefik.http.routers.middleware.tls.certresolver=myresolver"
 
   frontend:
@@ -73,7 +73,7 @@ services:
       dockerfile: Dockerfile.dev
     container_name: frontend-passerelle
     environment:
-      - REACT_APP_MIDDLEWARE_URL=http://51.83.108.8/middleware/
+      - REACT_APP_MIDDLEWARE_URL=http://51.210.188.136/middleware/
       - PORT=5000
     volumes:
       - ./client:/app
@@ -86,7 +86,7 @@ services:
     command: bash -c "npm rebuild && npm install --silent && npm run bootstrap && npm start"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`51.83.108.8`)"
+      - "traefik.http.routers.frontend.rule=Host(`51.210.188.136`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myresolver"
 

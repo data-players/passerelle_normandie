@@ -22,7 +22,7 @@ module.exports = {
     const sparqlRoutes = await this.broker.call('sparqlEndpoint.getApiRoutes');
     console.log(process.env.SEMAPPS_HOME_URL);
     console.log(new URL(process.env.SEMAPPS_HOME_URL).pathname);
-    sparqlRoutes.path = new URL(process.env.SEMAPPS_HOME_URL).pathname + sparqlRoutes.path;
+    sparqlRoutes[0].path = new URL(process.env.SEMAPPS_HOME_URL).pathname + sparqlRoutes[0].path;
 
     [
       ...(await this.broker.call('ldp.getApiRoutes')),

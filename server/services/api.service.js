@@ -1,5 +1,7 @@
 const ApiGatewayService = require('moleculer-web');
-const { Routes: SparqlEndpointRoutes } = require('@semapps/sparql-endpoint');
+const {
+  Routes: SparqlEndpointRoutes
+} = require('@semapps/sparql-endpoint');
 
 module.exports = {
   mixins: [ApiGatewayService],
@@ -17,9 +19,16 @@ module.exports = {
     'sparqlEndpoint',
   ],
   async started() {
+    const sparqlRoutes = await this.broker.call('sparqlEndpoint.getApiRoutes');
+    sparqlRoutes.path = process.env.SEMAPPS_HOME_UR + sparqlRoutes.path;
+
     [
       ...(await this.broker.call('ldp.getApiRoutes')),
-      ...(await this.broker.call('sparqlEndpoint.getApiRoutes')),
-    ].forEach(route => {console.log('route',route);this.addRoute(route);});
+      ...sparqlRoutes,
+    ].forEach(route => {
+      console.log('route', route);
+      this.addRoute(route);
+    })
+
   }
 };

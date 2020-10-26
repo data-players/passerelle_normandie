@@ -46,6 +46,12 @@ services:
       - fuseki
     volumes:
       - ./server/:/app
+    environment:
+      - SEMAPPS_SPARQL_ENDPOINT=http://fuseki-passerelle:3030/
+      - SEMAPPS_MAIN_DATASET=localData
+      - SEMAPPS_JENA_USER=admin
+      - SEMAPPS_JENA_PASSWORD=admin
+      - SEMAPPS_HOME_URL=http://51.83.108.8:3000/
     networks:
       - semapps
     ports:
@@ -67,8 +73,8 @@ services:
       dockerfile: Dockerfile.dev
     container_name: frontend-passerelle
     environment:
+      - REACT_APP_MIDDLEWARE_URL=http://51.83.108.8:3000/
       - PORT=5000
-      - REACT_APP_MIDDLEWARE_URL=https://data.fabmob.io/middleware/
     volumes:
       - ./client:/app
     networks:

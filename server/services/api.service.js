@@ -26,7 +26,7 @@ module.exports = {
     }
     console.log(process.env.SEMAPPS_HOME_URL);
     console.log(new URL(process.env.SEMAPPS_HOME_URL).pathname);
-    sparqlRoutes[0].path = new URL(process.env.SEMAPPS_HOME_URL).pathname + sparqlRoutes[0].path;
+    sparqlRoutes[0].path = new URL(process.env.SEMAPPS_HOME_URL).pathname +path;
 
     [
       ...(await this.broker.call('ldp.getApiRoutes')),

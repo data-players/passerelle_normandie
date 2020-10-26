@@ -20,6 +20,6 @@ module.exports = {
     [
       ...(await this.broker.call('ldp.getApiRoutes')),
       ...(await this.broker.call('sparqlEndpoint.getApiRoutes')),
-    ].forEach(route => this.addRoute(route));
+    ].forEach(route => {console.log('route',route);this.addRoute(route);});
   }
 };

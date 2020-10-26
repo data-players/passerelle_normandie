@@ -65,7 +65,6 @@ services:
       - "traefik.http.middlewares.middleware-stripprefix.stripprefix.prefixes=/middleware"
       - "traefik.http.routers.middleware.middlewares=middleware-stripprefix"
       - "traefik.http.routers.middleware.entrypoints=web"
-      - "traefik.http.routers.middleware.tls.certresolver=myresolver"
 
   frontend:
     build:

@@ -12,6 +12,7 @@ module.exports = {
     }
   },
   dependencies: [
+    'fuseki-admin',
     'ldp',
     'sparqlEndpoint',
   ],

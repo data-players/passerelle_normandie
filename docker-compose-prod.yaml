@@ -63,7 +63,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.middleware.rule=Host(`passerelle-normandie.data-players.com`) && PathPrefix(`/middleware/`)"
       - "traefik.http.routers.middleware.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.routers.middleware.tls.certresolver=myresolver"
 
   frontend:
     build:

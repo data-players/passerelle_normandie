@@ -9,7 +9,7 @@ module.exports = {
     server: true,
     routes: [
       {
-        path: '/context.json',
+        path: new URL(process.env.SEMAPPS_HOME_URL).pathname +'context.json',
         use: [
           ApiGatewayService.serveStatic('./public/context.json', {
             setHeaders: res => {

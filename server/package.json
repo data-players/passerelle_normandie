@@ -7,6 +7,7 @@
     "semantic"
   ],
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "dev": "moleculer-runner --env --repl --hot services",
     "start": "moleculer-runner --env --instances=max services"
   },

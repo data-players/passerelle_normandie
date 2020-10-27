@@ -69,8 +69,8 @@ prettier:
 	npm run prettier --prefix ./server
 
 bootstrap:
-	npm run bootstrap --prefix ./src/client
-	npm run bootstrap --prefix ./src/server
+	npm run bootstrap --prefix ./client
+	npm run bootstrap --prefix ./server
 
 # For tests we currently only need fuseki
 test:

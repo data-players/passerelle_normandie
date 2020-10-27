@@ -7,7 +7,19 @@ module.exports = {
   mixins: [ApiGatewayService],
   settings: {
     server: true,
-    routes: [],
+    routes: [
+      {
+        path: '/context.json',
+        use: [
+          ApiGatewayService.serveStatic('./public/context.json', {
+            setHeaders: res => {
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.setHeader('Content-Type', 'application/ld+json; charset=utf-8');
+            }
+          })
+        ]
+      }
+    ],
     cors: {
       origin: '*',
       exposedHeaders: '*'

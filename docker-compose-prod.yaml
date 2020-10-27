@@ -51,7 +51,7 @@ services:
       - SEMAPPS_MAIN_DATASET=localData
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=admin
-      - SEMAPPS_HOME_URL=http://passerelle-normandie.data-players.com/middleware/
+      - SEMAPPS_HOME_URL=https://passerelle-normandie.data-players.com/middleware/
     networks:
       - semapps
     ports:
@@ -70,7 +70,7 @@ services:
       dockerfile: Dockerfile.dev
     container_name: frontend-passerelle
     environment:
-      - REACT_APP_MIDDLEWARE_URL=http://51.210.188.136/middleware/
+      - REACT_APP_MIDDLEWARE_URL=https://passerelle-normandie.data-players.com/middleware/
       - PORT=5000
     volumes:
       - ./client:/app

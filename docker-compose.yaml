@@ -63,12 +63,11 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     container_name: frontend-passerelle
-    environment:
-      - PORT=5000
     volumes:
       - ./client:/app
     environment:
       - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
+      - REACT_APP_ADMIN=false
       - PORT=5000
     networks:
       - semapps
@@ -76,6 +75,28 @@ services:
       - "5000:5000"
     expose:
       - "5000"
+    command: bash -c "npm rebuild && npm install --silent && npm run bootstrap && npm start"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`frontend.localhost`)"
+      - "traefik.http.routers.frontend.entrypoints=web"
+  admin:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: admin-passerelle
+    volumes:
+      - ./client:/app
+    environment:
+      - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
+      - REACT_APP_ADMIN=true
+      - PORT=5010
+    networks:
+      - semapps
+    ports:
+      - "5010:5010"
+    expose:
+      - "5010"
     command: bash -c "npm rebuild && npm install --silent && npm run bootstrap && npm start"
     labels:
       - "traefik.enable=true"

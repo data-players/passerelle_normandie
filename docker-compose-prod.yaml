@@ -72,6 +72,7 @@ services:
     container_name: frontend-passerelle
     environment:
       - REACT_APP_MIDDLEWARE_URL=https://passerelle-normandie.data-players.com/middleware/
+      - REACT_APP_ADMIN=false
       - PORT=5000
     volumes:
       - ./client:/app
@@ -85,6 +86,30 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.frontend.rule=Host(`passerelle-normandie.data-players.com`)"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+
+  admin:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: admin-passerelle
+    environment:
+      - REACT_APP_MIDDLEWARE_URL=https://passerelle-normandie.data-players.com/middleware/
+      - REACT_APP_ADMIN=true
+      - PORT=5010
+    volumes:
+      - ./client:/app
+    networks:
+      - semapps
+    ports:
+      - "5010:5010"
+    expose:
+      - "5010"
+    command: bash -c "npm rebuild && npm install --silent && npm run bootstrap && npm start"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`admin.passerelle-normandie.data-players.com`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myresolver"
 

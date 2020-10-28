@@ -37,10 +37,10 @@ docker-restart:
 	$(DOCKER_COMPOSE) up -d --force-recreate
 
 log:
-	$(DOCKER_COMPOSE) logs -f middleware frontend fuseki traefik
+	$(DOCKER_COMPOSE) logs -f middleware frontend admin fuseki traefik
 
 log-prod:
-	$(DOCKER_COMPOSE_PROD) logs -f middleware fuseki frontend traefik
+	$(DOCKER_COMPOSE_PROD) logs -f middleware fuseki admin frontend traefik
 
 start: docker-start
 

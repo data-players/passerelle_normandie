@@ -36,15 +36,15 @@ module.exports = {
     if (path.indexOf('/')===0){
       path= path.substring(1);
     }
-    console.log(process.env.SEMAPPS_HOME_URL);
-    console.log(new URL(process.env.SEMAPPS_HOME_URL).pathname);
+    // console.log(process.env.SEMAPPS_HOME_URL);
+    // console.log(new URL(process.env.SEMAPPS_HOME_URL).pathname);
     sparqlRoutes[0].path = new URL(process.env.SEMAPPS_HOME_URL).pathname +path;
 
     [
       ...(await this.broker.call('ldp.getApiRoutes')),
       ...sparqlRoutes,
     ].forEach(route => {
-      console.log('route', route);
+      // console.log('route', route);
       this.addRoute(route);
     })
 

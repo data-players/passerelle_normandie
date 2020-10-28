@@ -100,8 +100,8 @@ services:
     command: bash -c "npm rebuild && npm install --silent && npm run bootstrap && npm start"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`frontend.localhost`)"
-      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.admin.rule=Host(`frontend.localhost`)"
+      - "traefik.http.routers.admin.entrypoints=web"
 
 networks:
   semapps:

@@ -4,7 +4,7 @@ import InterestList from './InterestList';
 import FavoriteBorderIcon from '@material-ui/icons/Favorite';
 
 export default {
-  list: InterestList,
+  list: process.env.REACT_APP_ADMIN==='true'?InterestList:undefined,
   create: InterestCreate,
   edit: InterestEdit,
   icon: FavoriteBorderIcon,

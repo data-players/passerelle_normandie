@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChipField, SingleFieldList, TextField, UrlField, DateField } from 'react-admin';
-import { Column, ColumnShowLayout, Hero, Show, MarkdownField } from '@semapps/archipelago-layout';
+import { Column, ColumnShowLayout, Hero, Show, MarkdownField, UserIcon, GridList} from '@semapps/archipelago-layout';
 import { UriArrayField } from '@semapps/semantic-data-provider';
 
 const ProjectTitle = ({ record }) => {
@@ -25,6 +25,11 @@ const EventShow = props => (
           <SingleFieldList linkType="show">
             <ChipField source="pair:label" color="secondary" />
           </SingleFieldList>
+        </UriArrayField>
+        <UriArrayField label="Participants" reference="User" source="pair:involves" referenceBasePath="/User">
+          <GridList xs={6} linkType="show">
+            <UserIcon />
+          </GridList>
         </UriArrayField>
         <UriArrayField label="Intérêts" reference="Interest" source="pair:hasInterest">
           <SingleFieldList linkType={false}>

@@ -17,6 +17,13 @@ const EventEdit = props => (
       <UriArrayInput label="Proposé par" reference="Organization" source="pair:deliveredBy">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>
+      <UriArrayInput label="Participants" reference="User" source="pair:involves">
+        <AutocompleteArrayInput
+          optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
+          shouldRenderSuggestions={value => value.length > 1}
+          fullWidth
+        />
+      </UriArrayInput>
       <UriArrayInput label="Intérêts" reference="Interest" source="pair:hasInterest">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>

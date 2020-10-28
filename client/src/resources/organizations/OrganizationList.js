@@ -3,7 +3,6 @@ import { List, SimpleList } from '@semapps/archipelago-layout';
 
 const OrganizationList = props => (
   <List {...props}>
-    <span>{process.env.REACT_APP_ADMIN==='true'?'admin':'not admin'}</span>
     <SimpleList
       primaryText={record => record['pair:label']}
       secondaryText={record => record['pair:comment']}

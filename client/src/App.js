@@ -17,28 +17,55 @@ import skills from './resources/skills';
 import users from './resources/users';
 
 function App() {
-  return (
-    <Admin
-      dataProvider={dataProvider({
-        sparqlEndpoint: process.env.REACT_APP_MIDDLEWARE_URL + 'sparql',
-        httpClient,
-        resources,
-        ontologies,
-        jsonContext: process.env.REACT_APP_MIDDLEWARE_URL + 'context.json',
-        uploadsContainerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'files'
-      })}
-      i18nProvider={polyglotI18nProvider(() => frenchMessages)}
-      layout={Layout}
-      theme={theme}
-    >
-      <Resource name="Organization" {...organizations} />
-      <Resource name="Project" {...projects} />
-      <Resource name="Event" {...events} />
-      <Resource name="User" {...users} />
-      <Resource name="Skill" {...skills} />
-      <Resource name="Interest" {...interests} />
-    </Admin>
-  );
+
+
+  if (process.env.REACT_APP_ADMIN==='true'){
+    return (
+      <Admin
+        dataProvider={dataProvider({
+          sparqlEndpoint: process.env.REACT_APP_MIDDLEWARE_URL + 'sparql',
+          httpClient,
+          resources,
+          ontologies,
+          jsonContext: process.env.REACT_APP_MIDDLEWARE_URL + 'context.json',
+          uploadsContainerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'files'
+        })}
+        i18nProvider={polyglotI18nProvider(() => frenchMessages)}
+        layout={Layout}
+        theme={theme}
+      >
+
+        <Resource name="Organization" {...organizations} />
+        <Resource name="Project" {...projects} />
+        <Resource name="Event" {...events} />
+        <Resource name="User" {...users} />
+        <Resource name="Skill" {...skills} />
+        <Resource name="Interest" {...interests} />
+      </Admin>
+    );
+  }else{
+    return (
+      <Admin
+        dataProvider={dataProvider({
+          sparqlEndpoint: process.env.REACT_APP_MIDDLEWARE_URL + 'sparql',
+          httpClient,
+          resources,
+          ontologies,
+          jsonContext: process.env.REACT_APP_MIDDLEWARE_URL + 'context.json',
+          uploadsContainerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'files'
+        })}
+        i18nProvider={polyglotI18nProvider(() => frenchMessages)}
+        layout={Layout}
+        theme={theme}
+      >
+        <Resource name="Organization" {...organizations} />
+        <Resource name="Event" {...events} />
+        <Resource name="User" {...users} />
+      </Admin>
+    );
+  }
+
+
 }
 
 export default App;

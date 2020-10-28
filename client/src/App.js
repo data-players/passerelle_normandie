@@ -36,9 +36,9 @@ function App() {
       >
 
         <Resource name="Organization" {...organizations} />
-        <Resource name="Project" {...projects} />
         <Resource name="Event" {...events} />
         <Resource name="User" {...users} />
+        <Resource name="Project" {...projects} />
         <Resource name="Skill" {...skills} />
         <Resource name="Interest" {...interests} />
       </Admin>

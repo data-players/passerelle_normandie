@@ -40,7 +40,7 @@ log:
 	$(DOCKER_COMPOSE) logs -f middleware frontend admin fuseki traefik
 
 log-prod:
-	$(DOCKER_COMPOSE_PROD) logs -f middleware fuseki admin frontend traefik
+	$(DOCKER_COMPOSE_PROD) logs -f admin frontend traefik
 
 start: docker-start
 

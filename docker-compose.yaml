@@ -1,21 +1,5 @@
 version: '3.5'
 services:
-  traefik:
-    image: "traefik:v2.3"
-    container_name: "traefik-passerelle"
-    networks:
-      - semapps
-    command:
-      - "--log.level=DEBUG"
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-    ports:
-      - "80:80"
-      - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
   fuseki:
     image: stain/jena-fuseki:3.10.0
     container_name: fuseki-passerelle
@@ -39,7 +23,7 @@ services:
     depends_on:
       - fuseki
     volumes:
-      - ./server/:/app
+      - ./server/:/server/app
     environment:
       - SEMAPPS_SPARQL_ENDPOINT=http://fuseki-passerelle:3030/
       - SEMAPPS_MAIN_DATASET=localData
@@ -52,11 +36,7 @@ services:
       - "3000:3000"
     expose:
       - "3000"
-    command: bash -c "npm install && npm start"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.middleware.rule=Host(`middleware.localhost`)"
-      - "traefik.http.routers.middleware.entrypoints=web"
+    command: bash -c "npm rebuild && npm install && npm start"
 
   frontend:
     build:
@@ -64,7 +44,7 @@ services:
       dockerfile: Dockerfile.dev
     container_name: frontend-passerelle
     volumes:
-      - ./client:/app
+      - ./client:/client/app
     environment:
       - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
       - REACT_APP_ADMIN=false
@@ -75,18 +55,15 @@ services:
       - "5000:5000"
     expose:
       - "5000"
-    command: bash -c "npm rebuild && npm install --silent && npm run bootstrap && npm start"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`frontend.localhost`)"
-      - "traefik.http.routers.frontend.entrypoints=web"
+    command: bash -c "npm rebuild && npm install --silent && npm start"
+
   admin:
     build:
       context: ./client
       dockerfile: Dockerfile.dev
     container_name: admin-passerelle
     volumes:
-      - ./client:/app
+      - ./client:/client/app
     environment:
       - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
       - REACT_APP_ADMIN=true
@@ -97,11 +74,8 @@ services:
       - "5010:5010"
     expose:
       - "5010"
-    command: bash -c "npm rebuild && npm install --silent && npm run bootstrap && npm start"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.admin.rule=Host(`frontend.localhost`)"
-      - "traefik.http.routers.admin.entrypoints=web"
+    command: bash -c "npm rebuild && npm install --silent && npm start"
+
 
 networks:
   semapps:

@@ -1,7 +1,7 @@
 FROM node:12.16-alpine
 ARG FRONTEND
 
-WORKDIR client//app
+WORKDIR /client/app
 
 RUN apk add --update --no-cache git bash yarn nano
 

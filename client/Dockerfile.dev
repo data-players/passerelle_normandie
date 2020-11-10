@@ -1,6 +1,6 @@
 FROM node:13.14-alpine
 
-WORKDIR client//app
+WORKDIR /client/app
 
 RUN apk add --update --no-cache git bash yarn nano
 

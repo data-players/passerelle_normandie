@@ -10,6 +10,7 @@ import resources from './config/resources';
 import ontologies from './config/ontologies';
 
 import events from './resources/events';
+import places from './resources/places';
 import interests from './resources/interests';
 import projects from './resources/projects';
 import organizations from './resources/organizations';
@@ -35,6 +36,7 @@ function App() {
 
       <Resource name="Organization" {...organizations} />
       <Resource name="Event" {...events} />
+      <Resource name="Place" {...places} />
       <Resource name="User" {...users} />
       <Resource name="Project" {...projects} />
       <Resource name="Skill" {...skills} />

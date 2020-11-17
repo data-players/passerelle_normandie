@@ -1,13 +1,16 @@
 import React from 'react';
-import { AutocompleteArrayInput, SimpleForm, TextInput } from 'react-admin';
+import { AutocompleteArrayInput, SimpleForm, TextInput, ImageInput } from 'react-admin';
 import { Edit } from '@semapps/archipelago-layout';
-import { UriArrayInput } from '@semapps/semantic-data-provider';
+import { UriArrayInput, ImageField } from '@semapps/semantic-data-provider';
 
 export const UserEdit = props => (
   <Edit {...props}>
     <SimpleForm redirect="show">
       <TextInput source="pair:firstName" label="Prénom" fullWidth />
       <TextInput source="pair:lastName" label="Nom de famille" fullWidth />
+      <ImageInput source="image" label="image" accept="image/*">
+        <ImageField source="src" />
+      </ImageInput>
       <UriArrayInput label="Participe à" reference="Project" source="pair:involvedIn">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>

@@ -11,7 +11,7 @@ const UserShow = props => (
   <Show {...props}>
     <ColumnShowLayout>
       <Column xs={12} sm={9}>
-        <Hero title={<UserTitle />} image={process.env.PUBLIC_URL + '/unknown-user.png'}>
+        <Hero title={<UserTitle />} image="image">
           <TextField label="Prénom" source="pair:firstName" />
           <TextField label="Nom de famille" source="pair:lastName" />
         </Hero>

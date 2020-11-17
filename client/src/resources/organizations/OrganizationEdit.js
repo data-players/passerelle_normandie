@@ -21,6 +21,9 @@ export const OrganizationEdit = props => (
           fullWidth
         />
       </UriArrayInput>
+      <UriArrayInput label="Lieux" reference="Place" source="pair:supports">
+        <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
+      </UriArrayInput>
     </SimpleForm>
   </Edit>
 );

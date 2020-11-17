@@ -14,7 +14,6 @@ const EventList = props => (
           <DateField record={record} source="pair:endDate" showTime />
         </>
       )}
-      leftAvatar={() => <img src={process.env.PUBLIC_URL + '/logo192.png'} width="100%" alt="SemApps" />}
       linkType="show"
     />
   </List>

@@ -8,6 +8,7 @@ export const UserEdit = props => (
     <SimpleForm redirect="show">
       <TextInput source="pair:firstName" label="Prénom" fullWidth />
       <TextInput source="pair:lastName" label="Nom de famille" fullWidth />
+      <TextInput source="foaf:email" label="email" fullWidth />
       <ImageInput source="image" label="image" accept="image/*">
         <ImageField source="src" />
       </ImageInput>

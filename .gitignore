@@ -1,5 +1,3 @@
 node_modules/
 data/
 letsencrypt/
-/jwt/*.key
-/jwt/*.key.pub

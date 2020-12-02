@@ -41,8 +41,8 @@ module.exports = {
       clientId: process.env.SEMAPPS_OIDC_CLIENT_ID,
       clientSecret: process.env.SEMAPPS_OIDC_CLIENT_SECRET,
       redirectUri: process.env.SEMAPPS_HOME_URL + 'auth',
-      privateKeyPath: path.resolve(__dirname, '../jwtRS256.key'),
-      publicKeyPath: path.resolve(__dirname, '../jwtRS256.key.pub'),
+      privateKeyPath: path.resolve(__dirname, '../jwt/jwtRS256.key'),
+      publicKeyPath: path.resolve(__dirname, '../jwt/jwtRS256.key.pub'),
       selectProfileData: authData => {
         // transform authData into Foaf Data
         return  {

@@ -52,6 +52,8 @@ services:
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=admin
       - SEMAPPS_HOME_URL=https://passerelle-normandie.data-players.com/middleware/
+      - SEMAPPS_OIDC_ISSUER=https://login.lescommuns.org/auth/realms/master/
+      - SEMAPPS_OIDC_CLIENT_ID=passerelle-normandie
     networks:
       - semapps
     ports:

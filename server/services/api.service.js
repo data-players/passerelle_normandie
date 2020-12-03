@@ -93,22 +93,21 @@ module.exports = {
       route.path=  new URL(process.env.SEMAPPS_HOME_URL).pathname +path;
     }
 
+    console.log('sparqlRoutes',sparqlRoutes);
+
     //TODO add base url tu sparql connector
-    const connectorRoutes = this.connector.getRoute();
-    for (const route of connectorRoutes){
-      let path = route.path;
-      if (path.indexOf('/')===0){
-        path= path.substring(1);
-      }
-      route.path=  new URL(process.env.SEMAPPS_HOME_URL).pathname +path;
+    const connectorRoute = this.connector.getRoute();
+
+    let pathRoute = connectorRoute.path||'';
+    if (pathRoute.indexOf('/')===0){
+      pathRoute= pathRoute.substring(1);
     }
+    connectorRoute.path=  new URL(process.env.SEMAPPS_HOME_URL).pathname +pathRoute;
 
-
-
-    console.log('GET ROUTE CONNECTOR',this.connector.getRoute());
+    console.log('GET ROUTE CONNECTOR',connectorRoute);
 
     [
-      ...connectorRoutes,
+      connectorRoute,
       ...(await this.broker.call('ldp.getApiRoutes')),
       ...sparqlRoutes,
     ].forEach(route => {

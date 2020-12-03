@@ -3,9 +3,9 @@
   "version": "0.1.8",
   "private": true,
   "dependencies": {
-    "@semapps/archipelago-layout": "0.1.9",
-    "@semapps/semantic-data-provider": "0.1.9",
-    "@semapps/auth-provider": "0.1.9",
+    "@semapps/archipelago-layout": "0.1.10",
+    "@semapps/semantic-data-provider": "0.1.10",
+    "@semapps/auth-provider": "0.1.10",
     "prop-types": "^15.7.2",
     "ra-input-markdown": "^1.1.7",
     "ra-language-french": "^3.9.2",

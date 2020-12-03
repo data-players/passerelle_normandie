@@ -7,7 +7,7 @@ import PersonIcon from '@material-ui/icons/Person';
 export default {
   list: UserList,
   show: UserShow,
-  create: UserCreate,
+  create: undefined,
   edit: UserEdit,
   icon: PersonIcon,
   options: {

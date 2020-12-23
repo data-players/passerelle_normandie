@@ -26,6 +26,11 @@ const EventShow = props => (
             <ChipField source="pair:label" color="secondary" />
           </SingleFieldList>
         </UriArrayField>
+        <UriArrayField label="Lieux" reference="Place" source="pair:hasLocation">
+          <SingleFieldList linkType="show">
+            <ChipField source="pair:label" color="secondary" />
+          </SingleFieldList>
+        </UriArrayField>
         <UriArrayField label="Participants" reference="User" source="pair:involves" referenceBasePath="/User">
           <GridList xs={6} linkType="show">
             <UserIcon />

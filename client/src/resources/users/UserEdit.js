@@ -9,6 +9,7 @@ export const UserEdit = props => (
       <TextInput source="pair:firstName" label="Prénom" fullWidth />
       <TextInput source="pair:lastName" label="Nom de famille" fullWidth />
       <TextInput source="foaf:email" label="email" fullWidth />
+      <TextInput source="pair:phone" label="téléphone" fullWidth />
       <ImageInput source="image" label="image" accept="image/*">
         <ImageField source="src" />
       </ImageInput>

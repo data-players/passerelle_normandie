@@ -30,6 +30,7 @@ export const OrganizationEdit = (props) =>{
       <MarkdownInput multiline="multiline" source="pair:description" label="Description" fullWidth/>
       <TextInput source="pair:homePage" label="Site web" fullWidth/>
       <TextInput source="pair:e-mail" label="email" type="email" fullWidth/>
+      <TextInput source="pair:phone" label="téléphone" fullWidth />
       <TextInput source="schema:address" label="adresse" fullWidth/>
       <ImageInput source="image" label="Logo" accept="image/*">
         <ImageField source="src"/>

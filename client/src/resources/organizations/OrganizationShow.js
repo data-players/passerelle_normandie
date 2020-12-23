@@ -52,6 +52,7 @@ const OrganizationShow = props => (
           <TextField label="Courte description" source="pair:comment" />
           <UrlField label="Site web" source="pair:homePage" />
           <TextField label="Email" source="pair:e-mail" type="email"/>
+          <TextField label="Téléphone" source="pair:phone" type="email"/>
           <TextField label="Adresse" source="schema:address" />
 
         </Hero>

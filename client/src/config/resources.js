@@ -33,6 +33,11 @@ const resources = {
     types: ['pair:Event'],
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'events',
     slugField: 'pair:label'
+  },
+  Branch: {
+    types: ['pair:Branch'],
+    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'branchs',
+    slugField: 'pair:label'
   }
 };
 

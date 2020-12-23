@@ -51,6 +51,9 @@ const OrganizationShow = props => (
         <Hero title={<OrganizationTitle />} image="image">
           <TextField label="Courte description" source="pair:comment" />
           <UrlField label="Site web" source="pair:homePage" />
+          <TextField label="Email" source="pair:e-mail" type="email"/>
+          <TextField label="Adresse" source="schema:address" />
+
         </Hero>
         <MarkdownField source="pair:description" addLabel />
       </Column>

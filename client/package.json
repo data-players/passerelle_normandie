@@ -4,9 +4,10 @@
   "private": true,
   "dependencies": {
     "@semapps/archipelago-layout": "0.1.10",
-    "@semapps/semantic-data-provider": "0.1.10",
     "@semapps/auth-provider": "0.1.10",
+    "@semapps/semantic-data-provider": "0.1.10",
     "prop-types": "^15.7.2",
+    "query-string": "^6.13.7",
     "ra-input-markdown": "^1.1.7",
     "ra-language-french": "^3.9.2",
     "react": "^16.13.1",

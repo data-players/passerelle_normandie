@@ -12,6 +12,7 @@ const PlaceShow = props => (
     <ColumnShowLayout>
       <Column xs={12} sm={9} showLabel>
         <TextField label="Courte description" source="pair:comment" />
+        <TextField label="Adresse" source="schema:address" />
         <MarkdownField label="Description" source="pair:description" addLabel />
       </Column>
       <Column xs={12} sm={3} showLabel>

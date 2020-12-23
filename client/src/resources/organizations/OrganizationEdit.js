@@ -47,7 +47,7 @@ export const OrganizationEdit = (props) =>{
           {({ formData, ...rest }) =>{
             const formDataArray = Array.isArray(formData['pair:hasBranch'])?formData['pair:hasBranch']:[formData['pair:hasBranch']];
           // console.log(formData['pair:hasBranch']);
-            if(formDataArray.find(b=>b.includes('/agriculture'))){
+            if(formData['pair:hasBranch'] && formDataArray.find(b=>b.includes('/agriculture'))){
                 return(
                   <span>AGRI</span>
                 )
@@ -57,7 +57,7 @@ export const OrganizationEdit = (props) =>{
       <FormDataConsumer>
           {({ formData, ...rest }) =>{
             const formDataArray = Array.isArray(formData['pair:hasBranch'])?formData['pair:hasBranch']:[formData['pair:hasBranch']];
-              if(formDataArray.find(b=>b.includes('/sante'))){
+              if(formData['pair:hasBranch'] && formDataArray.find(b=>b.includes('/sante'))){
                 return(
                   <span>SANTE</span>
                 )
@@ -67,7 +67,7 @@ export const OrganizationEdit = (props) =>{
       <FormDataConsumer>
           {({ formData, ...rest }) =>{
             const formDataArray = Array.isArray(formData['pair:hasBranch'])?formData['pair:hasBranch']:[formData['pair:hasBranch']];
-              if(formDataArray.find(b=>b.includes('/tiers-lieux'))){
+              if(formData['pair:hasBranch'] && formDataArray.find(b=>b.includes('/tiers-lieux'))){
                 return(
                   <span>TIERS LIEUX</span>
                 )

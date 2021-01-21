@@ -8,11 +8,6 @@ module.exports = {
     baseUrl: process.env.SEMAPPS_HOME_URL,
     ontologies,
     containers: ['/organizations', '/projects', '/events', '/persons', '/themas', '/skills', '/places', '/files','/branchs'],
-    defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
-    defaultContainerOptions: {
-      jsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
-      allowAnonymousEdit: true,
-      allowAnonymousDelete: true
-    }
+    defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json')
   }
 };

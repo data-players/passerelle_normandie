@@ -3,16 +3,16 @@
   "version": "0.1.8",
   "private": true,
   "dependencies": {
-    "@semapps/archipelago-layout": "0.1.10",
-    "@semapps/auth-provider": "0.1.10",
-    "@semapps/semantic-data-provider": "0.1.10",
+    "@semapps/archipelago-layout": "0.1.17",
+    "@semapps/auth-provider": "0.1.17",
+    "@semapps/semantic-data-provider": "0.1.17",
     "prop-types": "^15.7.2",
-    "query-string": "^6.13.7",
     "ra-input-markdown": "^1.1.7",
-    "ra-language-french": "^3.9.2",
+    "ra-language-french": "3.11.0",
     "react": "^16.13.1",
-    "react-admin": "^3.9.2",
-    "react-dom": "^16.13.1"
+    "react-admin": "3.11.0",
+    "react-dom": "^16.13.1",
+    "query-string": "^6.13.7"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",

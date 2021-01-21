@@ -5,12 +5,27 @@ import OrganizationShow from './OrganizationShow';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 
 export default {
-  list: OrganizationList,
-  show: OrganizationShow,
-  create: OrganizationCreate,
-  edit: OrganizationEdit,
-  icon: AccountBalanceIcon,
-  options: {
-    label: 'Organisations'
+  config:{
+    list: OrganizationList,
+    show: OrganizationShow,
+    create: OrganizationCreate,
+    edit: OrganizationEdit,
+    icon: AccountBalanceIcon,
+    options: {
+      label: 'Organisations'
+    }
+  },
+  dataModel: {
+    types: ['pair:Organization'],
+    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'organizations',
+    slugField: 'pair:label'
+  },
+  translations: {
+    fr: {
+      name: 'Organisations |||| Organisation',
+      fields: {
+        'pair:label': 'Titre',
+      }
+    }
   }
 };

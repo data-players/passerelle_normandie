@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutocompleteArrayInput, SimpleForm, TextInput, DateTimeInput,ImageInput } from 'react-admin';
+import { AutocompleteArrayInput, SimpleForm, TextInput, DateTimeInput,ImageInput,CheckboxGroupInput } from 'react-admin';
 import MarkdownInput from 'ra-input-markdown';
 import { Edit } from '@semapps/archipelago-layout';
 import { UriArrayInput } from '@semapps/semantic-data-provider';
@@ -14,8 +14,8 @@ const PlaceEdit = props => (
       <UriArrayInput label="Géré par" reference="Organization" source="pair:supportedBy">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>
-      <UriArrayInput label="Branche" reference="Branch" source="pair:hasBranch">
-        <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
+      <UriArrayInput label="Branches" source="pair:hasBranch" reference="Branch" fullWidth>
+        <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>
     </SimpleForm>
   </Edit>

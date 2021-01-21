@@ -55,7 +55,7 @@ services:
       - "3000:3000"
     expose:
       - "3000"
-    command: bash -c "make rollup & make link-yarn && npm run dev"
+    command: bash -c "make link-yarn && npm run dev"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.middleware.rule=Host(`middleware.localhost`)"

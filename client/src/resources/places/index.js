@@ -5,12 +5,27 @@ import PlaceShow from './PlaceShow';
 import PlaceIcon from '@material-ui/icons/PinDrop';
 
 export default {
-  list: PlaceList,
-  show: PlaceShow,
-  create: PlaceCreate,
-  edit: PlaceEdit,
-  icon: PlaceIcon,
-  options: {
-    label: 'Lieux'
+  config:{
+    list: PlaceList,
+    show: PlaceShow,
+    create: PlaceCreate,
+    edit: PlaceEdit,
+    icon: PlaceIcon,
+    options: {
+      label: 'Lieux'
+    }
+  },
+  dataModel: {
+    types: ['pair:Place'],
+    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'places',
+    slugField: 'pair:label'
+  },
+  translations: {
+    fr: {
+      name: 'Places |||| Places',
+      fields: {
+        'pair:label': 'Titre',
+      }
+    }
   }
 };

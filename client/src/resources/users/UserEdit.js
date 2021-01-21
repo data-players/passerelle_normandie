@@ -22,7 +22,7 @@ export const UserEdit = props => (
       <UriArrayInput label="Compétences" reference="Skill" source="pair:offers">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>
-      <UriArrayInput label="Intérêts" reference="Interest" source="pair:hasInterest">
+      <UriArrayInput label="Intérêts" reference="Interest" source="pair:hasTopic">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>
     </SimpleForm>

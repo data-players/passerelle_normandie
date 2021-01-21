@@ -1,30 +1,30 @@
 import React, { useContext } from 'react';
 import {
   AutocompleteArrayInput,
+  SelectArrayInput,
   SimpleForm,
   TextInput,
   ImageInput,
   ReferenceInput,
   SelectInput,
   CheckboxGroupInput,
-  FormDataConsumer
+  FormDataConsumer,
+  ReferenceArrayInput
 } from 'react-admin';
 import MarkdownInput from 'ra-input-markdown';
 import {Edit} from '@semapps/archipelago-layout';
 import {UriArrayInput, ImageField} from '@semapps/semantic-data-provider';
 
 // import { UniversContext } from './../../App.js';
-import { ContextUnivers} from './../../univers';
+// import { ContextUnivers} from './../../univers';
 
 const UniversTemplate = ({ record }) => {
   return <span>{record['pair:hasBranch']}</span>;
 };
 
 export const OrganizationEdit = (props) =>{
-  const universContext = useContext(ContextUnivers);
   return (<Edit {...props}>
     <SimpleForm redirect="show">
-      <span>{universContext && universContext.state} </span>
       <TextInput source="pair:label" label="Nom"/>
       <TextInput source="pair:comment" label="Courte description" fullWidth/>
       <MarkdownInput multiline="multiline" source="pair:description" label="Description" fullWidth/>
@@ -44,40 +44,6 @@ export const OrganizationEdit = (props) =>{
       <UriArrayInput label="Branches" source="pair:hasBranch" reference="Branch" fullWidth>
         <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>
-      <FormDataConsumer>
-          {({ formData, ...rest }) =>{
-            const formDataArray = Array.isArray(formData['pair:hasBranch'])?formData['pair:hasBranch']:[formData['pair:hasBranch']];
-          // console.log(formData['pair:hasBranch']);
-            if(formData['pair:hasBranch'] && formDataArray.find(b=>b.includes('/agriculture'))){
-                return(
-                  <span>AGRI</span>
-                )
-              }
-          }}
-      </FormDataConsumer>
-      <FormDataConsumer>
-          {({ formData, ...rest }) =>{
-            const formDataArray = Array.isArray(formData['pair:hasBranch'])?formData['pair:hasBranch']:[formData['pair:hasBranch']];
-              if(formData['pair:hasBranch'] && formDataArray.find(b=>b.includes('/sante'))){
-                return(
-                  <span>SANTE</span>
-                )
-              }
-          }}
-      </FormDataConsumer>
-      <FormDataConsumer>
-          {({ formData, ...rest }) =>{
-            const formDataArray = Array.isArray(formData['pair:hasBranch'])?formData['pair:hasBranch']:[formData['pair:hasBranch']];
-              if(formData['pair:hasBranch'] && formDataArray.find(b=>b.includes('/tiers-lieux'))){
-                return(
-                  <span>TIERS LIEUX</span>
-                )
-              }
-          }}
-      </FormDataConsumer>
-
-
-
     </SimpleForm>
   </Edit>);
 }

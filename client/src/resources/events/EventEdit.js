@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutocompleteArrayInput, SimpleForm, TextInput, DateTimeInput } from 'react-admin';
+import { AutocompleteArrayInput, SimpleForm, TextInput, DateTimeInput, CheckboxGroupInput } from 'react-admin';
 import MarkdownInput from 'ra-input-markdown';
 import { Edit } from '@semapps/archipelago-layout';
 import { UriArrayInput } from '@semapps/semantic-data-provider';
@@ -27,11 +27,8 @@ const EventEdit = props => (
           fullWidth
         />
       </UriArrayInput>
-      <UriArrayInput label="Intérêts" reference="Interest" source="pair:hasInterest">
-        <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
-      </UriArrayInput>
-      <UriArrayInput label="Branche" reference="Branch" source="pair:hasBranch">
-        <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
+      <UriArrayInput label="Branches" source="pair:hasBranch" reference="Branch" fullWidth>
+        <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>
     </SimpleForm>
   </Edit>

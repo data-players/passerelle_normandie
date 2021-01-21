@@ -2,7 +2,7 @@
   "@context": {
     "@vocab": "_:",
     "pair": "http://virtual-assembly.org/ontologies/pair#",
-
+    
     "as": "https://www.w3.org/ns/activitystreams#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -13,7 +13,7 @@
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "semapps": "http://semapps.org/ns/core#",
     "oasis": "http://cooperative-oasis.org/ns/core#",
-
+    
     "pair:affiliatedBy": {
       "@type": "@id"
     },
@@ -173,6 +173,8 @@
     "pair:typeOfSubject": {
       "@type": "@id"
     },
+
+
     "pair:aboutPage": {
       "@type": "@id"
     },
@@ -188,24 +190,7 @@
     "pair:webPage": {
       "@type": "@id"
     },
-    "pair:hasBranch":{
-      "@type": "@id"
-    },
-    "pair:branchOf":{
-      "@type": "@id"
-    },
-    "pair:supports":{
-      "@type": "@id"
-    },
-    "pair:supportedBy":{
-      "@type": "@id"
-    },
-    "pair:hasTopic":{
-      "@type": "@id"
-    },
-    "pair:topicOf":{
-      "@type": "@id"
-    },
+
     "Accept": "as:Accept",
     "Activity": "as:Activity",
     "IntransitiveActivity": "as:IntransitiveActivity",

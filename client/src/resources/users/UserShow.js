@@ -8,10 +8,10 @@ const UserTitle = ({ record }) => {
 };
 
 const UserShow = props => (
-  <Show {...props}>
+  <Show {...props} title={<UserTitle />}>
     <ColumnShowLayout>
       <Column xs={12} sm={9}>
-        <Hero title={<UserTitle />} image="image">
+        <Hero image="image">
           <TextField label="Prénom" source="pair:firstName" />
           <TextField label="Nom de famille" source="pair:lastName" />
         </Hero>
@@ -28,12 +28,12 @@ const UserShow = props => (
           </SingleFieldList>
         </UriArrayField>
         <UriArrayField label="Compétences" reference="Skill" source="pair:offers">
-          <SingleFieldList linkType={false}>
+          <SingleFieldList linkType="show">
             <ChipField source="pair:label" color="secondary" />
           </SingleFieldList>
         </UriArrayField>
-        <UriArrayField label="Intérêts" reference="Interest" source="pair:hasInterest">
-          <SingleFieldList linkType={false}>
+        <UriArrayField label="Intérêts" reference="Interest" source="pair:hasTopic">
+          <SingleFieldList linkType="show">
             <ChipField source="pair:label" color="secondary" />
           </SingleFieldList>
         </UriArrayField>

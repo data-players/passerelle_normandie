@@ -75,6 +75,7 @@ services:
     environment:
       - REACT_APP_MIDDLEWARE_URL=https://passerelle-normandie.data-players.com/middleware/
       - REACT_APP_ADMIN=false
+      - REACT_APP_MAPBOX_ACCESS_TOKEN=pk.eyJ1Ijoic3Jvc3NldDgxIiwiYSI6ImNrbDd0b2VkMzA1dDMycG9iemU4NnpuemsifQ.HvpZ3tnweVHEUYLb0tDvTg
       - PORT=5000
     volumes:
       - ./client:/client/app
@@ -99,6 +100,7 @@ services:
     environment:
       - REACT_APP_MIDDLEWARE_URL=https://passerelle-normandie.data-players.com/middleware/
       - REACT_APP_ADMIN=true
+      - REACT_APP_MAPBOX_ACCESS_TOKEN=pk.eyJ1Ijoic3Jvc3NldDgxIiwiYSI6ImNrbDd0b2VkMzA1dDMycG9iemU4NnpuemsifQ.HvpZ3tnweVHEUYLb0tDvTg
       - PORT=5010
     volumes:
       - ./client:/client/app

@@ -2,6 +2,7 @@ import React from 'react';
 import { AutocompleteArrayInput, SimpleForm, TextInput, ImageInput } from 'react-admin';
 import { Edit } from '@semapps/archipelago-layout';
 import { UriArrayInput, ImageField } from '@semapps/semantic-data-provider';
+import  PairLocationInput from '../../components/PairLocationInput';
 
 export const UserEdit = props => (
   <Edit {...props}>
@@ -10,6 +11,7 @@ export const UserEdit = props => (
       <TextInput source="pair:lastName" label="Nom de famille" fullWidth />
       <TextInput source="foaf:email" label="email" fullWidth />
       <TextInput source="pair:phone" label="téléphone" fullWidth />
+      <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />
       <ImageInput source="image" label="image" accept="image/*">
         <ImageField source="src" />
       </ImageInput>

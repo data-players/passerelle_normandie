@@ -32,7 +32,8 @@ export const OrganizationEdit = (props) =>{
       <TextInput source="pair:homePage" label="Site web" fullWidth/>
       <TextInput source="pair:e-mail" label="email" type="email" fullWidth/>
       <TextInput source="pair:phone" label="téléphone" fullWidth />
-      <TextInput source="schema:address" label="adresse" fullWidth/>
+      // <TextInput source="schema:address" label="adresse" fullWidth/>
+      <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />
       <ImageInput source="image" label="Logo" accept="image/*">
         <ImageField source="src"/>
       </ImageInput>
@@ -42,7 +43,7 @@ export const OrganizationEdit = (props) =>{
       <UriArrayInput label="Lieux" reference="Place" source="pair:supports">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth/>
       </UriArrayInput>
-      <PairLocationInput source="pair:hasLocation" fullWidth />
+
       <UriArrayInput label="Branches" source="pair:hasBranch" reference="Branch" fullWidth>
         <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>

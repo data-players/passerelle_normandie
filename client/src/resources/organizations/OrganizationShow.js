@@ -18,8 +18,6 @@ const OrganizationShow = props => (
           <UrlField label="Site web" source="pair:homePage" />
           <TextField label="Email" source="pair:e-mail" type="email"/>
           <TextField label="Téléphone" source="pair:phone" type="email"/>
-          <TextField label="Adresse" source="schema:address" />
-
         </Hero>
         <MarkdownField source="pair:description" addLabel />
       </Column>

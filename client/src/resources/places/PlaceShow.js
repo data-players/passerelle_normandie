@@ -14,7 +14,6 @@ const PlaceShow = props => (
       <Column xs={12} sm={9} showLabel>
         <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
         <TextField label="Courte description" source="pair:comment" />
-        <TextField label="Adresse" source="schema:address" />
         <MarkdownField label="Description" source="pair:description" addLabel />
       </Column>
       <Column xs={12} sm={3} showLabel>

@@ -32,7 +32,6 @@ export const OrganizationEdit = (props) =>{
       <TextInput source="pair:homePage" label="Site web" fullWidth/>
       <TextInput source="pair:e-mail" label="email" type="email" fullWidth/>
       <TextInput source="pair:phone" label="téléphone" fullWidth />
-      // <TextInput source="schema:address" label="adresse" fullWidth/>
       <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />
       <ImageInput source="image" label="Logo" accept="image/*">
         <ImageField source="src"/>

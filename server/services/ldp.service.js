@@ -7,7 +7,11 @@ module.exports = {
   settings: {
     baseUrl: process.env.SEMAPPS_HOME_URL,
     ontologies,
-    containers: ['/organizations', '/projects', '/events', '/persons', '/themas', '/skills', '/places', '/files','/branchs'],
+    containers: [{
+            path: '/organizations',
+            acceptedTypes: ['pair:Organization'],
+            dereference: ['pair:hasLocation/pair:hasPostalAddress']
+          }, '/projects', '/events', '/persons', '/themas', '/skills', '/places', '/files','/branchs','/membershipRole'],
     defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
     defaultContainerOptions: {
       jsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),

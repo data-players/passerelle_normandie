@@ -26,7 +26,7 @@
   },
   {
     "prefix": "pair",
-    "owl": "http://virtual-assembly.org/ontologies/pair-2020-winter/ontology.ttl",
+    "owl": "",
     "url": "http://virtual-assembly.org/ontologies/pair#"
   },
   {

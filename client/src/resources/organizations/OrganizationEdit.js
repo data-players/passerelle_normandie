@@ -14,6 +14,7 @@ import {
 import MarkdownInput from 'ra-input-markdown';
 import {Edit} from '@semapps/archipelago-layout';
 import {UriArrayInput, ImageField} from '@semapps/semantic-data-provider';
+import  PairLocationInput from '../../components/PairLocationInput';
 
 // import { UniversContext } from './../../App.js';
 // import { ContextUnivers} from './../../univers';
@@ -41,6 +42,7 @@ export const OrganizationEdit = (props) =>{
       <UriArrayInput label="Lieux" reference="Place" source="pair:supports">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth/>
       </UriArrayInput>
+      <PairLocationInput source="pair:hasLocation" fullWidth />
       <UriArrayInput label="Branches" source="pair:hasBranch" reference="Branch" fullWidth>
         <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>

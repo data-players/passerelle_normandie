@@ -9,11 +9,12 @@ import {
   SelectInput,
   CheckboxGroupInput,
   FormDataConsumer,
-  ReferenceArrayInput
+  ReferenceArrayInput,
+  AutocompleteInput,
 } from 'react-admin';
 import MarkdownInput from 'ra-input-markdown';
 import {Edit} from '@semapps/archipelago-layout';
-import {UriArrayInput, ImageField} from '@semapps/semantic-data-provider';
+import {UriArrayInput, ImageField,ReificationArrayInput} from '@semapps/semantic-data-provider';
 import  PairLocationInput from '../../components/PairLocationInput';
 
 // import { UniversContext } from './../../App.js';
@@ -36,13 +37,19 @@ export const OrganizationEdit = (props) =>{
       <ImageInput source="image" label="Logo" accept="image/*">
         <ImageField source="src"/>
       </ImageInput>
-      <UriArrayInput label="Membres" reference="User" source="pair:hasMember">
-        <AutocompleteArrayInput optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`} shouldRenderSuggestions={value => value.length > 1} fullWidth/>
-      </UriArrayInput>
+      <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation">
+        <ReferenceInput reference="User" source="pair:membershipActor">
+          <AutocompleteInput
+            optionText="pair:firstName"
+          />
+        </ReferenceInput>
+        <ReferenceInput reference="MembershipRole" source="pair:membershipRole">
+          <SelectInput optionText="pair:label" />
+        </ReferenceInput>
+      </ReificationArrayInput>
       <UriArrayInput label="Lieux" reference="Place" source="pair:supports">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth/>
       </UriArrayInput>
-
       <UriArrayInput label="Branches" source="pair:hasBranch" reference="Branch" fullWidth>
         <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>

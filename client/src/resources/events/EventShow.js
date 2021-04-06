@@ -4,14 +4,13 @@ import { Column, ColumnShowLayout, Hero, Show, MarkdownField, UserIcon, GridList
 import { UriArrayField } from '@semapps/semantic-data-provider';
 
 const ProjectTitle = ({ record }) => {
-  console.log('ALLLO');
   return <span>{record ? record['pair:label'] : ''}</span>;
 };
 
 const EventShow = props => (
   <Show  title={<ProjectTitle />} {...props}>
     <ColumnShowLayout>
-      <Column xs={12} sm={9}>
+      <Column xs={12} sm={6}>
         <Hero>
           <TextField label="Courte description" source="pair:comment" />
           <DateField label="Date de début" source="pair:startDate" showTime />
@@ -21,7 +20,7 @@ const EventShow = props => (
         </Hero>
         <MarkdownField source="pair:description" addLabel />
       </Column>
-      <Column xs={12} sm={3} showLabel>
+      <Column xs={12} sm={6} showLabel>
         <UriArrayField label="Proposé par" reference="Organization" source="pair:deliveredBy">
           <SingleFieldList linkType="show">
             <ChipField source="pair:label" color="secondary" />

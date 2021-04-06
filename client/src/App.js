@@ -22,6 +22,7 @@ const adminAuthProvider = {
   logout: globalLogout
 }
 
+// console.log('resources',resources);
 
 const App = () => (
   <Admin

@@ -5,7 +5,7 @@ import FavoriteBorderIcon from '@material-ui/icons/Class';
 
 export default {
   config: {
-    list: RoleList,
+    list: process.env.REACT_APP_ADMIN==='true'?RoleList:undefined,
     create: RoleCreate,
     edit: RoleEdit,
     icon: FavoriteBorderIcon,

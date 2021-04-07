@@ -50,12 +50,16 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
   const [filtered,setFiltered]=useState();
   useEffect(() => {
     if (record?.[source] && Array.isArray(record[source])) {
-      const filteredData = [...record[source]].splice(record?.[source].length - limit);
-      let newRecord = {
-        ...record
-      };
-      newRecord[source] = filteredData;
-      setFiltered(newRecord);
+      if (record?.[source].length>limit){
+        const filteredData = [...record[source]].splice(record?.[source].length - limit);
+        let newRecord = {
+          ...record
+        };
+        newRecord[source] = filteredData;
+        setFiltered(newRecord);
+      }else{
+        setFiltered(record);
+      }
     }
   }, [record, source]);
 

@@ -48,6 +48,7 @@ const ShowContextLayout = ({children, ...otherProps}) => {
 
 const LimitationLayout = ({record,source,children,action,more,limit, ...otherProps}) => {
   const [filtered,setFiltered]=useState();
+  // console.log('record',source,JSON.stringify(record?.[source]),JSON.stringify(record));
   useEffect(() => {
     if (record?.[source] && Array.isArray(record[source])) {
       if (record?.[source].length>limit){
@@ -63,12 +64,16 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
     }
   }, [record, source]);
 
+    // console.log('filtered',source,JSON.stringify(filtered?.[source]));
+
   return <div style={{'display':'flex'}}>
     <div>
     {filtered?.[source] && React.Children.map(children, child =>
       child && React.cloneElement(child, {
+        ...otherProps,
+        source,
         record : filtered,
-        ...otherProps
+
       })
     )}
     </div>
@@ -101,12 +106,12 @@ const OrganizationShow = props => {
               <UrlField label="Site web" source="pair:homePage" addLabel/>
               <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
-                <MapField
-                  source="pair:hasLocation"
-                  address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
-                  latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
-                  longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-                />
+              <MapField
+                source="pair:hasLocation"
+                address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+                latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+                longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+              />
             </Column>
             <Column xs={12} sm={4} showLabel>
               <RightLabel reference="Place" source="pair:supports" label="Lieux">
@@ -123,21 +128,30 @@ const OrganizationShow = props => {
               <GroupedArrayField
                 source="pair:organizationOfMembership"
                 groupReference="MembershipRole"
-                groupComponent={record => <RightLabel record={record} source="pair:label" label={record?.['pair:label']} />}
+                groupLabel="pair:label"
                 filterProperty="pair:membershipRole"
                 addLabel={false}
               >
-                <SingleFieldList linkType={false}>
-                  <ReferenceField reference="User" source="pair:membershipActor" link="show">
-                    <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                        parent: {
-                                          width: '100px',
-                                          margin : '10px'
-                                        }
-                                      }}/>
+                <RightLabel>
+                  <LimitationLayout source="pair:organizationOfMembership" limit={1} more={{
+                          pathname: './show/MembershipRole'
+                      }}>
 
-                  </ReferenceField>
-                </SingleFieldList>
+                    <ArrayField source="pair:organizationOfMembership">
+                      <SingleFieldList linkType={false}>
+                        <ReferenceField reference="User" source="pair:membershipActor" link="show">
+                          <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                              parent: {
+                                                width: '100px',
+                                                margin : '10px'
+                                              }
+                                            }}/>
+
+                        </ReferenceField>
+                      </SingleFieldList>
+                    </ArrayField>
+                  </LimitationLayout>
+                </RightLabel>
               </GroupedArrayField>
             </Column>
           </ColumnShowLayout>
@@ -147,21 +161,26 @@ const OrganizationShow = props => {
           <GroupedArrayField
             source="pair:organizationOfMembership"
             groupReference="MembershipRole"
-            groupComponent={record => <RightLabel record={record} source="pair:label" label={record?.['pair:label']} />}
+            groupLabel="pair:label"
             filterProperty="pair:membershipRole"
             addLabel={false}
           >
-            <SingleFieldList linkType={false}>
-              <ReferenceField reference="User" source="pair:membershipActor" link="show">
-                <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                    parent: {
-                                      width: '100px',
-                                      margin : '10px'
-                                    }
-                                  }}/>
+            <RightLabel>
+            <ArrayField source="pair:organizationOfMembership">
+              <SingleFieldList linkType={false}>
+                <ReferenceField reference="User" source="pair:membershipActor" link="show">
+                  <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                      parent: {
+                                        width: '100px',
+                                        margin : '10px'
+                                      }
+                                    }}/>
 
-              </ReferenceField>
-            </SingleFieldList>
+                </ReferenceField>
+              </SingleFieldList>
+            </ArrayField>
+            </RightLabel>
+
           </GroupedArrayField>
         </Tab>
         <Tab value="Places" label="lieux" path="Places" icon={<Avatar alt="test avatar" src="/icon_places.png" />}>

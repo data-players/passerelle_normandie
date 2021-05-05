@@ -1,7 +1,7 @@
 import React, {useState,useEffect, useRef} from 'react';
-import { useShowContext, TextField, UrlField, SingleFieldList, ChipField, ArrayField,Datagrid,TabbedShowLayout, Tab} from 'react-admin';
+import { useShowContext, TextField, UrlField, SingleFieldList, ChipField, ArrayField, Datagrid, TabbedShowLayout, Tab} from 'react-admin';
 import { Column, ColumnShowLayout, Hero, GridList, Show, MarkdownField, AvatarField, RightLabel, MainImage,SimpleList} from '@semapps/archipelago-layout';
-import { ReferenceArrayField ,ImageField,ReferenceField,FilteredArrayField,GroupedArrayField } from '@semapps/semantic-data-provider';
+import { ReferenceArrayField ,ImageField,ReferenceField,GroupedReferenceHandler } from '@semapps/semantic-data-provider';
 import { Typography, Box, makeStyles, Avatar, Button } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
 import MailIcon from '@material-ui/icons/MailOutline';
@@ -103,29 +103,18 @@ const OrganizationShow = props => {
             <Column xs={12} sm={8} showLabel>
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
-              <UrlField label="Site web" source="pair:homePage" addLabel/>
-              <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
-              <TextField label="Téléphone" source="pair:phone" addLabel/>
+            </Column>
+            <Column xs={12} sm={4} showLabel>
               <MapField
                 source="pair:hasLocation"
                 address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
                 latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
                 longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
               />
-            </Column>
-            <Column xs={12} sm={4} showLabel>
-              <RightLabel reference="Place" source="pair:supports" label="Lieux">
-                <LimitationLayout source="pair:supports" limit={3} more={{
-                        pathname: './show/Places'
-                    }}>
-                  <ReferenceArrayField reference="Place" source="pair:supports">
-                    <SingleFieldList linkType="show">
-                      <ChipField source="pair:label" color="secondary" />
-                    </SingleFieldList>
-                  </ReferenceArrayField>
-                </LimitationLayout>
-              </RightLabel>
-              <GroupedArrayField
+              <UrlField label="Site web" source="pair:homePage" addLabel/>
+              <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
+              <TextField label="Téléphone" source="pair:phone" addLabel/>
+              <GroupedReferenceHandler
                 source="pair:organizationOfMembership"
                 groupReference="MembershipRole"
                 groupLabel="pair:label"
@@ -133,7 +122,7 @@ const OrganizationShow = props => {
                 addLabel={false}
               >
                 <RightLabel>
-                  <LimitationLayout source="pair:organizationOfMembership" limit={1} more={{
+                  <LimitationLayout source="pair:organizationOfMembership" limit={5} more={{
                           pathname: './show/MembershipRole'
                       }}>
 
@@ -152,13 +141,24 @@ const OrganizationShow = props => {
                     </ArrayField>
                   </LimitationLayout>
                 </RightLabel>
-              </GroupedArrayField>
+              </GroupedReferenceHandler>
+              <RightLabel reference="Place" source="pair:supports" label="Lieux">
+                <LimitationLayout source="pair:supports" limit={5} more={{
+                        pathname: './show/Places'
+                    }}>
+                  <ReferenceArrayField reference="Place" source="pair:supports">
+                    <SingleFieldList linkType="show">
+                      <ChipField source="pair:label" color="secondary" />
+                    </SingleFieldList>
+                  </ReferenceArrayField>
+                </LimitationLayout>
+              </RightLabel>
             </Column>
           </ColumnShowLayout>
 
         </Tab>
         <Tab label="membres" path="MembershipRole" icon={<Avatar alt="test avatar" src="/icon_members.png" />}>
-          <GroupedArrayField
+          <GroupedReferenceHandler
             source="pair:organizationOfMembership"
             groupReference="MembershipRole"
             groupLabel="pair:label"
@@ -166,22 +166,22 @@ const OrganizationShow = props => {
             addLabel={false}
           >
             <RightLabel>
-            <ArrayField source="pair:organizationOfMembership">
-              <SingleFieldList linkType={false}>
-                <ReferenceField reference="User" source="pair:membershipActor" link="show">
-                  <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                      parent: {
-                                        width: '100px',
-                                        margin : '10px'
-                                      }
-                                    }}/>
+              <ArrayField source="pair:organizationOfMembership">
+                <SingleFieldList linkType={false}>
+                  <ReferenceField reference="User" source="pair:membershipActor" link="show">
+                    <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                        parent: {
+                                          width: '100px',
+                                          margin : '10px'
+                                        }
+                                      }}/>
 
-                </ReferenceField>
-              </SingleFieldList>
-            </ArrayField>
+                  </ReferenceField>
+                </SingleFieldList>
+              </ArrayField>
             </RightLabel>
 
-          </GroupedArrayField>
+          </GroupedReferenceHandler>
         </Tab>
         <Tab value="Places" label="lieux" path="Places" icon={<Avatar alt="test avatar" src="/icon_places.png" />}>
           <ReferenceArrayField label="Lieux" reference="Place" source="pair:supports" addLabel={false}>

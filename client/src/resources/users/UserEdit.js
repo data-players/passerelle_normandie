@@ -1,7 +1,7 @@
 import React from 'react';
-import { AutocompleteArrayInput, SimpleForm, TextInput, ImageInput } from 'react-admin';
+import { AutocompleteArrayInput, SimpleForm, TextInput, ImageInput, ReferenceInput, SelectInput, AutocompleteInput } from 'react-admin';
 import { Edit } from '@semapps/archipelago-layout';
-import { UriArrayInput, ImageField } from '@semapps/semantic-data-provider';
+import { UriArrayInput, ImageField,ReificationArrayInput } from '@semapps/semantic-data-provider';
 import  PairLocationInput from '../../components/PairLocationInput';
 
 export const UserEdit = props => (
@@ -18,9 +18,16 @@ export const UserEdit = props => (
       <UriArrayInput label="Participe à" reference="Project" source="pair:involvedIn">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>
-      <UriArrayInput label="Membre de" reference="Organization" source="pair:memberOf">
-        <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
-      </UriArrayInput>
+      <ReificationArrayInput source="pair:actorOfMembership" reificationClass="pair:MembershipAssociation">
+        <ReferenceInput reference="Organization" source="pair:membershipOrganization">
+          <AutocompleteInput
+            optionText="pair:label"
+          />
+        </ReferenceInput>
+        <ReferenceInput reference="MembershipRole" source="pair:membershipRole">
+          <SelectInput optionText="pair:label" />
+        </ReferenceInput>
+      </ReificationArrayInput>
       <UriArrayInput label="Compétences" reference="Skill" source="pair:offers">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>

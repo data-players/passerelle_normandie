@@ -3,9 +3,10 @@ import { AutocompleteArrayInput, SimpleForm, TextInput } from 'react-admin';
 import MarkdownInput from 'ra-input-markdown';
 import { Edit } from '@semapps/archipelago-layout';
 import { UriArrayInput } from '@semapps/semantic-data-provider';
+import ProjectTitle from './ProjectTitle';
 
 const ProjectEdit = props => (
-  <Edit {...props}>
+  <Edit title={<ProjectTitle/>} {...props}>
     <SimpleForm redirect="show">
       <TextInput source="pair:label" label="Nom" fullWidth />
       <TextInput source="pair:comment" label="Courte description" fullWidth />

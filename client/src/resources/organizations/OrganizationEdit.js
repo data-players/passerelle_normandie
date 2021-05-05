@@ -16,6 +16,7 @@ import MarkdownInput from 'ra-input-markdown';
 import {Edit} from '@semapps/archipelago-layout';
 import {UriArrayInput, ImageField,ReificationArrayInput} from '@semapps/semantic-data-provider';
 import  PairLocationInput from '../../components/PairLocationInput';
+import OrganizationTitle from './OrganizationTitle';
 
 // import { UniversContext } from './../../App.js';
 // import { ContextUnivers} from './../../univers';
@@ -25,7 +26,8 @@ const UniversTemplate = ({ record }) => {
 };
 
 export const OrganizationEdit = (props) =>{
-  return (<Edit {...props}>
+  return (
+  <Edit title={<OrganizationTitle />} {...props}>
     <SimpleForm redirect="show">
       <TextInput source="pair:label" label="Nom"/>
       <TextInput source="pair:comment" label="Courte description" fullWidth/>

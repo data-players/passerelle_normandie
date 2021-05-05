@@ -3,9 +3,10 @@ import { AutocompleteArrayInput, SimpleForm, TextInput, DateTimeInput, CheckboxG
 import MarkdownInput from 'ra-input-markdown';
 import { Edit } from '@semapps/archipelago-layout';
 import { UriArrayInput } from '@semapps/semantic-data-provider';
+import EventTitle from './EventTitle';
 
 const EventEdit = props => (
-  <Edit {...props}>
+  <Edit title={<EventTitle/>} {...props}>
     <SimpleForm redirect="show">
       <TextInput source="pair:label" label="Nom" fullWidth />
       <TextInput source="pair:comment" label="Courte description" fullWidth />

@@ -6,10 +6,8 @@ import { Typography, Box, makeStyles, Avatar, Button } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
 import MailIcon from '@material-ui/icons/MailOutline';
 import { Link } from 'react-router-dom';
+import OrganizationTitle from './OrganizationTitle';
 
-const OrganizationTitle = ({ record }) => {
-  return <span>{record ? record['pair:label'] : ''}</span>;
-};
 //
 // const useUserImage = makeStyles({
 //   image: {

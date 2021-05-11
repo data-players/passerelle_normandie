@@ -1,5 +1,5 @@
 import React, {useState,useEffect, useRef} from 'react';
-import { useShowContext, TextField, UrlField, SingleFieldList, ChipField, ArrayField,Datagrid,TabbedShowLayout, Tab} from 'react-admin';
+import { useShowContext, TextField, UrlField, SingleFieldList, ChipField, ArrayField,Datagrid,TabbedShowLayout, Tab, FileField} from 'react-admin';
 import { Column, ColumnShowLayout, Hero, GridList, Show, MarkdownField, AvatarField, RightLabel, MainImage,SimpleList} from '@semapps/archipelago-layout';
 import { ReferenceArrayField ,ImageField,ReferenceField,FilteredArrayField,GroupedArrayField } from '@semapps/semantic-data-provider';
 import { Typography, Box, makeStyles, Avatar, Button } from '@material-ui/core';
@@ -8,15 +8,6 @@ import MailIcon from '@material-ui/icons/MailOutline';
 import { Link } from 'react-router-dom';
 import OrganizationTitle from './OrganizationTitle';
 
-//
-// const useUserImage = makeStyles({
-//   image: {
-//     color:"red",
-//     height: '100px',
-//   }
-// });
-
-
 const mainImage = makeStyles({
   image: {
     objectFit: 'cover',
@@ -24,7 +15,6 @@ const mainImage = makeStyles({
     maxHeight :'20em'
   }
 });
-
 
 const ShowContextLayout = ({children, ...otherProps}) => {
   const {
@@ -42,6 +32,27 @@ const ShowContextLayout = ({children, ...otherProps}) => {
     })
   )
 }
+
+const MyUrlArrayField = ({ record, source }) => {
+  var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
+  for (var i=0; i < array.length ;i++) {
+    if (!array[i].startsWith('https') || !array[i].startsWith('https://') || !array[i].startsWith('http')) {
+      array[i] = 'https:\/\/'+array[i]
+    }
+  }
+
+  return record ? (
+    <>
+      {
+        array.map(item =>
+        <div><a href={item} >{item} </a></div>
+        )
+      }
+    </>
+  ) : null;
+}
+MyUrlArrayField.defaultProps = { addLabel: true }
+
 
 
 const LimitationLayout = ({record,source,children,action,more,limit, ...otherProps}) => {
@@ -85,10 +96,7 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
     }
     </div>
   </div>
-
-
 }
-
 
 const OrganizationShow = props => {
   const mainImageStyles = mainImage();
@@ -101,7 +109,7 @@ const OrganizationShow = props => {
             <Column xs={12} sm={8} showLabel>
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
-              <UrlField label="Site web" source="pair:homePage" addLabel/>
+              <MyUrlArrayField label="Liens utiles" source="pair:homePage" />
               <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
               <MapField

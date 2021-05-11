@@ -87,8 +87,6 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
     }
     </div>
   </div>
-
-
 }
 
 

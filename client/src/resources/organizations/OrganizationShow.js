@@ -1,10 +1,9 @@
-import React, {useState,useEffect, useRef} from 'react';
-import { useShowContext, TextField, UrlField, SingleFieldList, ChipField, ArrayField,Datagrid,TabbedShowLayout, Tab, FileField} from 'react-admin';
-import { Column, ColumnShowLayout, Hero, GridList, Show, MarkdownField, AvatarField, RightLabel, MainImage,SimpleList} from '@semapps/archipelago-layout';
-import { ReferenceArrayField ,ImageField,ReferenceField,FilteredArrayField,GroupedArrayField } from '@semapps/semantic-data-provider';
-import { Typography, Box, makeStyles, Avatar, Button } from '@material-ui/core';
+import React, {useState,useEffect} from 'react';
+import { useShowContext, TextField, SingleFieldList, ChipField, ArrayField,TabbedShowLayout, Tab} from 'react-admin';
+import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel,SimpleList} from '@semapps/archipelago-layout';
+import { ReferenceArrayField ,ImageField,ReferenceField,GroupedArrayField } from '@semapps/semantic-data-provider';
+import { makeStyles, Avatar, Button } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
-import MailIcon from '@material-ui/icons/MailOutline';
 import { Link } from 'react-router-dom';
 import OrganizationTitle from './OrganizationTitle';
 
@@ -36,8 +35,8 @@ const ShowContextLayout = ({children, ...otherProps}) => {
 const MyUrlArrayField = ({ record, source }) => {
   var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
   for (var i=0; i < array.length ;i++) {
-    if (!array[i].startsWith('https') || !array[i].startsWith('https://') || !array[i].startsWith('http')) {
-      array[i] = 'https:\/\/'+array[i]
+    if (array[i].startsWith('https://')) {
+      array[i] = array[i].split('https://')[1]
     }
   }
 
@@ -45,15 +44,13 @@ const MyUrlArrayField = ({ record, source }) => {
     <>
       {
         array.map(item =>
-        <div><a href={item} >{item} </a></div>
+        <div><a href={"http://"+item} >{item} </a></div>
         )
       }
     </>
   ) : null;
 }
 MyUrlArrayField.defaultProps = { addLabel: true }
-
-
 
 const LimitationLayout = ({record,source,children,action,more,limit, ...otherProps}) => {
   const [filtered,setFiltered]=useState();

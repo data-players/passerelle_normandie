@@ -36,6 +36,7 @@ export const OrganizationEdit = (props) =>{
           <TextInput label="" fullWidth />
         </SimpleFormIterator>
       </ArrayInput>      
+      <TextInput source="pair:video" label="Video url" fullWidth/>
       <TextInput source="pair:e-mail" label="email" type="email" fullWidth/>
       <TextInput source="pair:phone" label="téléphone" fullWidth />
       <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />

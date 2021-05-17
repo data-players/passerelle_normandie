@@ -1,11 +1,13 @@
 import React, {useState,useEffect} from 'react';
 import { useShowContext, TextField, SingleFieldList, ChipField, ArrayField,TabbedShowLayout, Tab} from 'react-admin';
-import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel,SimpleList} from '@semapps/archipelago-layout';
+import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel, SimpleList} from '@semapps/archipelago-layout';
 import { ReferenceArrayField ,ImageField,ReferenceField,GroupedArrayField } from '@semapps/semantic-data-provider';
 import { makeStyles, Avatar, Button } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
 import { Link } from 'react-router-dom';
 import OrganizationTitle from './OrganizationTitle';
+import ReactPlayer from "react-player";
+
 
 const mainImage = makeStyles({
   image: {
@@ -95,6 +97,43 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
   </div>
 }
 
+const MyVideoPlayer = ({ record, source }) => {
+  var url = record[source]
+
+  switch (detectPlayer(url)) {
+    case 'peertube':
+      if (!url.includes("embed")) {
+          var spliturl = url.split("watch/")
+          url = spliturl[0]+"embed/"+spliturl[1]
+      }
+      return  (
+        <div align="center" >
+          <iframe width="1120" height="630" sandbox="allow-same-origin allow-scripts" src={url} frameborder="0" allow="fullscreen"></iframe>
+        </div>
+      )
+    case 'basic':
+      return (
+        <div align="center" >
+          <ReactPlayer url={url} controls/>
+        </div>
+      )
+    default:
+      return (
+        <div align="center">Video Not Supported, check your URL</div>
+      )
+  }
+}
+
+function detectPlayer (url) {
+  if ( url.includes("youtube")) {
+      return "basic"
+  } else if (url.includes("facebook")) {
+      return "basic"
+  } else if (url.includes("videos/watch") || url.includes("videos/embed")){
+      return "peertube"
+  }
+}
+
 const OrganizationShow = props => {
   const mainImageStyles = mainImage();
   return <Show title={<OrganizationTitle />} {...props}>
@@ -107,6 +146,7 @@ const OrganizationShow = props => {
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
               <MyUrlArrayField label="Liens utiles" source="pair:homePage" />
+              <MyVideoPlayer source="pair:video"/>
               <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
               <MapField

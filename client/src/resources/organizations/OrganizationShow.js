@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import { useShowContext, TextField, SingleFieldList, ChipField, ArrayField,TabbedShowLayout, Tab} from 'react-admin';
+import { useShowContext, TextField, SingleFieldList, ChipField, ArrayField,TabbedShowLayout, Tab, UrlField} from 'react-admin';
 import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel, SimpleList} from '@semapps/archipelago-layout';
 import { ReferenceArrayField ,ImageField,ReferenceField,GroupedArrayField } from '@semapps/semantic-data-provider';
 import { makeStyles, Avatar, Button } from '@material-ui/core';
@@ -117,6 +117,15 @@ const MyVideoPlayer = ({ record, source }) => {
           <ReactPlayer url={url} controls/>
         </div>
       )
+    case "dailymotion":
+      if (!url.includes("embed")) {
+          var spliturl = url.split("video/")[1]
+          url = "https://www.dailymotion.com/embed/video/" + spliturl.split('?play')[0]
+          console.log(url)
+      }
+      return ( <ReactPlayer url={url} controls/> )
+    case 'novideo':
+      return (null);
     default:
       return (
         <div align="center">Video Not Supported, check your URL</div>
@@ -125,12 +134,17 @@ const MyVideoPlayer = ({ record, source }) => {
 }
 
 function detectPlayer (url) {
+  if (url === undefined) {
+    return "novideo"
+  }
   if ( url.includes("youtube")) {
       return "basic"
-  } else if (url.includes("facebook")) {
+  } else if (url.includes("facebook") || url.includes("fb.watch")) {
       return "basic"
   } else if (url.includes("videos/watch") || url.includes("videos/embed")){
       return "peertube"
+  } else if (url.includes("dailymotion")) {
+    return "dailymotion"
   }
 }
 
@@ -146,7 +160,8 @@ const OrganizationShow = props => {
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
               <MyUrlArrayField label="Liens utiles" source="pair:homePage" />
-              <MyVideoPlayer source="pair:video"/>
+              <UrlField label="Video" source="pair:video" />
+              <MyVideoPlayer source="pair:video" />
               <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
               <MapField

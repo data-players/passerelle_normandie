@@ -1,21 +1,21 @@
 import React, { useContext } from 'react';
 import {
   AutocompleteArrayInput,
-  SelectArrayInput,
+  ArrayInput,
   SimpleForm,
   TextInput,
   ImageInput,
   ReferenceInput,
   SelectInput,
   CheckboxGroupInput,
-  FormDataConsumer,
-  ReferenceArrayInput,
   AutocompleteInput,
+  SimpleFormIterator,
 } from 'react-admin';
 import MarkdownInput from 'ra-input-markdown';
 import {Edit} from '@semapps/archipelago-layout';
 import {UriArrayInput, ImageField,ReificationArrayInput} from '@semapps/semantic-data-provider';
 import  PairLocationInput from '../../components/PairLocationInput';
+import OrganizationTitle from './OrganizationTitle';
 
 // import { UniversContext } from './../../App.js';
 // import { ContextUnivers} from './../../univers';
@@ -25,12 +25,18 @@ const UniversTemplate = ({ record }) => {
 };
 
 export const OrganizationEdit = (props) =>{
-  return (<Edit {...props}>
+  return (
+  <Edit title={<OrganizationTitle />} {...props}>
     <SimpleForm redirect="show">
       <TextInput source="pair:label" label="Nom"/>
       <TextInput source="pair:comment" label="Courte description" fullWidth/>
       <MarkdownInput multiline="multiline" source="pair:description" label="Description" fullWidth/>
-      <TextInput source="pair:homePage" label="Site web" fullWidth/>
+      <ArrayInput label="liens" source="pair:homePage" >
+        <SimpleFormIterator>
+          <TextInput label="" fullWidth />
+        </SimpleFormIterator>
+      </ArrayInput>      
+      <TextInput source="pair:video" label="Video url" fullWidth/>
       <TextInput source="pair:e-mail" label="email" type="email" fullWidth/>
       <TextInput source="pair:phone" label="téléphone" fullWidth />
       <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />

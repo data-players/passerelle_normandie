@@ -1,22 +1,13 @@
-import React, {useState,useEffect, useRef} from 'react';
-import { useShowContext, TextField, UrlField, SingleFieldList, ChipField, ArrayField, Datagrid, TabbedShowLayout, Tab} from 'react-admin';
-import { Column, ColumnShowLayout, Hero, GridList, Show, MarkdownField, AvatarField, RightLabel, MainImage,SimpleList} from '@semapps/archipelago-layout';
-import { ReferenceArrayField ,ImageField,ReferenceField,GroupedReferenceHandler } from '@semapps/semantic-data-provider';
-import { Typography, Box, makeStyles, Avatar, Button } from '@material-ui/core';
+import React, {useState,useEffect} from 'react';
+import { useShowContext, TextField, SingleFieldList, ChipField, ArrayField,TabbedShowLayout, Tab} from 'react-admin';
+import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel, SimpleList} from '@semapps/archipelago-layout';
+import { ReferenceArrayField ,ImageField,ReferenceField, GroupedReferenceHandler } from '@semapps/semantic-data-provider';
+import { makeStyles, Avatar, Button } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
 import MailIcon from '@material-ui/icons/MailOutline';
 import { Link } from 'react-router-dom';
-
-const OrganizationTitle = ({ record }) => {
-  return <span>{record ? record['pair:label'] : ''}</span>;
-};
-//
-// const useUserImage = makeStyles({
-//   image: {
-//     color:"red",
-//     height: '100px',
-//   }
-// });
+import OrganizationTitle from './OrganizationTitle';
+import ReactPlayer from "react-player";
 
 
 const mainImage = makeStyles({
@@ -26,7 +17,6 @@ const mainImage = makeStyles({
     maxHeight :'20em'
   }
 });
-
 
 const ShowContextLayout = ({children, ...otherProps}) => {
   const {
@@ -45,6 +35,25 @@ const ShowContextLayout = ({children, ...otherProps}) => {
   )
 }
 
+const MyUrlArrayField = ({ record, source }) => {
+  var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
+  for (var i=0; i < array.length ;i++) {
+    if (array[i].startsWith('https://')) {
+      array[i] = array[i].split('https://')[1]
+    }
+  }
+
+  return record ? (
+    <>
+      {
+        array.map(item =>
+        <div><a href={"http://"+item} >{item} </a></div>
+        )
+      }
+    </>
+  ) : null;
+}
+MyUrlArrayField.defaultProps = { addLabel: true }
 
 const LimitationLayout = ({record,source,children,action,more,limit, ...otherProps}) => {
   const [filtered,setFiltered]=useState();
@@ -89,6 +98,44 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
   </div>
 }
 
+const MyVideoPlayer = ({ record, source }) => {
+  var url = record[source]
+
+  switch (detectPlayer(url)) {
+    case 'peertube':
+      if (!url.includes("embed")) {
+          var spliturl = url.split("watch/")
+          url = spliturl[0]+"embed/"+spliturl[1]
+      }
+      return  (
+        <div align="center" >
+          <iframe width="1120" height="630" sandbox="allow-same-origin allow-scripts" src={url} frameborder="0" allow="fullscreen"></iframe>
+        </div>
+      )
+    case 'basic':
+      return (
+        <div align="center" >
+          <ReactPlayer url={url} controls/>
+        </div>
+      )
+    default:
+      return (
+        <div align="center">Video Not Supported, check your URL</div>
+      )
+  }
+}
+
+function detectPlayer (url) {
+  if (!url){
+      return undefined
+  } else if ( url.includes("youtube")) {
+      return "basic"
+  } else if (url.includes("facebook")) {
+      return "basic"
+  } else if (url.includes("videos/watch") || url.includes("videos/embed")){
+      return "peertube"
+  }
+}
 
 const OrganizationShow = props => {
   const mainImageStyles = mainImage();
@@ -101,17 +148,9 @@ const OrganizationShow = props => {
             <Column xs={12} sm={8} showLabel>
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
+              <MyVideoPlayer source="pair:video"/>
             </Column>
             <Column xs={12} sm={4} showLabel>
-              <MapField
-                source="pair:hasLocation"
-                address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
-                latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
-                longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-              />
-              <UrlField label="Site web" source="pair:homePage" addLabel/>
-              <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
-              <TextField label="Téléphone" source="pair:phone" addLabel/>
               <GroupedReferenceHandler
                 source="pair:organizationOfMembership"
                 groupReference="MembershipRole"
@@ -120,26 +159,30 @@ const OrganizationShow = props => {
                 addLabel={false}
               >
                 <RightLabel>
-                  <LimitationLayout source="pair:organizationOfMembership" limit={5} more={{
-                          pathname: './show/MembershipRole'
-                      }}>
+                  <ArrayField source="pair:organizationOfMembership">
+                    <SingleFieldList linkType={false}>
+                      <ReferenceField reference="User" source="pair:membershipActor" link="show">
+                        <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                            parent: {
+                                              width: '100px',
+                                              margin : '10px'
+                                            }
+                                          }}/>
 
-                    <ArrayField source="pair:organizationOfMembership">
-                      <SingleFieldList linkType={false}>
-                        <ReferenceField reference="User" source="pair:membershipActor" link="show">
-                          <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                              parent: {
-                                                width: '100px',
-                                                margin : '10px'
-                                              }
-                                            }}/>
-
-                        </ReferenceField>
-                      </SingleFieldList>
-                    </ArrayField>
-                  </LimitationLayout>
+                      </ReferenceField>
+                    </SingleFieldList>
+                  </ArrayField>
                 </RightLabel>
               </GroupedReferenceHandler>
+              <MapField
+                source="pair:hasLocation"
+                address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+                latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+                longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+              />
+              <MyUrlArrayField label="Liens utiles" source="pair:homePage" />
+              <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
+              <TextField label="Téléphone" source="pair:phone" addLabel/>
               <RightLabel reference="Place" source="pair:supports" label="Lieux">
                 <LimitationLayout source="pair:supports" limit={3} more={{
                         pathname: './show/Places'
@@ -164,21 +207,20 @@ const OrganizationShow = props => {
             addLabel={false}
           >
             <RightLabel>
-              <ArrayField source="pair:organizationOfMembership">
-                <SingleFieldList linkType={false}>
-                  <ReferenceField reference="User" source="pair:membershipActor" link="show">
-                    <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                        parent: {
-                                          width: '100px',
-                                          margin : '10px'
-                                        }
-                                      }}/>
+            <ArrayField source="pair:organizationOfMembership">
+              <SingleFieldList linkType={false}>
+                <ReferenceField reference="User" source="pair:membershipActor" link="show">
+                  <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                      parent: {
+                                        width: '100px',
+                                        margin : '10px'
+                                      }
+                                    }}/>
 
-                  </ReferenceField>
-                </SingleFieldList>
-              </ArrayField>
+                </ReferenceField>
+              </SingleFieldList>
+            </ArrayField>
             </RightLabel>
-
           </GroupedReferenceHandler>
         </Tab>
         <Tab value="Places" label="lieux" path="Places" icon={<Avatar alt="test avatar" src="/icon_places.png" />}>

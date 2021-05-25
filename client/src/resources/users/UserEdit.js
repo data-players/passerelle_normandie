@@ -3,9 +3,10 @@ import { AutocompleteArrayInput, SimpleForm, TextInput, ImageInput, ReferenceInp
 import { Edit } from '@semapps/archipelago-layout';
 import { UriArrayInput, ImageField,ReificationArrayInput } from '@semapps/semantic-data-provider';
 import  PairLocationInput from '../../components/PairLocationInput';
+import UserTitle from './UserTitle';
 
 export const UserEdit = props => (
-  <Edit {...props}>
+  <Edit title={<UserTitle />} {...props}>
     <SimpleForm redirect="show">
       <TextInput source="pair:firstName" label="Prénom" fullWidth />
       <TextInput source="pair:lastName" label="Nom de famille" fullWidth />

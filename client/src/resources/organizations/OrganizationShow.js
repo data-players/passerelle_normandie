@@ -17,6 +17,12 @@ const mainImage = makeStyles({
   }
 });
 
+const logoImage = makeStyles({
+  image: {
+    width: '150px',
+  }
+});
+
 const listIcon = makeStyles({
   root: {
     display: 'inline-block',
@@ -170,15 +176,11 @@ function detectPlayer (url) {
 
 const OrganizationShow = props => {
   const mainImageStyles = mainImage();
+  const logoStyle = logoImage();
   return <Show title={<OrganizationTitle />} {...props}>
     <ShowContextLayout>
       <ImageField source="pair:banner" classes={mainImageStyles}/>
-      <AvatarField image="image" classes={{
-                                              parent: {
-                                                width: '100px',
-                                                margin : '10px'
-                                              }
-                                            }}
+      <ImageField source='image' classes={logoStyle}
       />
       <TabbedShowLayout value={2} >
         <Tab label="info" icon={<Avatar alt="test avatar" src="/icon_info.png" />}>

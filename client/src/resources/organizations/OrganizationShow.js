@@ -141,7 +141,7 @@ const OrganizationShow = props => {
                 </RightLabel>
               </GroupedReferenceHandler>
               <RightLabel reference="Place" source="pair:supports" label="Lieux">
-                <LimitationLayout source="pair:supports" limit={5} more={{
+                <LimitationLayout source="pair:supports" limit={3} more={{
                         pathname: './show/Places'
                     }}>
                   <ReferenceArrayField reference="Place" source="pair:supports">

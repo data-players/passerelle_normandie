@@ -4,6 +4,7 @@ import OrganizationList from './OrganizationList';
 import OrganizationShow from './OrganizationShow';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 
+
 export default {
   config:{
     list: OrganizationList,

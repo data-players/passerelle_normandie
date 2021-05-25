@@ -19,13 +19,17 @@ export default {
     types: ['pair:Person'],
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'persons',
     dereference: ['pair:hasLocation/pair:hasPostalAddress'],
-    slugField: 'pair:label'
+    slugField: 'pair:label',
+    forceArray: ['pair:actorOfMembership']
   },
   translations: {
     fr: {
       name: 'Utilisateurs |||| Utilisateurs',
       fields: {
         'pair:label': 'Titre',
+        'pair:actorOfMembership': 'organisation avec Role',
+        'pair:membershipRole': 'Role',
+        'pair:membershipOrganization' : 'Organisation'
       }
     }
   }

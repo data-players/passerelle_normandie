@@ -46,7 +46,7 @@ export const OrganizationEdit = (props) =>{
       <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation">
         <ReferenceInput reference="User" source="pair:membershipActor">
           <AutocompleteInput
-            optionText="pair:firstName"
+            optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
           />
         </ReferenceInput>
         <ReferenceInput reference="MembershipRole" source="pair:membershipRole">

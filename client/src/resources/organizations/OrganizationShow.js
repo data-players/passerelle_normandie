@@ -1,9 +1,10 @@
 import React, {useState,useEffect} from 'react';
 import { useShowContext, TextField, SingleFieldList, ChipField, ArrayField,TabbedShowLayout, Tab} from 'react-admin';
 import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel, SimpleList} from '@semapps/archipelago-layout';
-import { ReferenceArrayField ,ImageField,ReferenceField,GroupedArrayField } from '@semapps/semantic-data-provider';
+import { ReferenceArrayField ,ImageField,ReferenceField, GroupedReferenceHandler } from '@semapps/semantic-data-provider';
 import { makeStyles, Avatar, Button } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
+import MailIcon from '@material-ui/icons/MailOutline';
 import { Link } from 'react-router-dom';
 import OrganizationTitle from './OrganizationTitle';
 import ReactPlayer from "react-player";
@@ -125,7 +126,9 @@ const MyVideoPlayer = ({ record, source }) => {
 }
 
 function detectPlayer (url) {
-  if ( url.includes("youtube")) {
+  if (!url){
+      return undefined
+  } else if ( url.includes("youtube")) {
       return "basic"
   } else if (url.includes("facebook")) {
       return "basic"
@@ -145,18 +148,41 @@ const OrganizationShow = props => {
             <Column xs={12} sm={8} showLabel>
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
-              <MyUrlArrayField label="Liens utiles" source="pair:homePage" />
               <MyVideoPlayer source="pair:video"/>
-              <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
-              <TextField label="Téléphone" source="pair:phone" addLabel/>
+            </Column>
+            <Column xs={12} sm={4} showLabel>
+              <GroupedReferenceHandler
+                source="pair:organizationOfMembership"
+                groupReference="MembershipRole"
+                groupLabel="pair:label"
+                filterProperty="pair:membershipRole"
+                addLabel={false}
+              >
+                <RightLabel>
+                  <ArrayField source="pair:organizationOfMembership">
+                    <SingleFieldList linkType={false}>
+                      <ReferenceField reference="User" source="pair:membershipActor" link="show">
+                        <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                            parent: {
+                                              width: '100px',
+                                              margin : '10px'
+                                            }
+                                          }}/>
+
+                      </ReferenceField>
+                    </SingleFieldList>
+                  </ArrayField>
+                </RightLabel>
+              </GroupedReferenceHandler>
               <MapField
                 source="pair:hasLocation"
                 address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
                 latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
                 longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
               />
-            </Column>
-            <Column xs={12} sm={4} showLabel>
+              <MyUrlArrayField label="Liens utiles" source="pair:homePage" />
+              <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
+              <TextField label="Téléphone" source="pair:phone" addLabel/>
               <RightLabel reference="Place" source="pair:supports" label="Lieux">
                 <LimitationLayout source="pair:supports" limit={3} more={{
                         pathname: './show/Places'
@@ -168,40 +194,12 @@ const OrganizationShow = props => {
                   </ReferenceArrayField>
                 </LimitationLayout>
               </RightLabel>
-              <GroupedArrayField
-                source="pair:organizationOfMembership"
-                groupReference="MembershipRole"
-                groupLabel="pair:label"
-                filterProperty="pair:membershipRole"
-                addLabel={false}
-              >
-                <RightLabel>
-                  <LimitationLayout source="pair:organizationOfMembership" limit={1} more={{
-                          pathname: './show/MembershipRole'
-                      }}>
-
-                    <ArrayField source="pair:organizationOfMembership">
-                      <SingleFieldList linkType={false}>
-                        <ReferenceField reference="User" source="pair:membershipActor" link="show">
-                          <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                              parent: {
-                                                width: '100px',
-                                                margin : '10px'
-                                              }
-                                            }}/>
-
-                        </ReferenceField>
-                      </SingleFieldList>
-                    </ArrayField>
-                  </LimitationLayout>
-                </RightLabel>
-              </GroupedArrayField>
             </Column>
           </ColumnShowLayout>
 
         </Tab>
         <Tab label="membres" path="MembershipRole" icon={<Avatar alt="test avatar" src="/icon_members.png" />}>
-          <GroupedArrayField
+          <GroupedReferenceHandler
             source="pair:organizationOfMembership"
             groupReference="MembershipRole"
             groupLabel="pair:label"
@@ -223,8 +221,7 @@ const OrganizationShow = props => {
               </SingleFieldList>
             </ArrayField>
             </RightLabel>
-
-          </GroupedArrayField>
+          </GroupedReferenceHandler>
         </Tab>
         <Tab value="Places" label="lieux" path="Places" icon={<Avatar alt="test avatar" src="/icon_places.png" />}>
           <ReferenceArrayField label="Lieux" reference="Place" source="pair:supports" addLabel={false}>

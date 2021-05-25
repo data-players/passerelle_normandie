@@ -2,18 +2,25 @@ import React, {useState,useEffect} from 'react';
 import { useShowContext, TextField, SingleFieldList, ChipField, ArrayField,TabbedShowLayout, Tab, UrlField} from 'react-admin';
 import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel, SimpleList} from '@semapps/archipelago-layout';
 import { ReferenceArrayField ,ImageField,ReferenceField,GroupedArrayField } from '@semapps/semantic-data-provider';
-import { makeStyles, Avatar, Button } from '@material-ui/core';
+import { List, makeStyles, Avatar, Button, ListItem } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
 import { Link } from 'react-router-dom';
 import OrganizationTitle from './OrganizationTitle';
 import ReactPlayer from "react-player";
-
+import icon, { SocialIcon } from 'react-social-icons';
 
 const mainImage = makeStyles({
   image: {
     objectFit: 'cover',
     width: '100%',
     maxHeight :'20em'
+  }
+});
+
+const listIcon = makeStyles({
+  root: {
+    display: 'inline-block',
+    width: 'auto'
   }
 });
 
@@ -34,6 +41,20 @@ const ShowContextLayout = ({children, ...otherProps}) => {
   )
 }
 
+const MySocialNetworkArrayIcon = ({ record, source }) => {
+  const listIconStyle = listIcon();
+  var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
+  for (var i=0; i < array.length ;i++) {
+    if (array[i].startsWith('https://')) {
+      array[i] = array[i].split('https://')[1]
+    }
+  }
+
+  return <List>
+    {  array.map(item => <ListItem classes={listIconStyle}><SocialIcon url={"http://"+item}/></ListItem>) }
+  </List>
+}
+
 const MyUrlArrayField = ({ record, source }) => {
   var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
   for (var i=0; i < array.length ;i++) {
@@ -52,7 +73,6 @@ const MyUrlArrayField = ({ record, source }) => {
     </>
   ) : null;
 }
-MyUrlArrayField.defaultProps = { addLabel: true }
 
 const LimitationLayout = ({record,source,children,action,more,limit, ...otherProps}) => {
   const [filtered,setFiltered]=useState();
@@ -125,7 +145,7 @@ const MyVideoPlayer = ({ record, source }) => {
       }
       return ( <ReactPlayer url={url} controls/> )
     case 'novideo':
-      return (null);
+      return null;
     default:
       return (
         <div align="center">Video Not Supported, check your URL</div>
@@ -134,7 +154,7 @@ const MyVideoPlayer = ({ record, source }) => {
 }
 
 function detectPlayer (url) {
-  if (url === undefined) {
+  if (!url) {
     return "novideo"
   }
   if ( url.includes("youtube")) {
@@ -152,16 +172,23 @@ const OrganizationShow = props => {
   const mainImageStyles = mainImage();
   return <Show title={<OrganizationTitle />} {...props}>
     <ShowContextLayout>
-      <ImageField source="image" classes={mainImageStyles}/>
+      <ImageField source="pair:banner" classes={mainImageStyles}/>
+      <AvatarField image="image" classes={{
+                                              parent: {
+                                                width: '100px',
+                                                margin : '10px'
+                                              }
+                                            }}
+      />
       <TabbedShowLayout value={2} >
         <Tab label="info" icon={<Avatar alt="test avatar" src="/icon_info.png" />}>
           <ColumnShowLayout>
             <Column xs={12} sm={8} showLabel>
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
-              <MyUrlArrayField label="Liens utiles" source="pair:homePage" />
-              <UrlField label="Video" source="pair:video" />
-              <MyVideoPlayer source="pair:video" />
+              <MySocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
+              <MyUrlArrayField source="pair:homePage" addLabel/>
+              <MyVideoPlayer label="Vidéo" source="pair:video" addLabel/>
               <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
               <MapField

@@ -31,18 +31,27 @@ export const OrganizationEdit = (props) =>{
       <TextInput source="pair:label" label="Nom"/>
       <TextInput source="pair:comment" label="Courte description" fullWidth/>
       <MarkdownInput multiline="multiline" source="pair:description" label="Description" fullWidth/>
-      <ArrayInput label="liens" source="pair:homePage" >
+      <ArrayInput source="pair:homePage" >
         <SimpleFormIterator>
           <TextInput label="" fullWidth />
         </SimpleFormIterator>
-      </ArrayInput>      
+      </ArrayInput>
+      <ArrayInput source="pair:aboutPage" >
+        <SimpleFormIterator>
+          <TextInput label="" fullWidth />
+        </SimpleFormIterator>
+      </ArrayInput>     
       <TextInput source="pair:video" label="Video url" fullWidth/>
       <TextInput source="pair:e-mail" label="email" type="email" fullWidth/>
       <TextInput source="pair:phone" label="téléphone" fullWidth />
       <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />
-      <ImageInput source="image" label="Logo" accept="image/*">
+      <ImageInput source="image" label="logo" accept="image/*">
         <ImageField source="src"/>
       </ImageInput>
+      <ImageInput source="pair:banner" label="Bannière" accept="image/*">
+        <ImageField source="src"/>
+      </ImageInput>
+      <TextInput source="test" label="test" fullWidth/>
       <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation">
         <ReferenceInput reference="User" source="pair:membershipActor">
           <AutocompleteInput

@@ -6,6 +6,7 @@ import { authProvider, LoginPage, LogoutButton, UserMenu } from '@semapps/auth-p
 import i18nProvider from './config/i18nProvider';
 import dataProvider from './config/dataProvider';
 import * as resources from './resources';
+import  HomePage from './pages/HomePage'
 
 const AppBarWithUserMenu = props => <AppBar userMenu={<UserMenu />} {...props} />;
 const LayoutWithUserMenu = props => <Layout {...props} appBar={AppBarWithUserMenu} />;
@@ -33,6 +34,7 @@ const App = () => (
     theme={theme}
     loginPage={LoginPage}
     logoutButton={LogoutButton}
+    dashboard={HomePage}
   >
     {Object.entries(resources).map(([key, resource]) => (
       <Resource key={key} name={key} {...resource.config} />

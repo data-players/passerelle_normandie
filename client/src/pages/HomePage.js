@@ -5,12 +5,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { MapList } from '@semapps/geo-components';
+import { SimpleList as RaSimpleList } from 'react-admin';
 import ProjectFilterSidebar from './HomePagefilterSideBar';
 
-const HomePage = () => {
-
-  const mainImage = makeStyles(theme => ({
-    root: {
+const mainStyle = makeStyles(theme => ({
+    image: {
       height:"500px",
       boxSizing: "border-box",
       objectFit: 'cover',
@@ -18,31 +17,22 @@ const HomePage = () => {
         height:"200px",
       }
     },
-  }));
-
-  const text1 = makeStyles(theme => ({
-    root: {
+    mainTitle: {
       color:"#30a082",
-      textAlign:"center",
+      textAlign:"left",
       fontSize: "50px",
       fontFamily: "Comic Sans MS",
       marginTop: "60px",
       marginBottom: "60px"
     },
-  }));
-
-  const text2 = makeStyles(theme => ({
-    root: {
-      textAlign:"center",
+    mainText: {
+      textAlign:"left",
       fontSize: "30px",
       fontFamily: "Comic Sans MS",
       marginBottom: "60px"
     },
-  }));
-
-  const text3 = makeStyles(theme => ({
-    root: {
-      textAlign:"center",
+    mapTitle: {
+      textAlign:"lett",
       fontSize: "50px",
       fontFamily: "Comic Sans MS",
       marginTop: "60px",
@@ -50,10 +40,9 @@ const HomePage = () => {
     },
   }));
 
-  const mainImageStyles = mainImage();
-  const text1Style = text1();
-  const text2Style = text2();
-  const text3Style = text3();
+const HomePage = () => {
+
+  const style = mainStyle();
   const urlImage = "https://www.zupimages.net/up/21/22/zikv.png";
 
   return(
@@ -64,34 +53,41 @@ const HomePage = () => {
             <CardMedia
               image={urlImage}
               title="village"
-              classes={mainImageStyles}
+              className={style.image}
             />
         </Paper>
       </Grid>
       <Grid item md={1} sm={1} xs={0}></Grid>
 
-      <Grid item sm={11} xs={12} classes={text1Style}>
+      <Grid item sm={11} xs={12} className={style.mainTitle}>
         <strong>Participer aux sessions Passerelle Normandie</strong>
       </Grid>      
       <Grid item md={1} sm={1} xs={0}></Grid>
 
-      <Grid item sm={11} xs={12} classes={text2Style}>
-        <strong>
-          Pour découvrir un territoire, rencontrer ses acteurs et échanger sur vos projets (ou idées) de transition et d'installation à la campagne
-        </strong><br></br>
-          Passerelle Normandie est né d'un désir d'accompagner les personnes dans leur projet personnel ou professionnel, de transition et d'installation dans le monde rural.
-          Ce projet vise à appuyer les personnes qui souhaitent repenser leur mode de vie, notamment par la découverte de métiers porteurs de sens et de lieux de vie inspirants.
-          En facilitant la découverte des richesses du monde rural, Passerelle Normandie aspire à participer à l’émergence de nouveaux liens entre villes et campagnes.
-      </Grid>
-      <Grid item md={1} sm={1} xs={0}></Grid>
-      
-      <Grid item sm={11} xs={12} classes={text3Style}>
-        <strong>Voici la carte des acteurs qui nous on rejoint :</strong>
+      <Grid item sm={11} xs={12} className={style.mainText}>
+        Ce site est dédié à rendre visible la richesse des territoires normands. Vous pourrez naviguer à travers 5 concepts principaux : 
+          <br></br>
+          <ul>
+            - Les individus<br></br>
+            - Leurs organisations<br></br>
+            - Les projets<br></br>
+            - Les évènements<br></br>
+            - Les lieux qui les accueillent
+          </ul>
+          Vous pouvez naviguer sur cette plateforme et découvrir le contenu. 
+          Il sera nécessaire de vous créer un compte pour publier du contenu. 
+          <br></br><br></br>
+          Vous trouverez un guide d'utilisation à cette adresse [lien], une FAQ [lien] et une page pour contacter l'équipede Passerelle [lien].
+
       </Grid>
       <Grid item md={1} sm={1} xs={0}></Grid>
 
-      <Grid item sm={1} xs={0}></Grid>
-      <Grid item sm={9} xs={12}>
+      <Grid item sm={11} xs={12} className={style.mapTitle}>
+        <strong>La carte du bocage :</strong>
+      </Grid>
+      <Grid item md={1} sm={1} xs={0}></Grid>
+
+      <Grid item sm={11} xs={12}>
         <ListBase resource="Organization" basePath="/Organization" perPage={4}>
           <MapList
           
@@ -102,9 +98,23 @@ const HomePage = () => {
             scrollWheelZoom
           />
         </ListBase>
-        <Grid item sm={2} xs={0}></Grid>
-
+        <Grid item sm={1} xs={0}></Grid>
       </Grid>
+
+      <Grid item sm={11} xs={12} className={style.mainTitle}>
+        <strong>Les prochains évènements dans le bocage :</strong>
+      </Grid>      
+      <Grid item md={1} sm={1} xs={0}></Grid>
+
+      <Grid item sm={11} xs={12} >
+        <Paper  variant="outlined" square>
+          <ListBase resource="Event" basePath="/Events" perPage={4}>
+            <RaSimpleList primaryText={record => record['pair:label']} secondaryText={record => record['pair:comment']} linkType="show" />
+          </ListBase>
+        </Paper>
+      </Grid>
+      <Grid item md={1} sm={1} xs={0}></Grid>
+
     </Grid>
   );
 };

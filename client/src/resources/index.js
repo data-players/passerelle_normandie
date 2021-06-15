@@ -8,3 +8,4 @@ export { default as Interest } from './interests';
 export { default as Skill } from './skills';
 export { default as Branch } from './branchs';
 export { default as MembershipRole } from './membershipRoles';
+export { default as  Page } from './pages';

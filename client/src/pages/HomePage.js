@@ -1,12 +1,14 @@
 import React from 'react';
-import { ListBase, Show } from 'react-admin';
+import { ListBase, useShowController, ShowContextProvider } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import { MapList } from '@semapps/geo-components';
 import { SimpleList as RaSimpleList } from 'react-admin';
 import ProjectFilterSidebar from './HomePagefilterSideBar';
+import PageShow from '../resources/pages/PageShow';
 
 const mainStyle = makeStyles(theme => ({
     image: {
@@ -22,8 +24,9 @@ const mainStyle = makeStyles(theme => ({
       textAlign:"left",
       fontSize: "50px",
       fontFamily: "Comic Sans MS",
-      marginTop: "60px",
-      marginBottom: "60px"
+      paddingBottom: "30px",
+      paddingTop: "30px",
+      paddingLeft: "25px"
     },
     mainText: {
       textAlign:"left",
@@ -31,14 +34,23 @@ const mainStyle = makeStyles(theme => ({
       fontFamily: "Comic Sans MS",
       marginBottom: "60px"
     },
-    mapTitle: {
+    mapBox: {
       textAlign:"lett",
       fontSize: "50px",
       fontFamily: "Comic Sans MS",
-      marginTop: "60px",
-      marginBottom: "60px"
     },
+    mapTitlePaper: {
+      paddingBottom: "30px",
+      paddingTop: "30px",
+      paddingLeft: "25px"
+    }
   }));
+
+  const config = {
+    basePath: '/Page',
+    id: process.env.REACT_APP_MIDDLEWARE_URL + 'pages/accueil',
+    resource: 'Page'
+  };
 
 const HomePage = () => {
 
@@ -48,7 +60,7 @@ const HomePage = () => {
   return(
     <Grid container spacing={0} aside={ProjectFilterSidebar}>
 
-      <Grid item md={11} sm={11} xs={12} >
+      <Grid item md={12} sm={12} xs={12} >
         <Paper variant="outlined" square>
             <CardMedia
               image={urlImage}
@@ -57,37 +69,22 @@ const HomePage = () => {
             />
         </Paper>
       </Grid>
-      <Grid item md={1} sm={1} xs={0}></Grid>
 
-      <Grid item sm={11} xs={12} className={style.mainTitle}>
-        <strong>Participer aux sessions Passerelle Normandie</strong>
-      </Grid>      
-      <Grid item md={1} sm={1} xs={0}></Grid>
-
-      <Grid item sm={11} xs={12} className={style.mainText}>
-        Ce site est dédié à rendre visible la richesse des territoires normands. Vous pourrez naviguer à travers 5 concepts principaux : 
-          <br></br>
-          <ul>
-            - Les individus<br></br>
-            - Leurs organisations<br></br>
-            - Les projets<br></br>
-            - Les évènements<br></br>
-            - Les lieux qui les accueillent
-          </ul>
-          Vous pouvez naviguer sur cette plateforme et découvrir le contenu. 
-          Il sera nécessaire de vous créer un compte pour publier du contenu. 
-          <br></br><br></br>
-          Vous trouverez un guide d'utilisation à cette adresse [lien], une FAQ [lien] et une page pour contacter l'équipede Passerelle [lien].
-
+      <Grid item md={12} sm={12} xs={12} >
+        <Box component="div" display="inline" >
+          <ShowContextProvider value={useShowController(config)}>
+            <PageShow {...config} />
+          </ShowContextProvider>
+        </Box>
       </Grid>
-      <Grid item md={1} sm={1} xs={0}></Grid>
 
-      <Grid item sm={11} xs={12} className={style.mapTitle}>
-        <strong>La carte du bocage :</strong>
+      <Grid item sm={12} xs={12} className={style.mapBox}>
+        <Paper className={style.mapTitlePaper}>
+            <strong >La carte du bocage :</strong>
+        </Paper>
       </Grid>
-      <Grid item md={1} sm={1} xs={0}></Grid>
 
-      <Grid item sm={11} xs={12}>
+      <Grid item sm={12} xs={12}>
         <ListBase resource="Organization" basePath="/Organization" perPage={4}>
           <MapList
           
@@ -98,22 +95,21 @@ const HomePage = () => {
             scrollWheelZoom
           />
         </ListBase>
-        <Grid item sm={1} xs={0}></Grid>
       </Grid>
 
-      <Grid item sm={11} xs={12} className={style.mainTitle}>
-        <strong>Les prochains évènements dans le bocage :</strong>
+      <Grid item sm={12} xs={12} >
+        <Paper className={style.mainTitle}>
+          <strong>Les prochains évènements dans le bocage :</strong>
+        </Paper>
       </Grid>      
-      <Grid item md={1} sm={1} xs={0}></Grid>
 
-      <Grid item sm={11} xs={12} >
+      <Grid item sm={12} xs={12} >
         <Paper  variant="outlined" square>
           <ListBase resource="Event" basePath="/Events" perPage={4}>
             <RaSimpleList primaryText={record => record['pair:label']} secondaryText={record => record['pair:comment']} linkType="show" />
           </ListBase>
         </Paper>
       </Grid>
-      <Grid item md={1} sm={1} xs={0}></Grid>
 
     </Grid>
   );

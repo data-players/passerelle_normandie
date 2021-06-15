@@ -100,16 +100,11 @@ const HomePage = () => {
       <Grid item sm={12} xs={12} >
         <Paper className={style.mainTitle}>
           <strong>Les prochains évènements dans le bocage :</strong>
-        </Paper>
-      </Grid>      
-
-      <Grid item sm={12} xs={12} >
-        <Paper  variant="outlined" square>
           <ListBase resource="Event" basePath="/Events" perPage={4}>
             <RaSimpleList primaryText={record => record['pair:label']} secondaryText={record => record['pair:comment']} linkType="show" />
           </ListBase>
         </Paper>
-      </Grid>
+      </Grid> 
 
     </Grid>
   );

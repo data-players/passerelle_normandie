@@ -3,7 +3,7 @@
   "version": "0.1.8",
   "private": true,
   "dependencies": {
-    "@semapps/archipelago-layout": "0.1.34",
+    "@semapps/archipelago-layout": "0.3.1",
     "@semapps/auth-provider": "0.1.34",
     "@semapps/date-components": "0.1.34",
     "@semapps/geo-components": "0.1.34",

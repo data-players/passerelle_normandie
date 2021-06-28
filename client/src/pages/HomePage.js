@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListBase, useShowController, ShowContextProvider } from 'react-admin';
+import { ListBase, useShowController, useListContext, ShowContextProvider } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
@@ -46,11 +46,11 @@ const mainStyle = makeStyles(theme => ({
     }
   }));
 
-  const config = {
-    basePath: '/Page',
-    id: process.env.REACT_APP_MIDDLEWARE_URL + 'pages/accueil',
-    resource: 'Page'
-  };
+const config = {
+  basePath: '/Page',
+  id: process.env.REACT_APP_MIDDLEWARE_URL + 'pages/accueil',
+  resource: 'Page'
+};
 
 const HomePage = () => {
 
@@ -100,7 +100,7 @@ const HomePage = () => {
       <Grid item sm={12} xs={12} >
         <Paper className={style.mainTitle}>
           <strong>Les prochains évènements dans le bocage :</strong>
-          <ListBase resource="Event" basePath="/Events" perPage={4}>
+          <ListBase resource="Event" basePath="/Events" perPage={4} sort={{ field: 'pair:startDate', order: 'ASC' }} >
             <RaSimpleList primaryText={record => record['pair:label']} secondaryText={record => record['pair:comment']} linkType="show" />
           </ListBase>
         </Paper>

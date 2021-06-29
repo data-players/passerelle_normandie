@@ -30,6 +30,8 @@ docker-clean:
 	$(DOCKER_COMPOSE) rm -fv
 
 docker-start:
+	sudo rm -rf client/node_modules/
+	sudo rm -rf server/node_modules/
 	$(DOCKER_COMPOSE) up -d --force-recreate
 
 docker-start-prod:
@@ -38,8 +40,7 @@ docker-start-prod:
 docker-start-dev:
 	$(DOCKER_COMPOSE_DEV) up -d --force-recreate
 
-docker-restart:
-	$(DOCKER_COMPOSE) up -d --force-recreate
+docker-restart: docker-start
 
 log:
 	$(DOCKER_COMPOSE) logs -f admin frontend middleware

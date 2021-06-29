@@ -1,21 +1,5 @@
 version: '3.5'
 services:
-  traefik:
-    image: "traefik:v2.3"
-    container_name: "traefik-passerelle"
-    networks:
-      - semapps
-    command:
-      - "--log.level=DEBUG"
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-    ports:
-      - "80:80"
-      - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
   fuseki:
     image: stain/jena-fuseki:3.10.0
     container_name: fuseki-passerelle
@@ -56,10 +40,6 @@ services:
     expose:
       - "3000"
     command: bash -c "make link-yarn && npm run dev"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.middleware.rule=Host(`middleware.localhost`)"
-      - "traefik.http.routers.middleware.entrypoints=web"
 
   frontend:
     build:
@@ -80,11 +60,6 @@ services:
     expose:
       - "5000"
     command: bash -c "make rollup & make link-yarn && npm start"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`passerelle-normandie.data-players.com`)"
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
 
   admin:
     build:
@@ -105,10 +80,7 @@ services:
     expose:
       - "5010"
     command: bash -c "make rollup & make link-yarn && npm start"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.admin.rule=Host(`frontend.localhost`)"
-      - "traefik.http.routers.admin.entrypoints=web"
+
 
 networks:
   semapps:

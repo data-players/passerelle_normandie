@@ -36,8 +36,8 @@ const adminAuthProvider = {
 
 const App = () => {
   const style = mainStyle();
-  const AppBarWithUserMenu = props => <AppBar userMenu={<UserMenu />} {...props} />;
-const LayoutWithUserMenu = props => <Layout {...props} appBar={AppBarWithUserMenu} classes={style} title="Passerelle Normandie"/>;
+  const AppBarWithUserMenu = props => <AppBar userMenu={<UserMenu />} {...props} title="Passerelle Normandie"/>;
+  const LayoutWithUserMenu = props => <Layout {...props} appBar={AppBarWithUserMenu} classes={style}/>;
 
   return (
     <Admin

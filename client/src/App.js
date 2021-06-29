@@ -28,7 +28,7 @@ const globalLogout = () => {
   return Promise.resolve('/');
 }
 const adminAuthProvider = {
-  ...authProvider(process.env.REACT_APP_MIDDLEWARE_URL),
+  ...authProvider({middlewareUri:process.env.REACT_APP_MIDDLEWARE_URL}),
   logout: globalLogout
 }
 

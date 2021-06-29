@@ -20,7 +20,7 @@ module.exports = {
           },{
             path: '/pages'
           }, '/projects', '/events', '/themas', '/skills', '/places', '/files','/branchs','/membership-roles','/membership-associations','/Page'],
-    defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
+    // defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
     defaultContainerOptions: {
       jsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
       allowAnonymousEdit: true,

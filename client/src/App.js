@@ -1,6 +1,9 @@
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
-import { AppBar, theme } from '@semapps/archipelago-layout';
+import { makeStyles } from '@material-ui/core/styles';
+import { theme } from '@semapps/archipelago-layout';
+import { default as Layout } from './layout/DefaultLayout/Layout';
+import { default as AppBar } from './layout/DefaultLayout/AppBar';
 import { authProvider, LoginPage, LogoutButton, UserMenu } from '@semapps/auth-provider';
 import PasserelleLayout from './layout/PasserelleLayout/passerelleLayout';
 
@@ -9,8 +12,14 @@ import dataProvider from './config/dataProvider';
 import * as resources from './resources';
 import  HomePage from './pages/HomePage'
 
-const AppBarWithUserMenu = props => <AppBar userMenu={<UserMenu />} {...props} />;
-const LayoutWithUserMenu = props => <PasserelleLayout {...props} appBar={AppBarWithUserMenu} />;
+const mainStyle = makeStyles(theme => ({
+    content :{
+      [theme.breakpoints.up('md')]: {
+        paddingRight : '10%',
+      },
+    }
+  }));
+
 
 const globalLogout = () => {
   // Redirect to login page after disconnecting from SSO
@@ -26,21 +35,27 @@ const adminAuthProvider = {
 
 // console.log('resources',resources);
 
-const App = () => (
-  <Admin
-    authProvider={adminAuthProvider}
-    dataProvider={dataProvider}
-    i18nProvider={i18nProvider}
-    layout={LayoutWithUserMenu}
-    theme={theme}
-    loginPage={LoginPage}
-    logoutButton={LogoutButton}
-    dashboard={HomePage}
-  >
-    {Object.entries(resources).map(([key, resource]) => (
-      <Resource key={key} name={key} {...resource.config} />
-    ))}
-  </Admin>
-);
+const App = () => {
+  const style = mainStyle();
+  const AppBarWithUserMenu = props => <AppBar userMenu={<UserMenu />} {...props} />;
+  const LayoutWithUserMenu = props => <Layout {...props} appBar={AppBarWithUserMenu} classes={style}/>;
+
+  return (
+    <Admin
+      authProvider={adminAuthProvider}
+      dataProvider={dataProvider}
+      i18nProvider={i18nProvider}
+      layout={LayoutWithUserMenu}
+      theme={theme}
+      loginPage={LoginPage}
+      logoutButton={LogoutButton}
+      dashboard={HomePage}
+    >
+      {Object.entries(resources).map(([key, resource]) => (
+        <Resource key={key} name={key} {...resource.config} />
+      ))}
+    </Admin>
+  )
+};
 
 export default App;

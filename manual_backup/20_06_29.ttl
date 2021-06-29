@@ -1,0 +1,1452 @@
+<http://localhost:3000/resources>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<http://localhost:3000/projects>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/projects/passerelle-normandie> .
+
+<http://localhost:3000/organizations>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/organizations/orga-1> , <http://localhost:3000/organizations/el-capitain> , <http://localhost:3000/organizations/new-orga> , <http://localhost:3000/organizations/nouvelle-orga> , <http://localhost:3000/organizations/orga-complete> .
+
+<http://localhost:3000/persons>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/persons/simon-l> , <http://localhost:3000/persons/pierre> , <http://localhost:3000/persons/igor-louboff> , <http://localhost:3000/persons/testdfc> .
+
+<http://localhost:3000/themas>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/themas/partage> , <http://localhost:3000/themas/apero> , <http://localhost:3000/themas/permaculture> .
+
+<http://localhost:3000/skills>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/skills/competence-1> , <http://localhost:3000/skills/gestion-de-projet> , <http://localhost:3000/skills/developpement> .
+
+<http://localhost:3000/organizations/orga-1>
+        a                            <http://virtual-assembly.org/ontologies/pair#Organization> ;
+        <http://schema.org/address>  "74 Avenue Denfert Rochereau" ;
+        <http://virtual-assembly.org/ontologies/pair#comment>
+                "descAssemlée Virtuelle" ;
+        <http://virtual-assembly.org/ontologies/pair#description>
+                "bli bli bli" ;
+        <http://virtual-assembly.org/ontologies/pair#hasBranch>
+                "http://localhost:3000/branchs/arazer" , "http://localhost:3000/branchs/agriculture" , "http://localhost:3000/branchs/sante" ;
+        <http://virtual-assembly.org/ontologies/pair#hasLocation>
+                [ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+                          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                                    "France" ;
+                            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                                    "Paris" ;
+                            <http://virtual-assembly.org/ontologies/pair#addressStreet>
+                                    " Avenue Denfert-Rochereau" ;
+                            <http://virtual-assembly.org/ontologies/pair#addressZipCode>
+                                    "75014"
+                          ] ;
+                  <http://virtual-assembly.org/ontologies/pair#label>
+                          "Avenue Denfert-Rochereau, 75014 Paris, France" ;
+                  <http://virtual-assembly.org/ontologies/pair#latitude>
+                          48.836628e0 ;
+                  <http://virtual-assembly.org/ontologies/pair#longitude>
+                          2.334352e0
+                ] ;
+        <http://virtual-assembly.org/ontologies/pair#hasMember>
+                <http://localhost:3000/persons/simon-l> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "Assemlée Virtuelle" ;
+        <http://virtual-assembly.org/ontologies/pair#organizationOfMembership>
+                []  ;
+        <http://virtual-assembly.org/ontologies/pair#phone>
+                "06.73.34.65.68" ;
+        <http://virtual-assembly.org/ontologies/pair#supports>
+                "http://localhost:3000/places/le-lieux" ;
+        <http://virtual-assembly.org/ontologies/pair#supports>
+                <http://localhost:3000/places/le-lieux> ;
+        <https://www.w3.org/ns/activitystreams#image>
+                <http://localhost:3000/files/logo_av1-1.png> .
+
+<http://localhost:3000/events>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/events/la-fiesta> .
+
+<http://localhost:3000/files>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/files/pngegg.png> , <http://localhost:3000/files/telechargement.jpeg> , <http://localhost:3000/files/telechargement.png> , <http://localhost:3000/files/images.png> , <http://localhost:3000/files/telechargement-1.jpeg> , <http://localhost:3000/files/pierrebouviermuller.jpeg> , <http://localhost:3000/files/logo_av1-1.png> , <http://localhost:3000/files/telechargement-1.jpeg1> , <http://localhost:3000/files/telechargement-1.jpeg2> , <http://localhost:3000/files/telechargement-2.jpeg> , <http://localhost:3000/files/telechargement-2.jpeg1> , <http://localhost:3000/files/telechargement-2.jpeg2> , <http://localhost:3000/files/coliving.jpg> , <http://localhost:3000/files/fleur.jpeg> , <http://localhost:3000/files/coliving.jpg1> .
+
+<http://localhost:3000/files/pngegg.png>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "pngegg.png" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/pngegg.png" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/png" .
+
+<http://localhost:3000/persons/simon-l>
+        a       <http://virtual-assembly.org/ontologies/pair#Person> ;
+        <http://virtual-assembly.org/ontologies/pair#actorOfMembership>
+                <http://localhost:3000/membership-associations/6092aa80ce90e520a3b5450e> ;
+        <http://virtual-assembly.org/ontologies/pair#firstName>
+                "Simon" ;
+        <http://virtual-assembly.org/ontologies/pair#hasInterest>
+                <http://localhost:3000/themas/permaculture> ;
+        <http://virtual-assembly.org/ontologies/pair#hasLocation>
+                []  ;
+        <http://virtual-assembly.org/ontologies/pair#hasTopic>
+                <http://localhost:3000/themas/permaculture> ;
+        <http://virtual-assembly.org/ontologies/pair#involvedIn>
+                <http://localhost:3000/projects/passerelle-normandie> ;
+        <http://virtual-assembly.org/ontologies/pair#lastName>
+                "Louvet" ;
+        <http://virtual-assembly.org/ontologies/pair#memberOf>
+                <http://localhost:3000/organizations/orga-1> ;
+        <http://virtual-assembly.org/ontologies/pair#offers>
+                <http://localhost:3000/skills/developpement> ;
+        <http://virtual-assembly.org/ontologies/pair#phone>
+                "06.61.24.65.84" ;
+        <http://xmlns.com/foaf/0.1/email>
+                "simon.louvet.zen@gmail.com" ;
+        <https://www.w3.org/ns/activitystreams#image>
+                <http://localhost:3000/files/telechargement-2.jpeg2> .
+
+<http://localhost:3000/skills/competence-1>
+        a       <http://virtual-assembly.org/ontologies/pair#Skill> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "compétence 1" .
+
+<http://localhost:3000/events/la-fiesta>
+        a       <http://virtual-assembly.org/ontologies/pair#Event> ;
+        <http://virtual-assembly.org/ontologies/pair#deliveredBy>
+                <http://localhost:3000/organizations/orga-1> ;
+        <http://virtual-assembly.org/ontologies/pair#endDate>
+                "2020-12-23T16:06:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <http://virtual-assembly.org/ontologies/pair#hasBranch>
+                "http://localhost:3000/branchs/agriculture" ;
+        <http://virtual-assembly.org/ontologies/pair#hasLocation>
+                "http://localhost:3000/places/le-lieux" ;
+        <http://virtual-assembly.org/ontologies/pair#involves>
+                <http://localhost:3000/persons/simon-l> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "la fiesta" ;
+        <http://virtual-assembly.org/ontologies/pair#startDate>
+                "2020-12-23T19:07:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<https://passerelle-normandie.data-players.com/middleware/organizations>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<https://passerelle-normandie.data-players.com/middleware/projects>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<https://passerelle-normandie.data-players.com/middleware/events>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<https://passerelle-normandie.data-players.com/middleware/persons>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<https://passerelle-normandie.data-players.com/middleware/themas>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<https://passerelle-normandie.data-players.com/middleware/skills>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<https://passerelle-normandie.data-players.com/middleware/files>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<http://localhost:3000/themas/partage>
+        a       <http://virtual-assembly.org/ontologies/pair#Thema> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "partage" .
+
+<http://localhost:3000/files/telechargement.jpeg>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "telechargement.jpeg" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/telechargement.jpeg" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/organizations/el-capitain>
+        a       <http://virtual-assembly.org/ontologies/pair#Organization> ;
+        <http://virtual-assembly.org/ontologies/pair#comment>
+                "Lieux d'acceuil pour coworking" ;
+        <http://virtual-assembly.org/ontologies/pair#description>
+                "Une association offrant un espace de coworking et coliving rural pour experimenter le vivre ensemble\n\nL’aventure El Capitan a débuté en avril 2018 avec la rencontre de Franck, propriétaire de la maison, qui souhaitait déménager à Grenoble.\n\n\nUne multitude d'envies fourmillaient déjà dans nos têtes : faire connaître ce territoire et toutes ses initiatives, favoriser les liens entre ville et campagne...mais il nous manquait un lieu physique pour faire vivre nos rêves.\n\nLe projet a plu à Franck, et nous avons pu lancer nos premières sessions de \"coliving\" : accueillir pour une semaine entre 10 et 15 personnes dans la maison, toutes curieuses d'experimenter le vivre ensemble avec nous !\n\nEn 2019, Franck a déménagé et l’association loue désormais la maison à temps plein, pour accueillir des sessions de co-living toute l'année." ;
+        <http://virtual-assembly.org/ontologies/pair#hasLocation>
+                [ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+                          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                                    "France" ;
+                            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                                    "Flers"
+                          ] ;
+                  <http://virtual-assembly.org/ontologies/pair#label>
+                          "Flers, Orne, France" ;
+                  <http://virtual-assembly.org/ontologies/pair#latitude>
+                          48.74833e0 ;
+                  <http://virtual-assembly.org/ontologies/pair#longitude>
+                          -0.56944e0
+                ] ;
+        <http://virtual-assembly.org/ontologies/pair#hasMember>
+                <http://localhost:3000/persons/simon-l> ;
+        <http://virtual-assembly.org/ontologies/pair#homePage>
+                "https://www.passerellenormandie.fr/" ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "El capitan" ;
+        <http://virtual-assembly.org/ontologies/pair#organizationOfMembership>
+                <http://localhost:3000/membership-associations/60dafa772c577e4488e513f5> , <http://localhost:3000/membership-associations/60dafa782c577e4488e513f6> ;
+        <http://virtual-assembly.org/ontologies/pair#supports>
+                "http://localhost:3000/places/le-lieux" ;
+        <http://virtual-assembly.org/ontologies/pair#supports>
+                <http://localhost:3000/places/lieux-2> , <http://localhost:3000/places/lieux-3> , <http://localhost:3000/places/lieux-4> , <http://localhost:3000/places/lieux-5> ;
+        <http://virtual-assembly.org/ontologies/pair#video>
+                "https://www.youtube.com/watch?v=-xDEcTBVNEc" ;
+        <https://www.w3.org/ns/activitystreams#image>
+                <http://localhost:3000/files/coliving.jpg1> .
+
+<http://localhost:3000/files/telechargement.png>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "telechargement.png" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/telechargement.png" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/png" .
+
+<http://localhost:3000/skills/gestion-de-projet>
+        a       <http://virtual-assembly.org/ontologies/pair#Skill> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "gestion de projet" .
+
+<http://localhost:3000/skills/developpement>
+        a       <http://virtual-assembly.org/ontologies/pair#Skill> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "developpement" ;
+        <http://virtual-assembly.org/ontologies/pair#offeredBy>
+                <http://localhost:3000/persons/simon-l> .
+
+<http://localhost:3000/themas/apero>
+        a       <http://virtual-assembly.org/ontologies/pair#Thema> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "apero" .
+
+<http://localhost:3000/projects/passerelle-normandie>
+        a       <http://virtual-assembly.org/ontologies/pair#Project> ;
+        <http://virtual-assembly.org/ontologies/pair#comment>
+                "courte desc" ;
+        <http://virtual-assembly.org/ontologies/pair#description>
+                "long desc" ;
+        <http://virtual-assembly.org/ontologies/pair#involves>
+                <http://localhost:3000/persons/simon-l> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "passerelle normandie" ;
+        <http://virtual-assembly.org/ontologies/pair#managedBy>
+                <http://localhost:3000/organizations/orga-1> , <http://localhost:3000/organizations/el-capitain> .
+
+<http://localhost:3000/places>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/places/le-lieux> , <http://localhost:3000/places/lieux-2> , <http://localhost:3000/places/lieux-3> , <http://localhost:3000/places/lieux-4> , <http://localhost:3000/places/lieux-5> .
+
+<http://localhost:3000/places/le-lieux>
+        a                            <http://virtual-assembly.org/ontologies/pair#Place> ;
+        <http://schema.org/address>  "1 place de l'étoile Paris" ;
+        <http://virtual-assembly.org/ontologies/pair#comment>
+                "mon lieux preferé" ;
+        <http://virtual-assembly.org/ontologies/pair#description>
+                "lorem ipsum" ;
+        <http://virtual-assembly.org/ontologies/pair#hasLocation>
+                [ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+                          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                                    "France" ;
+                            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                                    "Nantes"
+                          ] ;
+                  <http://virtual-assembly.org/ontologies/pair#label>
+                          "Nantes, Loire-Atlantique, France" ;
+                  <http://virtual-assembly.org/ontologies/pair#latitude>
+                          47.21722e0 ;
+                  <http://virtual-assembly.org/ontologies/pair#longitude>
+                          -1.55389e0
+                ] ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "le lieux" ;
+        <http://virtual-assembly.org/ontologies/pair#supportedBy>
+                "http://localhost:3000/organizations/el-capitain" , "http://localhost:3000/organizations/orga-1" ;
+        <http://virtual-assembly.org/ontologies/pair#supportedBy>
+                <http://localhost:3000/organizations/orga-1> , <http://localhost:3000/organizations/new-orga> .
+
+<http://localhost:3000/files/images.png>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "images.png" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/images.png" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/png" .
+
+<http://localhost:3000/files/telechargement-1.jpeg>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "telechargement-1.jpeg" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/telechargement-1.jpeg" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/files/pierrebouviermuller.jpeg>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "pierrebouviermuller.jpeg" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/pierrebouviermuller.jpeg" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/files/logo_av1-1.png>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "logo_av1-1.png" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/logo_av1-1.png" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/png" .
+
+<http://localhost:3000/users>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<https://passerelle-normandie.data-players.com/middleware/places>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<https://passerelle-normandie.data-players.com/middleware/users>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<http://localhost:3000/files/telechargement-1.jpeg1>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "telechargement-1.jpeg1" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/telechargement-1.jpeg1" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/files/telechargement-1.jpeg2>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "telechargement-1.jpeg2" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/telechargement-1.jpeg2" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/persons/testdfc>
+        a       <http://virtual-assembly.org/ontologies/pair#Person> , <http://xmlns.com/foaf/0.1/Person> ;
+        <http://virtual-assembly.org/ontologies/pair#e-mail>
+                "testdfc@tutanota.com" ;
+        <http://virtual-assembly.org/ontologies/pair#firstName>
+                "test" ;
+        <http://virtual-assembly.org/ontologies/pair#lastName>
+                "DFC" ;
+        <http://xmlns.com/foaf/0.1/email>
+                "testdfc@tutanota.com" ;
+        <http://xmlns.com/foaf/0.1/familyName>
+                "DFC" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "test" ;
+        <http://xmlns.com/foaf/0.1/nick>
+                "testdfc" .
+
+<http://localhost:3000/files/telechargement-2.jpeg>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "telechargement-2.jpeg" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/telechargement-2.jpeg" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/files/telechargement-2.jpeg1>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "telechargement-2.jpeg1" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/telechargement-2.jpeg1" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/files/telechargement-2.jpeg2>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "telechargement-2.jpeg2" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/telechargement-2.jpeg2" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/branchs>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/branchs/sante> , <http://localhost:3000/branchs/agriculture> , <http://localhost:3000/branchs/tiers-lieux> .
+
+<http://localhost:3000/branchs/sante>
+        a       <http://virtual-assembly.org/ontologies/pair#Branch> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "Santé" .
+
+<http://localhost:3000/branchs/agriculture>
+        a       <http://virtual-assembly.org/ontologies/pair#Branch> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "Agriculture" .
+
+<http://localhost:3000/branchs/tiers-lieux>
+        a       <http://virtual-assembly.org/ontologies/pair#Branch> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "Tiers-Lieux" .
+
+<http://localhost:3000/organizations/new-orga>
+        a       <http://virtual-assembly.org/ontologies/pair#Organization> ;
+        <http://virtual-assembly.org/ontologies/pair#comment>
+                "fgsfdg" ;
+        <http://virtual-assembly.org/ontologies/pair#description>
+                "sfdgsdfg" ;
+        <http://virtual-assembly.org/ontologies/pair#hasBranch>
+                "http://localhost:3000/branchs/agriculture" ;
+        <http://virtual-assembly.org/ontologies/pair#hasLocation>
+                [ a       <http://virtual-assembly.org/ontologies/pair#Place> ;
+                  <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+                          [ a       <http://virtual-assembly.org/ontologies/pair#PostalAddress> ;
+                            <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                                    "France"
+                          ] ;
+                  <http://virtual-assembly.org/ontologies/pair#label>
+                          "Paris, France" ;
+                  <http://virtual-assembly.org/ontologies/pair#latitude>
+                          48.85658e0 ;
+                  <http://virtual-assembly.org/ontologies/pair#longitude>
+                          2.35183e0
+                ] ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "new orga" ;
+        <http://virtual-assembly.org/ontologies/pair#organizationOfMembership>
+                <http://localhost:3000/membership-associations/60da700621784c9e6caa5ded> ;
+        <http://virtual-assembly.org/ontologies/pair#supports>
+                <http://localhost:3000/places/le-lieux> .
+
+<http://localhost:3000/themas/permaculture>
+        a       <http://virtual-assembly.org/ontologies/pair#Interest> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "permaculture" ;
+        <http://virtual-assembly.org/ontologies/pair#topicOf>
+                <http://localhost:3000/persons/simon-l> .
+
+<http://localhost:3000/membershipRole>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/membershipRole/gestionnaire> , <http://localhost:3000/membershipRole/membre> .
+
+<http://localhost:3000/membershipRole/gestionnaire>
+        a       <http://virtual-assembly.org/ontologies/pair#membershipRole> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "gestionnaire" .
+
+<http://localhost:3000/membershipRole/membre>
+        a       <http://virtual-assembly.org/ontologies/pair#membershipRole> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "membre" .
+
+<https://passerelle-normandie.data-players.com/middleware/branchs>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<https://passerelle-normandie.data-players.com/middleware/membershipRole>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<http://localhost:3000/membershipRoles>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<http://localhost:3000/membership-associations>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/membership-associations/608b2f329b53984b540e8fb8> , <http://localhost:3000/membership-associations/6092aa80ce90e520a3b5450e> , <http://localhost:3000/membership-associations/60da700621784c9e6caa5ded> , <http://localhost:3000/membership-associations/60da701721784c9e6caa5dee> , <http://localhost:3000/membership-associations/60dafa772c577e4488e513f5> , <http://localhost:3000/membership-associations/60dafa782c577e4488e513f6> .
+
+<http://localhost:3000/membership-roles>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/membership-roles/contrib> , <http://localhost:3000/membership-roles/admin> .
+
+<http://localhost:3000/membership-roles/contrib>
+        a       <http://virtual-assembly.org/ontologies/pair#MembershipRole> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "contrib" .
+
+<http://localhost:3000/membership-roles/admin>
+        a       <http://virtual-assembly.org/ontologies/pair#MembershipRole> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "admin" .
+
+<http://localhost:3000/organizations/nouvelle-orga>
+        a       <http://virtual-assembly.org/ontologies/pair#Organization> ;
+        <http://virtual-assembly.org/ontologies/pair#hasLocation>
+                [ a       <http://virtual-assembly.org/ontologies/pair#Place> ;
+                  <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+                          [ a       <http://virtual-assembly.org/ontologies/pair#PostalAddress> ;
+                            <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                                    "France"
+                          ] ;
+                  <http://virtual-assembly.org/ontologies/pair#label>
+                          "Paris, France" ;
+                  <http://virtual-assembly.org/ontologies/pair#latitude>
+                          48.85658e0 ;
+                  <http://virtual-assembly.org/ontologies/pair#longitude>
+                          2.35183e0
+                ] ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "nouvelle orga" ;
+        <http://virtual-assembly.org/ontologies/pair#organizationOfMembership>
+                <http://localhost:3000/membership-associations/60da701721784c9e6caa5dee> .
+
+<http://localhost:3000/organizations/orga-complete>
+        a       <http://virtual-assembly.org/ontologies/pair#Organization> ;
+        <http://virtual-assembly.org/ontologies/pair#hasLocation>
+                [ a       <http://virtual-assembly.org/ontologies/pair#Place> ;
+                  <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+                          [ a       <http://virtual-assembly.org/ontologies/pair#PostalAddress> ;
+                            <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                                    "France"
+                          ] ;
+                  <http://virtual-assembly.org/ontologies/pair#label>
+                          "Paris, France" ;
+                  <http://virtual-assembly.org/ontologies/pair#latitude>
+                          48.85658e0 ;
+                  <http://virtual-assembly.org/ontologies/pair#longitude>
+                          2.35183e0
+                ] ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "orga complete?" .
+
+<http://localhost:3000/files/coliving.jpg>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "coliving.jpg" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/coliving.jpg" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/places/lieux-2>
+        a       <http://virtual-assembly.org/ontologies/pair#Place> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "lieux 2" ;
+        <http://virtual-assembly.org/ontologies/pair#supportedBy>
+                <http://localhost:3000/organizations/el-capitain> .
+
+<http://localhost:3000/places/lieux-3>
+        a       <http://virtual-assembly.org/ontologies/pair#Place> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "lieux 3" ;
+        <http://virtual-assembly.org/ontologies/pair#supportedBy>
+                <http://localhost:3000/organizations/el-capitain> .
+
+<http://localhost:3000/places/lieux-4>
+        a       <http://virtual-assembly.org/ontologies/pair#Place> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "lieux 4" ;
+        <http://virtual-assembly.org/ontologies/pair#supportedBy>
+                <http://localhost:3000/organizations/el-capitain> .
+
+<http://localhost:3000/places/lieux-5>
+        a       <http://virtual-assembly.org/ontologies/pair#Place> ;
+        <http://virtual-assembly.org/ontologies/pair#label>
+                "lieux 5" ;
+        <http://virtual-assembly.org/ontologies/pair#supportedBy>
+                <http://localhost:3000/organizations/el-capitain> .
+
+<http://localhost:3000/files/fleur.jpeg>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "fleur.jpeg" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/fleur.jpeg" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/files/coliving.jpg1>
+        a       <http://semapps.org/ns/core#File> ;
+        <http://semapps.org/ns/core#fileName>
+                "coliving.jpg1" ;
+        <http://semapps.org/ns/core#localPath>
+                "uploads/files/coliving.jpg1" ;
+        <http://semapps.org/ns/core#mimeType>
+                "image/jpeg" .
+
+<http://localhost:3000/membership-associations/6092aa80ce90e520a3b5450e>
+        a       <http://virtual-assembly.org/ontologies/pair#MembershipAssociation> ;
+        <http://virtual-assembly.org/ontologies/pair#membershipOrganization>
+                <http://localhost:3000/organizations/el-capitain> ;
+        <http://virtual-assembly.org/ontologies/pair#membershipRole>
+                <http://localhost:3000/membership-roles/contrib> .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Paris, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.85658e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          2.35183e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Paris, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.85658e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          2.35183e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Rezé"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Rezé, Loire-Atlantique, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          47.19056e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -1.56917e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+<http://localhost:3000/pages>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> ;
+        <http://www.w3.org/ns/ldp#contains>
+                <http://localhost:3000/pages/accueil> .
+
+<http://localhost:3000/Page>
+        a       <http://www.w3.org/ns/ldp#BasicContainer> , <http://www.w3.org/ns/ldp#Container> .
+
+<http://localhost:3000/pages/accueil>
+        a       <http://virtual-assembly.org/ontologies/pair#Page> ;
+        <http://virtual-assembly.org/ontologies/pair#content>
+                "bonjour" ;
+        <http://virtual-assembly.org/ontologies/pair#title>
+                "Accueil" .
+
+<http://localhost:3000/membership-associations/60da700621784c9e6caa5ded>
+        <http://virtual-assembly.org/ontologies/pair#membershipActor>
+                "http://localhost:3000/persons/simon-l" ;
+        <http://virtual-assembly.org/ontologies/pair#membershipRole>
+                "http://localhost:3000/membership-roles/admin" .
+
+<http://localhost:3000/membership-associations/60da701721784c9e6caa5dee>
+        <http://virtual-assembly.org/ontologies/pair#membershipActor>
+                "http://localhost:3000/persons/simon-l" ;
+        <http://virtual-assembly.org/ontologies/pair#membershipRole>
+                "http://localhost:3000/membership-roles/admin" .
+
+[ <http://virtual-assembly.org/ontologies/pair#hasPostalAddress>
+          [ <http://virtual-assembly.org/ontologies/pair#addressCountry>
+                    "France" ;
+            <http://virtual-assembly.org/ontologies/pair#addressLocality>
+                    "Flers"
+          ] ;
+  <http://virtual-assembly.org/ontologies/pair#label>
+          "Flers, Orne, France" ;
+  <http://virtual-assembly.org/ontologies/pair#latitude>
+          48.74833e0 ;
+  <http://virtual-assembly.org/ontologies/pair#longitude>
+          -0.56944e0
+] .
+
+<http://localhost:3000/membership-associations/60dafa772c577e4488e513f5>
+        a       <http://virtual-assembly.org/ontologies/pair#MembershipAssociation> ;
+        <http://virtual-assembly.org/ontologies/pair#membershipActor>
+                <http://localhost:3000/persons/simon-l> ;
+        <http://virtual-assembly.org/ontologies/pair#membershipRole>
+                <http://localhost:3000/membership-roles/admin> .
+
+<http://localhost:3000/membership-associations/60dafa782c577e4488e513f6>
+        a       <http://virtual-assembly.org/ontologies/pair#MembershipAssociation> ;
+        <http://virtual-assembly.org/ontologies/pair#membershipActor>
+                <http://localhost:3000/persons/testdfc> ;
+        <http://virtual-assembly.org/ontologies/pair#membershipRole>
+                <http://localhost:3000/membership-roles/admin> .
+

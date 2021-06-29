@@ -68,6 +68,8 @@ services:
     container_name: admin-passerelle
     volumes:
       - ./client:/client/app
+    depends_on:
+      - frontend
     environment:
       - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
       - REACT_APP_ADMIN=true

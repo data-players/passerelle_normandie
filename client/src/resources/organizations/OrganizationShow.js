@@ -1,13 +1,13 @@
 import React, {useState,useEffect} from 'react';
 import { useShowContext, TextField, SingleFieldList, ChipField, ArrayField,TabbedShowLayout, Tab} from 'react-admin';
 import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel, SimpleList} from '@semapps/archipelago-layout';
-import { List, makeStyles, Avatar, Button, ListItem } from '@material-ui/core';
+import { makeStyles, Avatar, Button } from '@material-ui/core';
 import { ReferenceArrayField ,ImageField,ReferenceField, GroupedReferenceHandler } from '@semapps/semantic-data-provider';
 import { MapField } from '@semapps/geo-components';
 import { Link } from 'react-router-dom';
 import OrganizationTitle from './OrganizationTitle';
 import ReactPlayer from "react-player";
-import { SocialIcon } from 'react-social-icons';
+import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';
 
 const mainImage = makeStyles({
   image: {
@@ -20,13 +20,6 @@ const mainImage = makeStyles({
 const logoImage = makeStyles({
   image: {
     width: '150px',
-  }
-});
-
-const listIcon = makeStyles({
-  root: {
-    display: 'inline-block',
-    width: 'auto'
   }
 });
 
@@ -45,20 +38,6 @@ const ShowContextLayout = ({children, ...otherProps}) => {
       basePath
     })
   )
-}
-
-const MySocialNetworkArrayIcon = ({ record, source }) => {
-  const listIconStyle = listIcon();
-  var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
-  for (var i=0; i < array.length ;i++) {
-    if (array[i].startsWith('https://')) {
-      array[i] = array[i].split('https://')[1]
-    }
-  }
-
-  return <List>
-    {  array.map(item => <ListItem classes={listIconStyle}><SocialIcon url={"http://"+item}/></ListItem>) }
-  </List>
 }
 
 const MyUrlArrayField = ({ record, source }) => {
@@ -182,7 +161,7 @@ const OrganizationShow = props => {
       <ImageField source="pair:banner" classes={mainImageStyles}/>
       <ImageField source='image' classes={logoStyle}
       />
-      <TabbedShowLayout value={2} >
+      <TabbedShowLayout value={2} >RightLabel
         <Tab label="info" icon={<Avatar alt="test avatar" src="/icon_info.png" />}>
           <ColumnShowLayout>
             <Column xs={12} sm={8} showLabel>
@@ -220,8 +199,9 @@ const OrganizationShow = props => {
                 latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
                 longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
               />
-              <MySocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
-              <MyUrlArrayField source="pair:homePage" addLabel/>              <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
+              <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
+              <MyUrlArrayField source="pair:homePage" addLabel/>              
+              <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
               <RightLabel reference="Place" source="pair:supports" label="Lieux">
                 <LimitationLayout source="pair:supports" limit={3} more={{

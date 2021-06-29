@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListBase, useShowController, useListContext, ShowContextProvider } from 'react-admin';
+import { ListBase, useShowController, ShowContextProvider } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
@@ -60,7 +60,7 @@ const HomePage = () => {
   return(
     <Grid container spacing={0} aside={ProjectFilterSidebar}>
 
-      <Grid item md={12} sm={12} xs={12} >
+      <Grid item md={11} sm={11} xs={12} >
         <Paper variant="outlined" square>
             <CardMedia
               image={urlImage}
@@ -69,22 +69,25 @@ const HomePage = () => {
             />
         </Paper>
       </Grid>
+      <Grid item md={1} sm={1} xs={0} />
 
-      <Grid item md={12} sm={12} xs={12} >
+      <Grid item md={11} sm={11} xs={12} >
         <Box component="div" display="inline" >
           <ShowContextProvider value={useShowController(config)}>
             <PageShow {...config} />
           </ShowContextProvider>
         </Box>
       </Grid>
+      <Grid item md={1} sm={1} xs={0} />
 
-      <Grid item sm={12} xs={12} className={style.mapBox}>
+      <Grid item md={11} sm={11} xs={12} className={style.mapBox}>
         <Paper className={style.mapTitlePaper}>
             <strong >La carte du bocage :</strong>
         </Paper>
       </Grid>
+      <Grid item md={1} sm={1} xs={0} />
 
-      <Grid item sm={12} xs={12}>
+      <Grid item md={11} sm={11} xs={12} >
         <ListBase resource="Organization" basePath="/Organization" perPage={4}>
           <MapList
           
@@ -96,15 +99,17 @@ const HomePage = () => {
           />
         </ListBase>
       </Grid>
+      <Grid item md={1} sm={1} xs={0} />
 
-      <Grid item sm={12} xs={12} >
+      <Grid item md={11} sm={11} xs={12} >
         <Paper className={style.mainTitle}>
           <strong>Les prochains évènements dans le bocage :</strong>
           <ListBase resource="Event" basePath="/Events" perPage={4} sort={{ field: 'pair:startDate', order: 'ASC' }} >
             <RaSimpleList primaryText={record => record['pair:label']} secondaryText={record => record['pair:comment']} linkType="show" />
           </ListBase>
         </Paper>
-      </Grid> 
+      </Grid>
+      <Grid item md={1} sm={1} xs={0} />
 
     </Grid>
   );

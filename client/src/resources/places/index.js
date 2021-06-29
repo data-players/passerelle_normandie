@@ -26,6 +26,8 @@ export default {
       name: 'Places |||| Places',
       fields: {
         'pair:label': 'Titre',
+        'pair:hasPostalAddress' : 'Adresse',
+        'pair:aboutPage' : 'Réseaux Sociaux',
       }
     }
   }

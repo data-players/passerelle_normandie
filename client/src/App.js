@@ -1,7 +1,8 @@
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
-import { Layout, AppBar, theme } from '@semapps/archipelago-layout';
+import { AppBar, theme } from '@semapps/archipelago-layout';
 import { authProvider, LoginPage, LogoutButton, UserMenu } from '@semapps/auth-provider';
+import PasserelleLayout from './layout/PasserelleLayout/passerelleLayout';
 
 import i18nProvider from './config/i18nProvider';
 import dataProvider from './config/dataProvider';
@@ -9,7 +10,7 @@ import * as resources from './resources';
 import  HomePage from './pages/HomePage'
 
 const AppBarWithUserMenu = props => <AppBar userMenu={<UserMenu />} {...props} />;
-const LayoutWithUserMenu = props => <Layout {...props} appBar={AppBarWithUserMenu} />;
+const LayoutWithUserMenu = props => <PasserelleLayout {...props} appBar={AppBarWithUserMenu} />;
 
 const globalLogout = () => {
   // Redirect to login page after disconnecting from SSO

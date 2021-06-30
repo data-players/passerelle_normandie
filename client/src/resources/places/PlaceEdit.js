@@ -6,21 +6,41 @@ import { UriArrayInput } from '@semapps/semantic-data-provider';
 import  PairLocationInput from '../../components/PairLocationInput';
 import PlaceTitle from './PlaceTitle';
 
-const PlaceEdit = props => (
-  <Edit title={<PlaceTitle/>} {...props}>
-    <SimpleForm redirect="show">
-      <TextInput source="pair:label" label="Nom" fullWidth />
-      <TextInput source="pair:comment" label="Courte description" fullWidth />
-      <MarkdownInput multiline source="pair:description" label="Description" fullWidth />
-      <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />
-      <UriArrayInput label="Géré par" reference="Organization" source="pair:supportedBy">
-        <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
-      </UriArrayInput>
-      <UriArrayInput label="Branches" source="pair:hasBranch" reference="Branch" fullWidth>
-        <CheckboxGroupInput optionText="pair:label" allowEmpty />
-      </UriArrayInput>
-    </SimpleForm>
-  </Edit>
-);
+export const PlaceEdit = (props) =>{
+  return (
+    <Edit title={<PlaceTitle/>} {...props}>
+      <SimpleForm redirect="show">
+        <TextInput source="pair:label" label="Nom" fullWidth />
+        <TextInput source="pair:comment" label="Courte description" fullWidth />
+        <MarkdownInput multiline source="pair:description" label="Description" fullWidth />
+        <ImageInput source="image" label="photo" accept="image/*">
+          <ImageField source="src"/>
+        </ImageInput>
+        <ArrayInput source="pair:homePage" >
+          <SimpleFormIterator>
+            <TextInput label="" fullWidth />
+          </SimpleFormIterator>
+        </ArrayInput>
+        <ArrayInput label="liens" source="pair:homePage" >
+          <SimpleFormIterator>
+            <TextInput label="" fullWidth />
+          </SimpleFormIterator>
+        </ArrayInput>
+        <ArrayInput source="pair:aboutPage" >
+          <SimpleFormIterator>
+            <TextInput label="" fullWidth />
+          </SimpleFormIterator>
+        </ArrayInput>
+        <PlaceLocationInput source="pair:hasLocation" fullWidth />
+        <UriArrayInput label="Géré par" reference="Organization" source="pair:supportedBy">
+          <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
+        </UriArrayInput>
+        <UriArrayInput label="Sectors" source="pair:hasSector" reference="Sector" fullWidth>
+          <CheckboxGroupInput optionText="pair:label" allowEmpty />
+        </UriArrayInput>
+      </SimpleForm>
+    </Edit>
+  );
+}
 
 export default PlaceEdit;

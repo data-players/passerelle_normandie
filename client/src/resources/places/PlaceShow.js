@@ -16,14 +16,16 @@ const PlaceShow = props => (
         <TextField label="Courte description" source="pair:comment" />
         <MarkdownField label="Description" source="pair:description" addLabel />
       </Column>
-      <Column xs={12} sm={3} showLabel>
-        <UriArrayField label="Géré par" reference="Organization" source="pair:supportedBy">
-          <SingleFieldList linkType="show">
-            <ChipField source="pair:label" color="secondary" />
-          </SingleFieldList>
-        </UriArrayField>
-      </Column>
-    </ColumnShowLayout>
+      </Tab>
+
+      <Tab label="Projets" icon={<Avatar  />}>
+      </Tab>
+
+      <Tab label="Evènement" icon={<Avatar alt="test avatar" src="/icon_places.png" />}>
+      </Tab>
+
+    </TabbedShowLayout >
+
   </Show>
 );
 

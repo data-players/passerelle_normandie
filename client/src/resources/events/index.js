@@ -22,7 +22,7 @@ export default {
   },
   translations: {
     fr: {
-      name: 'Branches |||| Branches',
+      name: 'Événement |||| Événement',
       fields: {
         'pair:label': 'Titre',
       }

@@ -6,7 +6,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 
 export default {
   config:{
-    list: process.env.REACT_APP_ADMIN==='true'?ProjectList:undefined,
+    list: ProjectList,
     show: ProjectShow,
     create: ProjectCreate,
     edit: ProjectEdit,

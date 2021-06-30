@@ -51,7 +51,6 @@ export const OrganizationEdit = (props) =>{
       <ImageInput source="pair:banner" label="Bannière" accept="image/*">
         <ImageField source="src"/>
       </ImageInput>
-      <TextInput source="test" label="test" fullWidth/>
       <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation">
         <ReferenceInput reference="User" source="pair:membershipActor">
           <AutocompleteInput

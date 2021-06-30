@@ -8,23 +8,21 @@ install :
 
 link:
 
-
 link-yarn:
-	cd $(SEMAPPS_PATH)/src/middleware/packages/connector && yarn link
-	yarn link @semapps/connector
 	cd $(SEMAPPS_PATH)/src/middleware/packages/webid && yarn link
 	yarn link @semapps/webid
+	cd $(SEMAPPS_PATH)/src/middleware/packages/auth && yarn link
+	yarn link @semapps/auth
 	cd $(SEMAPPS_PATH)/src/middleware/packages/inference && yarn link
 	yarn link @semapps/inference
 
 
 unlink:
 
-
 unlink-yarn:
-	yarn unlink @semapps/connector --no-save
-	cd $(SEMAPPS_PATH)/src/middleware/packages/connector && yarn unlink
 	yarn unlink @semapps/webid --no-save
 	cd $(SEMAPPS_PATH)/src/middleware/packages/webid && yarn unlink
+	yarn unlink @semapps/auth --no-save
+	cd $(SEMAPPS_PATH)/src/middleware/packages/auth && yarn unlink
 	yarn unlink @semapps/inference --no-save
 	cd $(SEMAPPS_PATH)/src/middleware/packages/inference && yarn unlink

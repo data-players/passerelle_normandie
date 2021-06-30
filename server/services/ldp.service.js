@@ -22,8 +22,8 @@ module.exports = {
               dereference: ['pair:hasPostalAddress'],
           },{
             path: '/pages'
-          }, '/projects', '/events', '/themas', '/skills', '/files','/branchs','/membership-roles','/membership-associations','/Page'],
-    defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
+          }, '/projects', '/events', '/themas', '/skills', '/places', '/files','/branchs','/membership-roles','/membership-associations','/Page'],
+    // defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
     defaultContainerOptions: {
       jsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
       allowAnonymousEdit: true,

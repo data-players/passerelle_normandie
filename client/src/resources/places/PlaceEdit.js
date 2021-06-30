@@ -35,10 +35,7 @@ export const PlaceEdit = (props) =>{
         <UriArrayInput label="Géré par" reference="Organization" source="pair:supportedBy">
           <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
         </UriArrayInput>
-        <UriArrayInput label="Utilisé par" reference="Organization" source="pair:usedBy">
-          <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
-        </UriArrayInput>
-        <UriArrayInput label="Branches" source="pair:hasBranch" reference="Branch" fullWidth>
+        <UriArrayInput label="Sectors" source="pair:hasSector" reference="Sector" fullWidth>
           <CheckboxGroupInput optionText="pair:label" allowEmpty />
         </UriArrayInput>
       </SimpleForm>

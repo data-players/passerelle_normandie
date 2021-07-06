@@ -39,7 +39,7 @@ services:
       - "3000:3000"
     expose:
       - "3000"
-    command: bash -c "make link-yarn && npm run dev"
+    command: bash -c "make link-yarn && make install && npm run dev"
 
   frontend:
     build:

@@ -30,8 +30,6 @@ docker-clean:
 	$(DOCKER_COMPOSE) rm -fv
 
 docker-start:
-	sudo rm -rf client/node_modules/
-	sudo rm -rf server/node_modules/
 	$(DOCKER_COMPOSE) up -d --force-recreate
 
 docker-start-prod:
@@ -67,6 +65,8 @@ init :
 	make bootstrap
 
 install :
+	sudo rm -rf client/node_modules/
+	sudo rm -rf server/node_modules/
 	cd ./client && make install
 	cd ./server && make install
 

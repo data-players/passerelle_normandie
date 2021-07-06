@@ -22,7 +22,6 @@ const mainStyle = makeStyles(theme => ({
 
 
 const globalLogout = () => {
-  console.log('allodfs');
   // Redirect to login page after disconnecting from SSO
   // The login page will remove the token, display a notification and redirect to the homepage
   const url = new URL(window.location.href);

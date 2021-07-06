@@ -1,7 +1,7 @@
 
 export { default as Organization } from './organizations';
 export { default as Project } from './projects';
-export { default as User } from './users';
+export { default as Person } from './persons';
 export { default as Event } from './events';
 export { default as Place } from './places';
 export { default as Interest } from './interests';

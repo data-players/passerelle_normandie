@@ -11,7 +11,6 @@ const listIcon = makeStyles({
 
 const SocialNetworkArrayIcon = ({ record, source }) => {
     const listIconStyle = listIcon();
-    console.log(record[source]);
     var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
     for (var i=0; i < array.length ;i++) {
       if (array[i].startsWith('https://')) {

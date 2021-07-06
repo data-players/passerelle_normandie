@@ -61,7 +61,6 @@ const MyUrlArrayField = ({ record, source }) => {
 
 const LimitationLayout = ({record,source,children,action,more,limit, ...otherProps}) => {
   const [filtered,setFiltered]=useState();
-  // console.log('record',source,JSON.stringify(record?.[source]),JSON.stringify(record));
   useEffect(() => {
     if (record?.[source] && Array.isArray(record[source])) {
       if (record?.[source].length>limit){
@@ -76,8 +75,6 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
       }
     }
   }, [record, source]);
-
-    // console.log('filtered',source,JSON.stringify(filtered?.[source]));
 
   return <div style={{'display':'flex'}}>
     <div>
@@ -126,7 +123,6 @@ const MyVideoPlayer = ({ record, source }) => {
       if (!url.includes("embed")) {
           var spliturl = url.split("video/")[1]
           url = "https://www.dailymotion.com/embed/video/" + spliturl.split('?play')[0]
-          console.log(url)
       }
       return ( <ReactPlayer url={url} controls/> )
     case 'novideo':
@@ -161,7 +157,7 @@ const OrganizationShow = props => {
       <ImageField source="pair:banner" classes={mainImageStyles}/>
       <ImageField source='image' classes={logoStyle}
       />
-      <TabbedShowLayout value={2} >RightLabel
+      <TabbedShowLayout value={2} >
         <Tab label="info" icon={<Avatar alt="test avatar" src="/icon_info.png" />}>
           <ColumnShowLayout>
             <Column xs={12} sm={8} showLabel>

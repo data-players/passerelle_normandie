@@ -22,7 +22,7 @@ module.exports = {
               dereference: ['pair:hasPostalAddress'],
           },{
             path: '/pages'
-          }, '/projects', '/events', '/themas', '/skills', '/places', '/files','/branchs','/membership-roles','/membership-associations','/Page'],
+          }, '/projects', '/events', '/themas', '/skills', '/places', '/files','/branchs','/membership-roles','/membership-associations','/Page', '/sectors'],
     // defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
     defaultContainerOptions: {
       jsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),

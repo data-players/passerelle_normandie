@@ -1,9 +1,10 @@
 import React from 'react';
-import { AutocompleteArrayInput, SimpleForm, TextInput } from 'react-admin';
+import { AutocompleteArrayInput, SimpleForm, TextInput, CheckboxGroupInput, BooleanInput, ImageInput } from 'react-admin';
 import MarkdownInput from 'ra-input-markdown';
 import { Edit } from '@semapps/archipelago-layout';
-import { UriArrayInput } from '@semapps/semantic-data-provider';
+import { UriArrayInput, ImageField } from '@semapps/semantic-data-provider';
 import ProjectTitle from './ProjectTitle';
+
 
 const ProjectEdit = props => (
   <Edit title={<ProjectTitle/>} {...props}>
@@ -15,6 +16,9 @@ const ProjectEdit = props => (
       <UriArrayInput label="Géré par" reference="Organization" source="pair:managedBy">
         <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
       </UriArrayInput>
+      <ImageInput source="image" label="logo" accept="image/*">
+        <ImageField source="src"/>
+      </ImageInput>
       <UriArrayInput label="Responsables" reference="User" source="pair:hasResponsible">
         <AutocompleteArrayInput
           optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
@@ -28,6 +32,10 @@ const ProjectEdit = props => (
           shouldRenderSuggestions={value => value.length > 1}
           fullWidth
         />
+      </UriArrayInput>
+      <BooleanInput source='pair:hasStatut' label='En vedette' allowEmpty />
+      <UriArrayInput label="Sectors" source="pair:hasSector" reference="Sector" fullWidth>
+        <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>
     </SimpleForm>
   </Edit>

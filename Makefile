@@ -36,6 +36,7 @@ docker-start-prod:
 	$(DOCKER_COMPOSE_PROD) up -d --force-recreate
 
 docker-start-dev:
+	make install
 	$(DOCKER_COMPOSE_DEV) up -d --force-recreate
 
 docker-restart: docker-start
@@ -78,6 +79,9 @@ prettier:
 	npm run prettier --prefix ./client
 	npm run prettier --prefix ./server
 
+clean:
+	make server-clean
+
 link:
 	make client-link
 	make server-link
@@ -91,6 +95,9 @@ client-link:
 
 server-link:
 	cd ./server &&	make link
+
+server-clean:
+	cd ./server &&	make clean
 
 client-link-yarn:
 	cd ./client && 	make link-yarn

@@ -40,7 +40,7 @@ export const OrganizationEdit = (props) =>{
         <SimpleFormIterator>
           <TextInput label="" fullWidth />
         </SimpleFormIterator>
-      </ArrayInput>     
+      </ArrayInput>
       <TextInput source="pair:video" label="Video url" fullWidth/>
       <TextInput source="pair:e-mail" label="email" type="email" fullWidth/>
       <TextInput source="pair:phone" label="téléphone" fullWidth />
@@ -52,7 +52,7 @@ export const OrganizationEdit = (props) =>{
         <ImageField source="src"/>
       </ImageInput>
       <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation">
-        <ReferenceInput reference="User" source="pair:membershipActor">
+        <ReferenceInput reference="Person" source="pair:membershipActor">
           <AutocompleteInput
             optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
           />

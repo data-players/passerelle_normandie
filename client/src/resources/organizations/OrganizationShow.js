@@ -201,7 +201,7 @@ const OrganizationShow = props => {
                 <RightLabel>
                   <ArrayField source="pair:organizationOfMembership">
                     <SingleFieldList linkType={false}>
-                      <ReferenceField reference="User" source="pair:membershipActor" link="show">
+                      <ReferenceField reference="Person" source="pair:membershipActor" link="show">
                         <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
                                             parent: {
                                               width: '100px',
@@ -249,7 +249,7 @@ const OrganizationShow = props => {
             <RightLabel>
             <ArrayField source="pair:organizationOfMembership">
               <SingleFieldList linkType={false}>
-                <ReferenceField reference="User" source="pair:membershipActor" link="show">
+                <ReferenceField reference="Person" source="pair:membershipActor" link="show">
                   <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
                                       parent: {
                                         width: '100px',

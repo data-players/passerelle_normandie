@@ -317,6 +317,15 @@
       "@type": "@id"
     },
 
+    "pair:hasInterest": {
+      "@type": "@id"
+    },
+    "pair:memberOf": {
+      "@type": "@id"
+    },
+
+
+
     "pair:startDate": {
       "@type": "xsd:dateTime"
     },
@@ -326,6 +335,9 @@
     "pair:dueDate": {
       "@type": "xsd:dateTime"
     },
+
+
+
 
     "Accept": "as:Accept",
     "Activity": "as:Activity",

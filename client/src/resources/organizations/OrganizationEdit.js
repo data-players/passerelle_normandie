@@ -52,7 +52,7 @@ export const OrganizationEdit = (props) =>{
         <ImageField source="src"/>
       </ImageInput>
       <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation">
-        <ReferenceInput reference="User" source="pair:membershipActor">
+        <ReferenceInput reference="Person" source="pair:membershipActor">
           <AutocompleteInput
             optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
           />

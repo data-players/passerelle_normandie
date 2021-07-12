@@ -97,6 +97,29 @@ const OrganizationShow = props => {
               <VideoPlayer source="pair:video" addLabel/>
             </Column>
             <Column xs={12} sm={4} showLabel>
+              <GroupedReferenceHandler
+                source="pair:organizationOfMembership"
+                groupReference="MembershipRole"
+                groupLabel="pair:label"
+                filterProperty="pair:membershipRole"
+                addLabel={false}
+              >
+                <RightLabel>
+                  <ArrayField source="pair:organizationOfMembership">
+                    <SingleFieldList linkType={false}>
+                      <ReferenceField reference="Person" source="pair:membershipActor" link="show">
+                        <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                            parent: {
+                                              width: '100px',
+                                              margin : '10px'
+                                            }
+                                          }}/>
+
+                      </ReferenceField>
+                    </SingleFieldList>
+                  </ArrayField>
+                </RightLabel>
+              </GroupedReferenceHandler>
               <MapField
                 source="pair:hasLocation"
                 address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
@@ -123,7 +146,7 @@ const OrganizationShow = props => {
             <RightLabel>
             <ArrayField source="pair:organizationOfMembership">
               <SingleFieldList linkType={false}>
-                <ReferenceField reference="User" source="pair:membershipActor" link="show">
+                <ReferenceField reference="Person" source="pair:membershipActor" link="show">
                   <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
                                       parent: {
                                         width: '100px',

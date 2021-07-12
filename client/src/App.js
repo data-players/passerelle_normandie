@@ -4,13 +4,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '@semapps/archipelago-layout';
 import { default as Layout } from './layout/DefaultLayout/Layout';
 import { default as AppBar } from './layout/DefaultLayout/AppBar';
-import { authProvider, LoginPage, LogoutButton, UserMenu } from '@semapps/auth-provider';
-import PasserelleLayout from './layout/PasserelleLayout/passerelleLayout';
+import { LoginPage, LogoutButton, UserMenu } from '@semapps/auth-provider';
+import { createBrowserHistory as createHistory } from 'history';
 
 import i18nProvider from './config/i18nProvider';
 import dataProvider from './config/dataProvider';
 import * as resources from './resources';
 import  HomePage from './pages/HomePage'
+
+import authProvider from './config/authProvider';
+
+const history = createHistory();
 
 const mainStyle = makeStyles(theme => ({
     content :{
@@ -21,20 +25,6 @@ const mainStyle = makeStyles(theme => ({
   }));
 
 
-const globalLogout = () => {
-  // Redirect to login page after disconnecting from SSO
-  // The login page will remove the token, display a notification and redirect to the homepage
-  const url = new URL(window.location.href);
-  window.location.href = `${process.env.REACT_APP_MIDDLEWARE_URL}auth/logout?global=true&redirectUrl=` + encodeURIComponent(url.origin + '/#/login?logout');
-  return Promise.resolve('/');
-}
-const adminAuthProvider = {
-  ...authProvider({middlewareUri:process.env.REACT_APP_MIDDLEWARE_URL}),
-  logout: globalLogout
-}
-
-// console.log('resources',resources);
-
 const App = () => {
   const style = mainStyle();
   const AppBarWithUserMenu = props => <AppBar userMenu={<UserMenu />} {...props} title="Passerelle Normandie"/>;
@@ -42,8 +32,9 @@ const App = () => {
 
   return (
     <Admin
-      authProvider={adminAuthProvider}
+      authProvider={authProvider}
       dataProvider={dataProvider}
+      history={history}
       i18nProvider={i18nProvider}
       layout={LayoutWithUserMenu}
       theme={theme}

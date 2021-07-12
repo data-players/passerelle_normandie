@@ -330,9 +330,9 @@
     rdf-js "^4.0.2"
 
 "@types/node@*":
-  version "16.3.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.3.0.tgz#1836664e4fad13b51b07eb6e882a53925e6543c4"
-  integrity sha512-OydMCocGMGqw/1BnWbhtK+AtwyWTOigtrQlRe57OQmTNcI3HKlVI5FGlh+c4mSqInMPLynFrTlYjfajPu9O/eQ==
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.3.1.tgz#24691fa2b0c3ec8c0d34bfcfd495edac5593ebb4"
+  integrity sha512-N87VuQi7HEeRJkhzovao/JviiqKjDKMVKxKMfUvSKw+MbkbW8R0nA3fi/MQhhlxV2fQ+2ReM+/Nt4efdrJx3zA==
 
 "@types/node@^13.1.0":
   version "13.13.52"
@@ -1922,9 +1922,9 @@ moleculer-web@^0.10.0, moleculer-web@^0.10.0-beta1:
     serve-static "^1.14.1"
 
 moleculer@^0.14.3, moleculer@^0.14.4:
-  version "0.14.14"
-  resolved "https://registry.yarnpkg.com/moleculer/-/moleculer-0.14.14.tgz#05b76e62aa40a7a914367c98d44ca79a8d5ca297"
-  integrity sha512-YHhasMMQ3IYFrt0HmylNY1eJSdvvCOY2prju4/GCrjsFQXKuFHK5F+fzlE9iiru0SDCkMCmwDOhWUFjnWlDG8g==
+  version "0.14.15"
+  resolved "https://registry.yarnpkg.com/moleculer/-/moleculer-0.14.15.tgz#53da8e5ce758aa58b0632cbcd42178021183bd38"
+  integrity sha512-mJOV30VnV/HQhEhRuprPn74GSHapgc9qyM2fEOBLtXtxAGx5uS0KPkfJXICT8Vw7yMjBd56gVNpG2ZU022piEQ==
   dependencies:
     args "^5.0.1"
     es6-error "^4.1.1"

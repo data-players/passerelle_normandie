@@ -35,6 +35,7 @@ module.exports = {
                 inverseRelations[quad.subject.id] = quad.subject.id;
               }
             } else {
+              console.log('inverseRelations',inverseRelations);
               console.log(`Found ${Object.keys(inverseRelations).length} inverse relations in ${ontology.owl}`);
             }
           });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutocompleteArrayInput, SimpleForm, TextInput, CheckboxGroupInput, BooleanInput, ImageInput } from 'react-admin';
+import { AutocompleteArrayInput, SimpleForm, TextInput, CheckboxGroupInput, BooleanInput, ImageInput, SimpleFormIterator, ArrayInput } from 'react-admin';
 import MarkdownInput from 'ra-input-markdown';
 import { Edit } from '@semapps/archipelago-layout';
 import { UriArrayInput, ImageField } from '@semapps/semantic-data-provider';
@@ -12,7 +12,17 @@ const ProjectEdit = props => (
       <TextInput source="pair:label" label="Nom" fullWidth />
       <TextInput source="pair:comment" label="Courte description" fullWidth />
       <MarkdownInput multiline source="pair:description" label="Description" fullWidth />
-      <TextInput source="pair:homePage" label="Site web" fullWidth />
+      <ArrayInput source="pair:homePage" >
+        <SimpleFormIterator>
+          <TextInput label="" fullWidth />
+        </SimpleFormIterator>
+      </ArrayInput>
+      <ArrayInput source="pair:aboutPage" >
+        <SimpleFormIterator>
+          <TextInput label="" fullWidth />
+        </SimpleFormIterator>
+      </ArrayInput>      
+      <TextInput source="pair:video" label="Video url" fullWidth/>
       <UriArrayInput label="Géré par" reference="Organization" source="pair:managedBy">
         <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
       </UriArrayInput>

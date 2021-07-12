@@ -31,7 +31,7 @@ export default {
         'pair:organizationOfMembership': 'Membres avec Role',
         'pair:membershipActor': 'Membre',
         'pair:membershipRole': 'Role',
-        'pair:hasLocation':'emplacement',
+        'pair:hasLocation':'Emplacement',
         'pair:homePage':'Liens utile',
         'pair:video':'Vidéo',
         'pair:aboutPage':'Réseaux Sociaux'

@@ -15,8 +15,28 @@ const UserShow = props => (
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
-          <TextField source="pair:firstName" />
-          <TextField source="pair:lastName" />
+          <ReferenceArrayField reference="Project" source="pair:involvedIn">
+            <SingleFieldList linkType="show">
+              <ChipField source="pair:label" color="secondary" />
+            </SingleFieldList>
+          </ReferenceArrayField>
+          <ReferenceArrayField reference="Organization" source="pair:affiliatedBy">
+            <GridList xs={6} linkType="show">
+              <AvatarField label="pair:label" image="image">
+                <HomeIcon />
+              </AvatarField>
+            </GridList>
+          </ReferenceArrayField>
+          <ReferenceArrayField reference="Theme" source="pair:hasTopic">
+            <SingleFieldList linkType="show">
+              <ChipField source="pair:label" color="secondary" />
+            </SingleFieldList>
+          </ReferenceArrayField>
+          <ReferenceArrayField reference="Skill" source="pair:offers">
+            <SingleFieldList linkType="show">
+              <ChipField source="pair:label" color="secondary" />
+            </SingleFieldList>
+          </ReferenceArrayField>
           <TextField source="pair:comment" />
         </Hero>
         <MainList>
@@ -30,28 +50,8 @@ const UserShow = props => (
       </Grid>
       <Grid item xs={12} sm={3}>
         <SideList>
-          <ReferenceArrayField reference="Organization" source="pair:affiliatedBy">
-            <GridList xs={6} linkType="show">
-              <AvatarField label="pair:label" image="image">
-                <HomeIcon />
-              </AvatarField>
-            </GridList>
-          </ReferenceArrayField>
-          <ReferenceArrayField reference="Activity" source="pair:involvedIn">
-            <SingleFieldList linkType="show">
-              <ChipField source="pair:label" color="secondary" />
-            </SingleFieldList>
-          </ReferenceArrayField>
-          <ReferenceArrayField reference="Theme" source="pair:hasTopic">
-            <SingleFieldList linkType="show">
-              <ChipField source="pair:label" color="secondary" />
-            </SingleFieldList>
-          </ReferenceArrayField>
-          <ReferenceArrayField reference="Skill" source="pair:offers">
-            <SingleFieldList linkType="show">
-              <ChipField source="pair:label" color="secondary" />
-            </SingleFieldList>
-          </ReferenceArrayField>
+          <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
+          <TextField label="Téléphone" source="pair:phone" addLabel/>
         </SideList>
       </Grid>
     </Grid>

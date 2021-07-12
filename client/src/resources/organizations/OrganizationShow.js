@@ -6,8 +6,9 @@ import { ReferenceArrayField ,ImageField,ReferenceField, GroupedReferenceHandler
 import { MapField } from '@semapps/geo-components';
 import { Link } from 'react-router-dom';
 import OrganizationTitle from './OrganizationTitle';
-import ReactPlayer from "react-player";
 import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';
+import VideoPlayer from '../../addons/videoComponent';
+import UrlArrayField from '../../components/UrlArrayfield';
 
 const mainImage = makeStyles({
   image: {
@@ -38,25 +39,6 @@ const ShowContextLayout = ({children, ...otherProps}) => {
       basePath
     })
   )
-}
-
-const MyUrlArrayField = ({ record, source }) => {
-  var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
-  for (var i=0; i < array.length ;i++) {
-    if (array[i].startsWith('https://')) {
-      array[i] = array[i].split('https://')[1]
-    }
-  }
-
-  return record ? (
-    <>
-      {
-        array.map(item =>
-        <div><a href={"http://"+item} >{item} </a></div>
-        )
-      }
-    </>
-  ) : null;
 }
 
 const LimitationLayout = ({record,source,children,action,more,limit, ...otherProps}) => {
@@ -99,96 +81,22 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
   </div>
 }
 
-const MyVideoPlayer = ({ record, source }) => {
-  var url = record[source]
-
-  switch (detectPlayer(url)) {
-    case 'peertube':
-      if (!url.includes("embed")) {
-          var spliturl = url.split("watch/")
-          url = spliturl[0]+"embed/"+spliturl[1]
-      }
-      return  (
-        <div align="center" >
-          <iframe width="100%" height="630" sandbox="allow-same-origin allow-scripts" src={url} frameborder="0" allow="fullscreen"></iframe>
-        </div>
-      )
-    case 'basic':
-      return (
-        <div align="center" >
-          <ReactPlayer url={url} controls/>
-        </div>
-      )
-    case "dailymotion":
-      if (!url.includes("embed")) {
-          var spliturl = url.split("video/")[1]
-          url = "https://www.dailymotion.com/embed/video/" + spliturl.split('?play')[0]
-      }
-      return ( <ReactPlayer url={url} controls/> )
-    case 'novideo':
-      return null;
-    default:
-      return (
-        <div align="center">Video Not Supported, check your URL</div>
-      )
-  }
-}
-
-function detectPlayer (url) {
-  if (!url) {
-    return "novideo"
-  }
-  if ( url.includes("youtube")) {
-      return "basic"
-  } else if (url.includes("facebook") || url.includes("fb.watch")) {
-      return "basic"
-  } else if (url.includes("videos/watch") || url.includes("videos/embed")){
-      return "peertube"
-  } else if (url.includes("dailymotion")) {
-    return "dailymotion"
-  }
-}
-
 const OrganizationShow = props => {
   const mainImageStyles = mainImage();
   const logoStyle = logoImage();
   return <Show title={<OrganizationTitle />} {...props}>
     <ShowContextLayout>
       <ImageField source="pair:banner" classes={mainImageStyles}/>
-      <ImageField source='image' classes={logoStyle}
-      />
+      <ImageField source='image' classes={logoStyle} />
       <TabbedShowLayout value={2} >
         <Tab label="info" icon={<Avatar alt="test avatar" src="/icon_info.png" />}>
           <ColumnShowLayout>
             <Column xs={12} sm={8} showLabel>
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
-              <MyVideoPlayer source="pair:video" addLabel/>
+              <VideoPlayer source="pair:video" addLabel/>
             </Column>
             <Column xs={12} sm={4} showLabel>
-              <GroupedReferenceHandler
-                source="pair:organizationOfMembership"
-                groupReference="MembershipRole"
-                groupLabel="pair:label"
-                filterProperty="pair:membershipRole"
-                addLabel={false}
-              >
-                <RightLabel>
-                  <ArrayField source="pair:organizationOfMembership">
-                    <SingleFieldList linkType={false}>
-                      <ReferenceField reference="User" source="pair:membershipActor" link="show">
-                        <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                            parent: {
-                                              width: '100px',
-                                              margin : '10px'
-                                            }
-                                          }}/>
-
-                      </ReferenceField>
-                    </SingleFieldList>
-                  </ArrayField>
-                </RightLabel>
-              </GroupedReferenceHandler>
               <MapField
                 source="pair:hasLocation"
                 address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
@@ -196,20 +104,10 @@ const OrganizationShow = props => {
                 longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
               />
               <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
-              <MyUrlArrayField source="pair:homePage" addLabel/>              
+              <UrlArrayField source="pair:homePage" addLabel/>              
               <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
-              <RightLabel reference="Place" source="pair:supports" label="Lieux">
-                <LimitationLayout source="pair:supports" limit={3} more={{
-                        pathname: './show/Places'
-                    }}>
-                  <ReferenceArrayField reference="Place" source="pair:supports">
-                    <SingleFieldList linkType="show">
-                      <ChipField source="pair:label" color="secondary" />
-                    </SingleFieldList>
-                  </ReferenceArrayField>
-                </LimitationLayout>
-              </RightLabel>
+              
             </Column>
           </ColumnShowLayout>
 
@@ -239,6 +137,7 @@ const OrganizationShow = props => {
             </RightLabel>
           </GroupedReferenceHandler>
         </Tab>
+          
         <Tab value="Places" label="lieux" path="Places" icon={<Avatar alt="test avatar" src="/icon_places.png" />}>
           <ReferenceArrayField label="Lieux" reference="Place" source="pair:supports" addLabel={false}>
             <SimpleList

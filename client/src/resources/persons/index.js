@@ -29,7 +29,9 @@ export default {
         'pair:label': 'Titre',
         'pair:actorOfMembership': 'organisation avec Role',
         'pair:membershipRole': 'Role',
-        'pair:membershipOrganization' : 'Organisation'
+        'pair:membershipOrganization' : 'Organisation',
+        'pair:hasLocation' : 'Adresse',
+        'pair:involvedIn' : 'Participe à',
       }
     }
   }

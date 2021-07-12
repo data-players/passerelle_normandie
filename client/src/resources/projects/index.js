@@ -25,6 +25,9 @@ export default {
       name: 'Projets |||| Projets',
       fields: {
         'pair:label': 'Titre',
+        'pair:video': 'Vidéo',
+        'pair:aboutPage':'Réseaux Sociaux',
+        'pair:homePage':'Liens utile',
       }
     }
   }

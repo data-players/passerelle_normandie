@@ -29,14 +29,14 @@ const ProjectEdit = props => (
       <ImageInput source="image" label="logo" accept="image/*">
         <ImageField source="src"/>
       </ImageInput>
-      <UriArrayInput label="Responsables" reference="User" source="pair:hasResponsible">
+      <UriArrayInput label="Responsables" reference="Person" source="pair:hasResponsible">
         <AutocompleteArrayInput
           optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
           shouldRenderSuggestions={value => value.length > 1}
           fullWidth
         />
       </UriArrayInput>
-      <UriArrayInput label="Participants" reference="User" source="pair:involves">
+      <UriArrayInput label="Participants" reference="Person" source="pair:involves">
         <AutocompleteArrayInput
           optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
           shouldRenderSuggestions={value => value.length > 1}

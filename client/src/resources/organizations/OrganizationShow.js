@@ -94,9 +94,6 @@ const OrganizationShow = props => {
             <Column xs={12} sm={8} showLabel>
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
-              <VideoPlayer source="pair:video" addLabel/>
-            </Column>
-            <Column xs={12} sm={4} showLabel>
               <GroupedReferenceHandler
                 source="pair:organizationOfMembership"
                 groupReference="MembershipRole"
@@ -120,6 +117,14 @@ const OrganizationShow = props => {
                   </ArrayField>
                 </RightLabel>
               </GroupedReferenceHandler>
+              <ReferenceArrayField reference="Sector" source="pair:hasSector">
+                <SingleFieldList linkType="show">
+                  <ChipField source="pair:label" color="secondary" />
+                </SingleFieldList>
+              </ReferenceArrayField>
+              <VideoPlayer source="pair:video" addLabel/>
+            </Column>
+            <Column xs={12} sm={4} showLabel>
               <MapField
                 source="pair:hasLocation"
                 address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}

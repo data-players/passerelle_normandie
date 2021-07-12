@@ -28,6 +28,7 @@ export default {
         'pair:video': 'Vidéo',
         'pair:aboutPage':'Réseaux Sociaux',
         'pair:homePage':'Liens utile',
+        'pair:hasSector' : 'Thématiques',
       }
     }
   }

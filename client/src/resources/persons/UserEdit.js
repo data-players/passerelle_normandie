@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutocompleteArrayInput, SimpleForm, TextInput, ImageInput, ReferenceInput, SelectInput, AutocompleteInput } from 'react-admin';
+import { AutocompleteArrayInput, SimpleForm, TextInput, ImageInput, ReferenceInput, SelectInput, AutocompleteInput, ArrayInput, SimpleFormIterator } from 'react-admin';
 import { Edit } from '@semapps/archipelago-layout';
 import { UriArrayInput, ImageField,ReificationArrayInput } from '@semapps/semantic-data-provider';
 import  PairLocationInput from '../../components/PairLocationInput';
@@ -12,10 +12,22 @@ export const UserEdit = props => (
       <TextInput source="pair:lastName" label="Nom de famille" fullWidth />
       <TextInput source="foaf:email" label="email" fullWidth />
       <TextInput source="pair:phone" label="téléphone" fullWidth />
+      <TextInput source="pair:comment" label="Description" fullWidth />
       <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />
       <ImageInput source="image" label="image" accept="image/*">
         <ImageField source="src" />
       </ImageInput>
+      <ArrayInput source="pair:homePage" >
+        <SimpleFormIterator>
+          <TextInput label="" fullWidth />
+        </SimpleFormIterator>
+      </ArrayInput>
+      <ArrayInput source="pair:aboutPage" >
+        <SimpleFormIterator>
+          <TextInput label="" fullWidth />
+        </SimpleFormIterator>
+      </ArrayInput>
+      <TextInput source="pair:video" label="Video url" fullWidth/>
       <UriArrayInput label="Participe à" reference="Project" source="pair:involvedIn">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>

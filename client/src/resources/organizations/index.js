@@ -34,7 +34,8 @@ export default {
         'pair:hasLocation':'Emplacement',
         'pair:homePage':'Liens utile',
         'pair:video':'Vidéo',
-        'pair:aboutPage':'Réseaux Sociaux'
+        'pair:aboutPage':'Réseaux Sociaux',
+        'pair:hasSector': 'Thématiques',
       }
     }
   }

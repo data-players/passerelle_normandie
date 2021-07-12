@@ -61,9 +61,6 @@ export const OrganizationEdit = (props) =>{
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
       </ReificationArrayInput>
-      <UriArrayInput label="Lieux" reference="Place" source="pair:supports">
-        <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth/>
-      </UriArrayInput>
       <UriArrayInput label="Sectors" source="pair:hasSector" reference="Sector" fullWidth>
         <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>

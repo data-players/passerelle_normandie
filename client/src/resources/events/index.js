@@ -25,6 +25,7 @@ export default {
       name: 'Événement |||| Événement',
       fields: {
         'pair:label': 'Titre',
+        'pair:hasSector' : 'Thématiques',
       }
     }
   }

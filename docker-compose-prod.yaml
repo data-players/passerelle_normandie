@@ -70,7 +70,7 @@ services:
   frontend:
     build:
       context: ./client
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     container_name: frontend-passerelle
     environment:
       - REACT_APP_MIDDLEWARE_URL=https://passerelle-normandie.data-players.com/middleware/

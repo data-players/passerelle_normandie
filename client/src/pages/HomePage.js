@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListBase, useShowController, useListContext, ShowContextProvider } from 'react-admin';
+import { ListBase, useShowController, ShowContextProvider } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
@@ -15,40 +15,7 @@ const mainStyle = makeStyles(theme => ({
     h3 :{
       textAlign : 'center'
     }
-    // image: {
-    //   height:"500px",
-    //   boxSizing: "border-box",
-    //   objectFit: 'cover',
-    //   [theme.breakpoints.down('sm')]: {
-    //     height:"200px",
-    //   }
-    // },
-    // mainTitle: {
-    //   color:"#30a082",
-    //   textAlign:"left",
-    //   fontSize: "50px",
-    //   fontFamily: "Comic Sans MS",
-    //   paddingBottom: "30px",
-    //   paddingTop: "30px",
-    //   paddingLeft: "25px"
-    // },
-    // mainText: {
-    //   textAlign:"left",
-    //   fontSize: "30px",
-    //   fontFamily: "Comic Sans MS",
-    //   marginBottom: "60px"
-    // },
-    // mapBox: {
-    //   textAlign:"lett",
-    //   fontSize: "50px",
-    //   fontFamily: "Comic Sans MS",
-    // },
-    // mapTitlePaper: {
-    //   paddingBottom: "30px",
-    //   paddingTop: "30px",
-    //   paddingLeft: "25px"
-    // }
-  }));
+}));
 
 const config = {
   basePath: '/Page',
@@ -59,7 +26,6 @@ const config = {
 const HomePage = () => {
 
   const style = mainStyle();
-  const urlImage = "https://www.zupimages.net/up/21/22/zikv.png";
 
   return(
     <Grid container spacing={0} classes={style}>
@@ -70,7 +36,7 @@ const HomePage = () => {
           </ShowContextProvider>
         </Paper>
       </Grid>
-      <Grid item sm={12} xs={12}>
+      {/* <Grid item sm={12} xs={12}>
         <Paper>
           <Typography variant="h3" classes={style}>
             La carte du bocage
@@ -95,7 +61,7 @@ const HomePage = () => {
             <RaSimpleList primaryText={record => record['pair:label']} secondaryText={record => record['pair:comment']} linkType="show" />
           </ListBase>
         </Paper>
-      </Grid>
+      </Grid> */}
 
     </Grid>
   );

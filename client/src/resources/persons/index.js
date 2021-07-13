@@ -29,7 +29,13 @@ export default {
         'pair:label': 'Titre',
         'pair:actorOfMembership': 'organisation avec Role',
         'pair:membershipRole': 'Role',
-        'pair:membershipOrganization' : 'Organisation'
+        'pair:membershipOrganization' : 'Organisation',
+        'pair:hasLocation' : 'Adresse',
+        'pair:involvedIn' : 'Participe à',
+        'pair:aboutPage' : 'Réseaux Sociaux',
+        'pair:homePage':'Liens utile',
+        'pair:hasTopic' : 'Centres d\'intérêt',
+        'pair:offers' : 'Compétences'
       }
     }
   }

@@ -40,23 +40,6 @@ const UserShow = props => {
         </Hero>
         <MainList>
           <VideoPlayer source="pair:video" addLabel/>
-        </MainList>
-      </Grid>
-
-      <Grid item xs={12} sm={4}>
-        <SideList>
-        <MainList>
-          <MapField
-            source="pair:hasLocation"
-            address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
-            latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
-            longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-          />
-        </MainList>
-          <UrlArrayField source="pair:homePage" addLabel/>
-          <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
-          <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
-          <TextField label="Téléphone" source="pair:phone" addLabel/>
             <GroupedReferenceHandler
                source="pair:actorOfMembership"
                groupReference="MembershipRole"
@@ -80,6 +63,23 @@ const UserShow = props => {
                  </ArrayField>
                </RightLabel>
              </GroupedReferenceHandler>
+        </MainList>
+      </Grid>
+
+      <Grid item xs={12} sm={4}>
+        <SideList>
+        <MainList>
+          <MapField
+            source="pair:hasLocation"
+            address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+            latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+            longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+          />
+        </MainList>
+          <UrlArrayField source="pair:homePage" addLabel/>
+          <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
+          <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
+          <TextField label="Téléphone" source="pair:phone" addLabel/>
         </SideList>
       </Grid>
     </Grid>

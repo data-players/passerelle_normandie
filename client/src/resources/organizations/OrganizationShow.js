@@ -87,7 +87,6 @@ const OrganizationShow = props => {
   return <Show title={<OrganizationTitle />} {...props}>
     <ShowContextLayout>
       <ImageField source="pair:banner" classes={mainImageStyles}/>
-      <ImageField source='image' classes={logoStyle} />
       <TabbedShowLayout value={2} >
         <Tab label="info" icon={<Avatar alt="test avatar" src="/icon_info.png" />}>
           <ColumnShowLayout>

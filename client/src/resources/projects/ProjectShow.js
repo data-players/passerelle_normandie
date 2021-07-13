@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChipField, SingleFieldList, TextField, UrlField } from 'react-admin';
-import { Column, ColumnShowLayout, GridList, Show, MarkdownField ,UserIcon} from '@semapps/archipelago-layout';
+import { Column, ColumnShowLayout, GridList, Show, MarkdownField ,UserIcon, AvatarField} from '@semapps/archipelago-layout';
 import { UriArrayField, ImageField, ReferenceArrayField } from '@semapps/semantic-data-provider';
 import { Typography, makeStyles } from '@material-ui/core';
 import VideoPlayer from '../../addons/videoComponent';
@@ -24,19 +24,29 @@ const ProjectShow = props => {
     <ColumnShowLayout>
       <Column xs={12} sm={3} showLabel>
         <ImageField source='image' classes={logoStyle} />
-        <UriArrayField label="Responsables" reference="Person" source="pair:hasResponsible">
-          <GridList xs={6} linkType="show">
-            <UserIcon />
-          </GridList>
-        </UriArrayField>
-        <UriArrayField label="Participants" reference="Person" source="pair:involves">
-          <GridList xs={6} linkType="show">
-            <UserIcon />
-          </GridList>
-        </UriArrayField>
       </Column>
       <Column xs={12} sm={6} showLabel>
         <TextField label="Courte description" source="pair:comment" />
+        <UriArrayField label="Participants" reference="Person" source="pair:involves">
+          <SingleFieldList linkType={false}>            
+            <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+              parent: {
+                width: '100px',
+                margin : '10px'
+              }
+            }}/>          
+          </SingleFieldList>
+        </UriArrayField>
+        <UriArrayField label="Responsables" reference="Person" source="pair:hasResponsible">
+          <SingleFieldList linkType={false}>            
+            <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+              parent: {
+                width: '100px',
+                margin : '10px'
+              }
+            }}/>          
+          </SingleFieldList>
+        </UriArrayField>
         <ReferenceArrayField reference="Sector" source="pair:hasSector">
           <SingleFieldList linkType="show">
             <ChipField source="pair:label" color="secondary" />

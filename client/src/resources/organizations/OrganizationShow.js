@@ -102,19 +102,23 @@ const OrganizationShow = props => {
                 addLabel={false}
               >
                 <RightLabel>
-                  <ArrayField source="pair:organizationOfMembership">
-                    <SingleFieldList linkType={false}>
-                      <ReferenceField reference="Person" source="pair:membershipActor" link="show">
-                        <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                            parent: {
-                                              width: '100px',
-                                              margin : '10px'
-                                            }
-                                          }}/>
+                  <LimitationLayout source="pair:organizationOfMembership" limit={5} more={{
+                      pathname: './show/MembershipRole'
+                  }}>
+                    <ArrayField source="pair:organizationOfMembership">
+                      <SingleFieldList linkType={false}>
+                        <ReferenceField reference="Person" source="pair:membershipActor" link="show">
+                          <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                              parent: {
+                                                width: '100px',
+                                                margin : '10px'
+                                              }
+                                            }}/>
 
-                      </ReferenceField>
-                    </SingleFieldList>
-                  </ArrayField>
+                        </ReferenceField>
+                      </SingleFieldList>
+                    </ArrayField>
+                  </LimitationLayout>
                 </RightLabel>
               </GroupedReferenceHandler>
               <ReferenceArrayField reference="Sector" source="pair:hasSector">
@@ -132,10 +136,10 @@ const OrganizationShow = props => {
                 longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
               />
               <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
-              <UrlArrayField source="pair:homePage" addLabel/>              
+              <UrlArrayField source="pair:homePage" addLabel/>
               <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
-              
+
             </Column>
           </ColumnShowLayout>
 
@@ -165,7 +169,7 @@ const OrganizationShow = props => {
             </RightLabel>
           </GroupedReferenceHandler>
         </Tab>
-          
+
         <Tab value="Places" label="lieux" path="Places" icon={<Avatar alt="test avatar" src="/icon_places.png" />}>
           <ReferenceArrayField label="Lieux" reference="Place" source="pair:supports" addLabel={false}>
             <SimpleList

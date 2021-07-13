@@ -3,6 +3,7 @@ import { List, SimpleList ,MultiViewsList} from '@semapps/archipelago-layout';
 import { MapList } from '@semapps/geo-components';
 import MapIcon from '@material-ui/icons/Map';
 import ListIcon from '@material-ui/icons/List';
+import SectorFilterSidebar from './../../components/SectorFilterSidebar';
 
 const OrganizationList = props => (
   // <List {...props}>
@@ -25,6 +26,7 @@ const OrganizationList = props => (
   //   />
   // </List>
   <MultiViewsList
+    aside={<SectorFilterSidebar />}
     views={{
       list: {
         label: 'Liste',

@@ -1,13 +1,14 @@
-FROM node:12.16-alpine
-ARG FRONTEND
+FROM node:13.14-alpine
 
 WORKDIR /client/app
 
 RUN apk add --update --no-cache git bash yarn nano
 
+RUN apk add --update --no-cache autoconf libtool automake alpine-sdk
+
 RUN npm install -g serve
 
-COPY ./$FRONTEND /app/
+COPY . /client/app/
 
 RUN npm install
 

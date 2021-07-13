@@ -2,7 +2,7 @@ import React from 'react';
 import { SimpleForm, TextInput } from 'react-admin';
 import { Create } from '@semapps/archipelago-layout';
 
-const PlaceCreate = props => (
+const SectorCreate = props => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="pair:label" label="Nom" fullWidth />
@@ -10,4 +10,4 @@ const PlaceCreate = props => (
   </Create>
 );
 
-export default PlaceCreate;
+export default SectorCreate;

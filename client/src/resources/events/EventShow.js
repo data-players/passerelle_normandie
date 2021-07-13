@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChipField, SingleFieldList, TextField, UrlField, DateField } from 'react-admin';
 import { Column, ColumnShowLayout, Hero, Show, MarkdownField, UserIcon, GridList} from '@semapps/archipelago-layout';
-import { UriArrayField } from '@semapps/semantic-data-provider';
+import { UriArrayField, ReferenceArrayField } from '@semapps/semantic-data-provider';
 
 const ProjectTitle = ({ record }) => {
   return <span>{record ? record['pair:label'] : ''}</span>;
@@ -10,7 +10,7 @@ const ProjectTitle = ({ record }) => {
 const EventShow = props => (
   <Show  title={<ProjectTitle />} {...props}>
     <ColumnShowLayout>
-      <Column xs={12} sm={6}>
+      <Column xs={12} sm={9}>
         <Hero>
           <TextField label="Courte description" source="pair:comment" />
           <DateField label="Date de début" source="pair:startDate" showTime />
@@ -20,13 +20,8 @@ const EventShow = props => (
         </Hero>
         <MarkdownField source="pair:description" addLabel />
       </Column>
-      <Column xs={12} sm={6} showLabel>
+      <Column xs={12} sm={3} showLabel>
         <UriArrayField label="Proposé par" reference="Organization" source="pair:deliveredBy">
-          <SingleFieldList linkType="show">
-            <ChipField source="pair:label" color="secondary" />
-          </SingleFieldList>
-        </UriArrayField>
-        <UriArrayField label="Lieux" reference="Place" source="pair:hasLocation">
           <SingleFieldList linkType="show">
             <ChipField source="pair:label" color="secondary" />
           </SingleFieldList>
@@ -41,6 +36,11 @@ const EventShow = props => (
             <ChipField source="pair:label" color="secondary" />
           </SingleFieldList>
         </UriArrayField>
+        <ReferenceArrayField reference="Sector" source="pair:hasSector">
+          <SingleFieldList linkType="show">
+            <ChipField source="pair:label" color="secondary" />
+          </SingleFieldList>
+        </ReferenceArrayField>
       </Column>
     </ColumnShowLayout>
   </Show>

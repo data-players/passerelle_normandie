@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
-  AutocompleteArrayInput,
   ArrayInput,
   SimpleForm,
   TextInput,

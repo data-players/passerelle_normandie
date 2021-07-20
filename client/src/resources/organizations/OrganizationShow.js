@@ -94,29 +94,6 @@ const OrganizationShow = props => {
             <Column xs={12} sm={8} showLabel>
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
-              <GroupedReferenceHandler
-                source="pair:organizationOfMembership"
-                groupReference="MembershipRole"
-                groupLabel="pair:label"
-                filterProperty="pair:membershipRole"
-                addLabel={false}
-              >
-                <RightLabel>
-                  <ArrayField source="pair:organizationOfMembership">
-                    <SingleFieldList linkType={false}>
-                      <ReferenceField reference="Person" source="pair:membershipActor" link="show">
-                        <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                            parent: {
-                                              width: '100px',
-                                              margin : '10px'
-                                            }
-                                          }}/>
-
-                      </ReferenceField>
-                    </SingleFieldList>
-                  </ArrayField>
-                </RightLabel>
-              </GroupedReferenceHandler>
               <ReferenceArrayField reference="Sector" source="pair:hasSector">
                 <SingleFieldList linkType="show">
                   <ChipField source="pair:label" color="secondary" />
@@ -165,21 +142,6 @@ const OrganizationShow = props => {
             </RightLabel>
           </GroupedReferenceHandler>
         </Tab>
-          
-        <Tab value="Places" label="lieux" path="Places" icon={<Avatar alt="test avatar" src="/icon_places.png" />}>
-          <ReferenceArrayField label="Lieux" reference="Place" source="pair:supports" addLabel={false}>
-            <SimpleList
-              primaryText={record => record['pair:label']}
-              secondaryText={record => record['pair:comment']}
-              leftAvatar={record => (
-                <img src={record['image'] || process.env.PUBLIC_URL + '/logo192.png'} width="100%" alt="SemApps" />
-              )}
-              linkType="show"
-            />
-          </ReferenceArrayField>
-        </Tab>
-
-
       </TabbedShowLayout>
     </ShowContextLayout>
 

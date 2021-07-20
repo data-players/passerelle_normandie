@@ -9,6 +9,7 @@ import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';
 import UrlArrayField from '../../components/UrlArrayfield';
 import VideoPlayer from '../../addons/videoComponent';
 
+
 const UserTitle = ({ record }) => {
   return <span>{record ? `${record['pair:firstName']} ${record['pair:lastName']}` : ''}</span>;
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import { ChipField, SingleFieldList, TextField, UrlField, DateField } from 'react-admin';
-import { Column, ColumnShowLayout, Hero, Show, MarkdownField, UserIcon, GridList} from '@semapps/archipelago-layout';
-import { UriArrayField } from '@semapps/semantic-data-provider';
+import { ChipField, SingleFieldList } from 'react-admin';
+import { Column, ColumnShowLayout, Hero, Show} from '@semapps/archipelago-layout';
+import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 
 const ProjectTitle = ({ record }) => {
   return <span>{record ? record['pair:label'] : ''}</span>;
@@ -12,9 +12,12 @@ const SectorShow = props => (
     <ColumnShowLayout>
       <Column xs={12} sm={6}>
         <Hero>
-          <TextField label="Courte description" source="pair:comment" />
+          <ReferenceArrayField label="Projets" reference="Interest" source="pair:sectorOf">
+            <SingleFieldList linkType="show">
+                <ChipField source="pair:label" color="secondary" />
+            </SingleFieldList>
+          </ReferenceArrayField>
         </Hero>
-        <MarkdownField source="pair:description" addLabel />
       </Column>
     </ColumnShowLayout>
   </Show>

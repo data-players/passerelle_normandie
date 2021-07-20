@@ -6,7 +6,7 @@ import SectorIcon from '@material-ui/icons/PinDrop';
 
 export default {
   config:{
-    list: SectorList,
+    list: process.env.REACT_APP_ADMIN==='true'?SectorList:undefined,
     show: SectorShow,
     create: SectorCreate,
     edit: SectorEdit,

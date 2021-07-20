@@ -19,7 +19,13 @@ module.exports = {
               disassembly: [{ path: 'pair:actorOfMembership', container:  process.env.SEMAPPS_HOME_URL + 'membership-associations' }]
           },{
             path: '/pages'
-          }, '/projects', '/events', '/themas', '/skills', '/places', '/files','/branchs','/membership-roles','/membership-associations','/Page', '/sectors'],
+          },{
+            path: '/projects',
+            dereference: ['pair:hasLocation/pair:hasPostalAddress', 'pair:organizationOfMembership'],
+          },{
+            path: '/events',
+            dereference: ['pair:hasLocation/pair:hasPostalAddress', 'pair:organizationOfMembership'],
+          }, '/themas', '/skills', '/places', '/files','/membership-roles','/membership-associations','/Page', '/sectors'],
     // defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
     defaultContainerOptions: {
       jsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),

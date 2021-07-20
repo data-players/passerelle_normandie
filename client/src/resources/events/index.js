@@ -26,6 +26,9 @@ export default {
       fields: {
         'pair:label': 'Titre',
         'pair:hasSector' : 'Thématiques',
+        'pair:homePage':'Liens utile',
+        'pair:aboutPage':'Réseaux Sociaux',
+        'pair:hasLocation':'Adresse'
       }
     }
   }

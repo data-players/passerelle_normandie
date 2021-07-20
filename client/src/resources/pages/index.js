@@ -6,7 +6,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
 
 export default {
   config: {
-    list: PageList,
+    list: process.env.REACT_APP_ADMIN==='true'?PageList:undefined,
     show: PageShow,
     create: PageCreate,
     edit: PageEdit,

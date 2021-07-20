@@ -35,7 +35,8 @@ export default {
         'pair:aboutPage' : 'Réseaux Sociaux',
         'pair:homePage':'Liens utile',
         'pair:hasTopic' : 'Centres d\'intérêt',
-        'pair:offers' : 'Compétences'
+        'pair:offers' : 'Compétences',
+        'pair:video':'Vidéo',
       }
     }
   }

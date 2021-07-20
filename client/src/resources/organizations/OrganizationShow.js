@@ -87,13 +87,39 @@ const OrganizationShow = props => {
   return <Show title={<OrganizationTitle />} {...props}>
     <ShowContextLayout>
       <ImageField source="pair:banner" classes={mainImageStyles}/>
-      <ImageField source='image' classes={logoStyle} />
       <TabbedShowLayout value={2} >
         <Tab label="info" icon={<Avatar alt="test avatar" src="/icon_info.png" />}>
           <ColumnShowLayout>
             <Column xs={12} sm={8} showLabel>
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
+              <GroupedReferenceHandler
+                source="pair:organizationOfMembership"
+                groupReference="MembershipRole"
+                groupLabel="pair:label"
+                filterProperty="pair:membershipRole"
+                addLabel={false}
+              >
+                <RightLabel>
+                  <LimitationLayout source="pair:organizationOfMembership" limit={5} more={{
+                      pathname: './show/MembershipRole'
+                  }}>
+                    <ArrayField source="pair:organizationOfMembership">
+                      <SingleFieldList linkType={false}>
+                        <ReferenceField reference="Person" source="pair:membershipActor" link="show">
+                          <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                              parent: {
+                                                width: '100px',
+                                                margin : '10px'
+                                              }
+                                            }}/>
+
+                        </ReferenceField>
+                      </SingleFieldList>
+                    </ArrayField>
+                  </LimitationLayout>
+                </RightLabel>
+              </GroupedReferenceHandler>
               <VideoPlayer source="pair:video" addLabel/>
             </Column>
             <Column xs={12} sm={4} showLabel>
@@ -104,7 +130,7 @@ const OrganizationShow = props => {
                 longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
               />
               <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
-              <UrlArrayField source="pair:homePage" addLabel/>              
+              <UrlArrayField source="pair:homePage" addLabel/>
               <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
               <UriArrayField reference="Sector" source="pair:hasSector">

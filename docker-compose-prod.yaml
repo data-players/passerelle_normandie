@@ -51,7 +51,7 @@ services:
       - SEMAPPS_MAIN_DATASET=localData
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=admin
-      - SEMAPPS_HOME_URL=https://passerelle-normandie.data-players.com/middleware/
+      - SEMAPPS_HOME_URL=https://data.passerelle-normandie.data-players.com/
       - SEMAPPS_OIDC_ISSUER=https://login.lescommuns.org/auth/realms/master/
       - SEMAPPS_OIDC_CLIENT_ID=passerelle-normandie
     networks:
@@ -63,17 +63,17 @@ services:
     command: bash -c "npm install && npm start"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.middleware.rule=Host(`passerelle-normandie.data-players.com`) && PathPrefix(`/middleware/`)"
+      - "traefik.http.routers.middleware.rule=Host(`data.passerelle-normandie.data-players.com`)"
       - "traefik.http.routers.middleware.entrypoints=websecure"
       - "traefik.http.routers.middleware.tls.certresolver=myresolver"
 
   frontend:
     build:
       context: ./client
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     container_name: frontend-passerelle
     environment:
-      - REACT_APP_MIDDLEWARE_URL=https://passerelle-normandie.data-players.com/middleware/
+      - REACT_APP_MIDDLEWARE_URL=https://data.passerelle-normandie.data-players.com/
       - REACT_APP_ADMIN=false
       - REACT_APP_MAPBOX_ACCESS_TOKEN=pk.eyJ1Ijoic3Jvc3NldDgxIiwiYSI6ImNrbDd0b2VkMzA1dDMycG9iemU4NnpuemsifQ.HvpZ3tnweVHEUYLb0tDvTg
       - PORT=5000
@@ -95,10 +95,10 @@ services:
   admin:
     build:
       context: ./client
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     container_name: admin-passerelle
     environment:
-      - REACT_APP_MIDDLEWARE_URL=https://passerelle-normandie.data-players.com/middleware/
+      - REACT_APP_MIDDLEWARE_URL=https://data.passerelle-normandie.data-players.com/
       - REACT_APP_ADMIN=true
       - REACT_APP_MAPBOX_ACCESS_TOKEN=pk.eyJ1Ijoic3Jvc3NldDgxIiwiYSI6ImNrbDd0b2VkMzA1dDMycG9iemU4NnpuemsifQ.HvpZ3tnweVHEUYLb0tDvTg
       - PORT=5010

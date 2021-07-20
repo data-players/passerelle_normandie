@@ -28,7 +28,9 @@ export default {
         'pair:hasSector' : 'Thématiques',
         'pair:homePage':'Liens utile',
         'pair:aboutPage':'Réseaux Sociaux',
-        'pair:hasLocation':'Adresse'
+        'pair:hasLocation':'Adresse',
+        'pair:description':'Description',
+        'pair:video':'Vidéo'
       }
     }
   }

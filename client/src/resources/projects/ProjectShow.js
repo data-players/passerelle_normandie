@@ -35,8 +35,8 @@ const ProjectShow = props => {
       <Column xs={12} sm={12} showLabel>
         <ImageField source="image" classes={mainImageStyles}/>
       </Column>
-      <Column xs={12} sm={9} showLabel>
-        <TextField label="Courte description" source="pair:comment" variant="h3" addLabel={false} />
+      <Column xs={12} sm={8} showLabel>
+        <TextField label="Courte description" source="pair:comment" variant="h5" addLabel={false} />
 
         <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
         <MarkdownField label="Description" source="pair:description" addLabel />
@@ -60,19 +60,19 @@ const ProjectShow = props => {
             }}/>          
           </SingleFieldList>
         </UriArrayField>
-        <ReferenceArrayField reference="Sector" source="pair:hasSector">
-          <SingleFieldList linkType="show">
-            <ChipField source="pair:label" color="secondary" />
-          </SingleFieldList>
-        </ReferenceArrayField>
-        <UriArrayField label="Géré par" reference="Organization" source="pair:managedBy">
-          <SingleFieldList linkType="show">
-            <ChipField source="pair:label" color="secondary" />
+        <UriArrayField label="Proposé par" reference="Organization" source="pair:deliveredBy">
+          <SingleFieldList linkType="show">            
+            <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
+              parent: {
+                width: '100px',
+                margin : '10px'
+              }
+            }}/>          
           </SingleFieldList>
         </UriArrayField>
         <VideoPlayer source="pair:video" addLabel/>
       </Column>
-      <Column xs={12} sm={3} showLabel>
+      <Column xs={12} sm={4} showLabel>
         <MapField
           source="pair:hasLocation"
           address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
@@ -81,10 +81,17 @@ const ProjectShow = props => {
         />
         <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
         <UrlArrayField source="pair:homePage" addLabel/>    
-        <TextField label="Email" source="pair:e-mail" type="email" addLabel/>          
-      </Column>
-      <Column xs={12} sm={9} showLabel>
-        
+        <TextField label="Email" source="pair:e-mail" type="email" addLabel/>     
+        <UriArrayField reference="Sector" source="pair:hasSector">
+          <SingleFieldList linkType="show">            
+            <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
+              parent: {
+                width: '100px',
+                margin : '10px'
+              }
+            }}/>          
+          </SingleFieldList>
+        </UriArrayField>     
       </Column>
     </ColumnShowLayout>
   </Show>

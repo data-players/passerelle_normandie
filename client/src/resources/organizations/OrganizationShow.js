@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import { useShowContext, TextField, SingleFieldList, ChipField, ArrayField,TabbedShowLayout, Tab} from 'react-admin';
 import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel, SimpleList} from '@semapps/archipelago-layout';
 import { makeStyles, Avatar, Button } from '@material-ui/core';
-import { ReferenceArrayField ,ImageField,ReferenceField, GroupedReferenceHandler } from '@semapps/semantic-data-provider';
+import { ReferenceArrayField ,ImageField,ReferenceField, GroupedReferenceHandler, UriArrayField } from '@semapps/semantic-data-provider';
 import { MapField } from '@semapps/geo-components';
 import { Link } from 'react-router-dom';
 import OrganizationTitle from './OrganizationTitle';
@@ -94,11 +94,6 @@ const OrganizationShow = props => {
             <Column xs={12} sm={8} showLabel>
               <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
               <MarkdownField source="pair:description" addLabel={false}/>
-              <ReferenceArrayField reference="Sector" source="pair:hasSector">
-                <SingleFieldList linkType="show">
-                  <ChipField source="pair:label" color="secondary" />
-                </SingleFieldList>
-              </ReferenceArrayField>
               <VideoPlayer source="pair:video" addLabel/>
             </Column>
             <Column xs={12} sm={4} showLabel>
@@ -112,7 +107,16 @@ const OrganizationShow = props => {
               <UrlArrayField source="pair:homePage" addLabel/>              
               <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
-              
+              <UriArrayField reference="Sector" source="pair:hasSector">
+                <SingleFieldList linkType="show">            
+                  <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
+                    parent: {
+                      width: '100px',
+                      margin : '10px'
+                    }
+                  }}/>          
+                </SingleFieldList>
+              </UriArrayField>
             </Column>
           </ColumnShowLayout>
 

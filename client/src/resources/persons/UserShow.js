@@ -4,7 +4,7 @@ import { MainList, Show, SideList, Hero, GridList, AvatarField, RightLabel, Colu
 import { Grid } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
 import HomeIcon from '@material-ui/icons/Home';
-import { GroupedReferenceHandler, ReferenceArrayField } from '@semapps/semantic-data-provider';
+import { GroupedReferenceHandler, ReferenceArrayField, UriArrayField } from '@semapps/semantic-data-provider';
 import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';
 import UrlArrayField from '../../components/UrlArrayfield';
 import VideoPlayer from '../../addons/videoComponent';
@@ -78,7 +78,16 @@ const UserShow = props => {
           <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
           <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
           <TextField label="Téléphone" source="pair:phone" addLabel/>
-        </SideList>
+          <UriArrayField reference="Sector" label="Thématiques" source="pair:hasSector">
+            <SingleFieldList linkType="show">            
+              <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
+                parent: {
+                  width: '100px',
+                  margin : '10px'
+                }
+              }}/>          
+            </SingleFieldList>
+          </UriArrayField>         </SideList>
       </Column>
     </ColumnShowLayout>
   </Show>

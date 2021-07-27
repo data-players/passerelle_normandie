@@ -1,7 +1,7 @@
 import React from 'react';
-import { ChipField, SingleFieldList, TextField, UrlField } from 'react-admin';
-import { Column, ColumnShowLayout, GridList, Show, MarkdownField ,UserIcon, AvatarField} from '@semapps/archipelago-layout';
-import { UriArrayField, ImageField, ReferenceArrayField } from '@semapps/semantic-data-provider';
+import { SingleFieldList, TextField } from 'react-admin';
+import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField} from '@semapps/archipelago-layout';
+import { UriArrayField, ImageField } from '@semapps/semantic-data-provider';
 import { Typography, makeStyles } from '@material-ui/core';
 import VideoPlayer from '../../addons/videoComponent';
 import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';

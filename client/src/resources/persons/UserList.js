@@ -6,9 +6,11 @@ import MapIcon from '@material-ui/icons/Map';
 import ListIcon from '@material-ui/icons/List';
 import PersonIcon from '@material-ui/icons/Person';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import SectorFilterSidebar from './../../components/SectorFilterSidebar';
 
 const PersonList = props => (
   <MultiViewsList
+    aside={<SectorFilterSidebar />}
     views={{
       avatar: {
         label: 'Trombinoscope',

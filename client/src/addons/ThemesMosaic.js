@@ -68,6 +68,7 @@ const tileData = [
   },
   {
     slug: 'tiers-lieux',
+    title: 'Tiers-lieux',
     cols: 3
   }
 ];
@@ -80,7 +81,7 @@ export const ThemesMosaic = () => {
     resource: 'Sector',
     payload: { ids: tileData.map(tile => process.env.REACT_APP_MIDDLEWARE_URL + 'sectors/' + tile.slug) }
   });
-  
+
   if( loading ) {
     return(
       <GridList cellHeight={240} cols={8}>
@@ -96,10 +97,15 @@ export const ThemesMosaic = () => {
       <GridList cellHeight={240} cols={8}>
         {tileData.map((tile, i) =>
           <GridListTile key={i} cols={tile.cols}>
-            <Link to={'/sector/' + encodeURIComponent(data[i].id) + '/show'}>
-              <img src={data[i].image} alt={tile.title || data[i]['pair:label']} className={classes.backgroundImage} />
-              <GridListTileBar title={tile.title || data[i]['pair:label']} />
-            </Link>
+            {data[i] &&
+              <Link to={'/sector/' + encodeURIComponent(data[i].id) + '/show'}>
+                <img src={data[i].image} alt={tile.title || data[i]['pair:label']} className={classes.backgroundImage} />
+                <GridListTileBar title={tile.title || data[i]['pair:label']} />
+              </Link>
+            }
+            {!data[i] &&
+              <GridListTileBar title={tile.title} />
+            }
           </GridListTile>
         )}
       </GridList>

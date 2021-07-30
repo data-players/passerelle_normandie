@@ -113,7 +113,7 @@ services:
     command: bash -c "npm rebuild && npm install --silent && npm run bootstrap && npm start"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.admin.rule=Host(`admin.passerelle-normandie.data-players.com`)"
+      - "traefik.http.routers.admin.rule=Host(`61646d696e.passerellenormandie.fr`)"
       - "traefik.http.routers.admin.entrypoints=websecure"
       - "traefik.http.routers.admin.tls.certresolver=myresolver"
 

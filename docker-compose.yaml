@@ -31,7 +31,7 @@ services:
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=admin
       - SEMAPPS_HOME_URL=http://localhost:3000/
-      - SEMAPPS_OIDC_ISSUER=https://login.lescommuns.org/auth/realms/master/
+      - SEMAPPS_OIDC_ISSUER=https://login.passerellenormandie.fr/auth/realms/master/
       - SEMAPPS_OIDC_CLIENT_ID=passerelle-normandie
     networks:
       - semapps

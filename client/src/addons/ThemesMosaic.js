@@ -19,7 +19,7 @@ const tileData = [
   {
     slug: 'agriculture',
     title: 'Agriculture et Alimentation',
-    cols: 2
+    cols: 3
    },
    {
      slug: 'biodiversite',
@@ -27,20 +27,21 @@ const tileData = [
      cols: 3
    },
    {
+    slug: 'economie',
+    title: 'Economie circulaire',
+    cols: 2
+  },
+   {
      slug: 'culture',
      title: 'Culture & vivre ensemble',
      cols: 3
    },
+   
    {
-     slug: 'economie',
-     title: 'Economie circulaire',
-     cols: 2
-   },
-   {
-     slug: 'education',
-     title: 'Education & formation',
-     cols: 3
-   },
+    slug: 'education',
+    title: 'Education & formation',
+    cols: 2
+  },
    {
      slug: 'habitat',
      title: 'Habitat & Energie',
@@ -54,12 +55,12 @@ const tileData = [
    {
      slug: 'low-tech',
      title: 'Low-tech',
-     cols: 3
+     cols: 2
    },
    {
     slug: 'mobilite',
     title: 'Mobilité',
-    cols: 2
+    cols: 3
   },
   {
     slug: 'sante',

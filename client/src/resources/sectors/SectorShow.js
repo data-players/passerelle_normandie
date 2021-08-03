@@ -19,9 +19,10 @@ const mainImage = makeStyles({
 
 const MoreButton = ({record, source, type, more }) => {
   var allItem = typeof(record[source]) === "string" ? [record[source]] : record[source]
-
-  if ( allItem.filter(p=>p.includes(type)).length > 5) {
-    return <Button component={Link} to={more}>More...</Button>
+  if (Array.isArray(allItem)) {
+    if ( allItem.filter(p=>p.includes(type)).length > 5) {
+      return <Button component={Link} to={more}>More...</Button>
+    }
   }
   return <> </>
 }

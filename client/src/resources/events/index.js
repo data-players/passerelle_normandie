@@ -26,11 +26,13 @@ export default {
       fields: {
         'pair:label': 'Titre',
         'pair:hasSector' : 'Thématiques',
-        'pair:homePage':'Liens utile',
+        'pair:homePage':'Liens utiles',
         'pair:aboutPage':'Réseaux Sociaux',
         'pair:hasLocation':'Adresse',
         'pair:description':'Description',
-        'pair:video':'Vidéo'
+        'pair:video':'Vidéo',
+        'pair:startDate' : 'Date et heure de lancement',
+        'pair:endDate' : 'Date et heure de fin',
       }
     }
   }

@@ -18,7 +18,7 @@ const UserShow = props => {
     <ColumnShowLayout>
       <Column xs={12} sm={8} showLabel>
         <Hero image="image">
-          <TextField source="pair:comment" label="Description" />
+          <TextField source="pair:comment" label="Présentation" />
           <ReferenceArrayField reference="Interest" source="pair:hasTopic">
             <SingleFieldList linkType="show">
               <ChipField source="pair:label" color="secondary" />

@@ -28,11 +28,11 @@ export default {
       name: 'Organisations |||| Organisation',
       fields: {
         'pair:label': 'Titre',
-        'pair:organizationOfMembership': 'Membres avec Role',
+        'pair:organizationOfMembership': 'Les membres de l\'organisation',
         'pair:membershipActor': 'Membre',
         'pair:membershipRole': 'Role',
         'pair:hasLocation':'Emplacement',
-        'pair:homePage':'Liens utile',
+        'pair:homePage':'Liens utiles',
         'pair:video':'Vidéo',
         'pair:aboutPage':'Réseaux Sociaux',
         'pair:hasSector': 'Thématiques',

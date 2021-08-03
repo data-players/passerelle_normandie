@@ -47,7 +47,7 @@ export const UserEdit = props => (
       <UriArrayInput label="Intérêts" reference="Interest" source="pair:hasTopic">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>
-      <UriArrayInput label="Thématiques" source="pair:hasSector" reference="Sector" fullWidth>
+      <UriArrayInput label="Thématiques (cocher la ou les thématiques qui vous correspondent)" source="pair:hasSector" reference="Sector" fullWidth>
         <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>
     </SimpleForm>

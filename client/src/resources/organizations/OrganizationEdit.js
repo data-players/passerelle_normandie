@@ -41,8 +41,8 @@ export const OrganizationEdit = (props) =>{
         </SimpleFormIterator>
       </ArrayInput>
       <TextInput source="pair:video" label="Video url" fullWidth/>
-      <TextInput source="pair:e-mail" label="email" type="email" fullWidth/>
-      <TextInput source="pair:phone" label="téléphone" fullWidth />
+      <TextInput source="pair:e-mail" label="Email" type="email" fullWidth/>
+      <TextInput source="pair:phone" label="Téléphone" fullWidth />
       <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />
       <ImageInput source="image" label="logo" accept="image/*">
         <ImageField source="src"/>
@@ -56,11 +56,11 @@ export const OrganizationEdit = (props) =>{
             optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
           />
         </ReferenceInput>
-        <ReferenceInput reference="MembershipRole" source="pair:membershipRole">
+        <ReferenceInput label="Rôle" reference="MembershipRole" source="pair:membershipRole">
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
       </ReificationArrayInput>
-      <UriArrayInput label="Sectors" source="pair:hasSector" reference="Sector" fullWidth>
+      <UriArrayInput label="Thématiques (cocher la ou les thématiques en lien avec l'organisation)" source="pair:hasSector" reference="Sector" fullWidth>
         <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>
     </SimpleForm>

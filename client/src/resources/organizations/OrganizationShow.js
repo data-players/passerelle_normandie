@@ -1,14 +1,14 @@
-import React, {useState,useEffect} from 'react';
-import { useShowContext, TextField, SingleFieldList, ChipField, ArrayField,TabbedShowLayout, Tab} from 'react-admin';
-import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel, SimpleList} from '@semapps/archipelago-layout';
-import { makeStyles, Avatar, Button } from '@material-ui/core';
-import { ReferenceArrayField ,ImageField,ReferenceField, GroupedReferenceHandler, UriArrayField } from '@semapps/semantic-data-provider';
+import React from 'react';
+import { useShowContext, TextField, SingleFieldList, ArrayField,TabbedShowLayout, Tab} from 'react-admin';
+import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel } from '@semapps/archipelago-layout';
+import { makeStyles, Avatar } from '@material-ui/core';
+import { ImageField,ReferenceField, GroupedReferenceHandler, UriArrayField } from '@semapps/semantic-data-provider';
 import { MapField } from '@semapps/geo-components';
-import { Link } from 'react-router-dom';
 import OrganizationTitle from './OrganizationTitle';
 import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';
 import VideoPlayer from '../../addons/videoComponent';
 import UrlArrayField from '../../components/UrlArrayfield';
+import LimitationLayout from '../../addons/limitationLayout';
 
 const mainImage = makeStyles({
   image: {
@@ -39,46 +39,6 @@ const ShowContextLayout = ({children, ...otherProps}) => {
       basePath
     })
   )
-}
-
-const LimitationLayout = ({record,source,children,action,more,limit, ...otherProps}) => {
-  const [filtered,setFiltered]=useState();
-  useEffect(() => {
-    if (record?.[source] && Array.isArray(record[source])) {
-      if (record?.[source].length>limit){
-        const filteredData = [...record[source]].splice(record?.[source].length - limit);
-        let newRecord = {
-          ...record
-        };
-        newRecord[source] = filteredData;
-        setFiltered(newRecord);
-      }else{
-        setFiltered(record);
-      }
-    }
-  }, [record, source]);
-
-  return <div style={{'display':'flex'}}>
-    <div>
-    {filtered?.[source] && React.Children.map(children, child =>
-      child && React.cloneElement(child, {
-        ...otherProps,
-        source,
-        record : filtered,
-
-      })
-    )}
-    </div>
-    <div>
-    {record?.[source].length > limit&&
-      <Button component={Link}
-        to={more}
-        >
-        More...
-      </Button>
-    }
-    </div>
-  </div>
 }
 
 const OrganizationShow = props => {

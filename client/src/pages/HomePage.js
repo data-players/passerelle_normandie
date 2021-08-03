@@ -34,35 +34,8 @@ const HomePage = () => {
           <ShowContextProvider value={useShowController(config)}>
             <PageShow {...config} />
           </ShowContextProvider>
-        </Paper>
+        </Paper>    
       </Grid>
-      {/* <Grid item sm={12} xs={12}>
-        <Paper>
-          <Typography variant="h3" classes={style}>
-            La carte du bocage
-          </Typography>
-          <ListBase resource="Organization" basePath="/Organization">
-            <MapList
-              latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
-              longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-              label={record => record['pair:label']}
-              description={record => record['pair:comment']}
-              scrollWheelZoom
-            />
-          </ListBase>
-        </Paper>
-      </Grid>
-      <Grid item sm={12} xs={12} >
-        <Paper>
-          <Typography variant="h3" classes={style}>
-            Les prochains évènements dans le bocage
-          </Typography>
-          <ListBase resource="Event" basePath="/Events" perPage={4} sort={{ field: 'pair:startDate', order: 'ASC' }} >
-            <RaSimpleList primaryText={record => record['pair:label']} secondaryText={record => record['pair:comment']} linkType="show" />
-          </ListBase>
-        </Paper>
-      </Grid> */}
-
     </Grid>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChipField, SingleFieldList, TextField, UrlField, DateField } from 'react-admin';
 import { Column, ColumnShowLayout, Hero, Show, MarkdownField, UserIcon, GridList, AvatarField} from '@semapps/archipelago-layout';
-import { UriArrayField, ReferenceArrayField } from '@semapps/semantic-data-provider';
+import { UriArrayField } from '@semapps/semantic-data-provider';
 import UrlArrayField from '../../components/UrlArrayfield';
 import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';
 import VideoPlayer from '../../addons/videoComponent';
@@ -21,7 +21,7 @@ const EventShow = props => (
         </Hero>
         <TextField source="pair:comment" variant="h5" addLabel={false}/>
         <MarkdownField source="pair:description" addLabel />
-        <UriArrayField label="Proposé par" reference="Organization" source="pair:deliveredBy">
+        <UriArrayField label="Organisation en charge de l'évènement" reference="Organization" source="pair:deliveredBy">
           <SingleFieldList linkType="show">            
             <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
               parent: {
@@ -31,7 +31,7 @@ const EventShow = props => (
             }}/>          
           </SingleFieldList>
         </UriArrayField>
-        <UriArrayField label="Participants" reference="Person" source="pair:involvedIn" referenceBasePath="/Person">
+        <UriArrayField label="Personnes participant à l'évènement" reference="Person" source="pair:involvedIn" referenceBasePath="/Person">
           <GridList xs={6} linkType="show">
             <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
               parent: {

@@ -1,11 +1,11 @@
 import React from 'react';
-import { List, SimpleList ,MultiViewsList} from '@semapps/archipelago-layout';
+import { SimpleList ,MultiViewsList} from '@semapps/archipelago-layout';
 import { MapList } from '@semapps/geo-components';
 import MapIcon from '@material-ui/icons/Map';
 import ListIcon from '@material-ui/icons/List';
 import SectorFilterSidebar from './../../components/SectorFilterSidebar';
 
-const OrganizationList = props => (
+const OrganizationList = props => {
   // <List {...props}>
   //   <SimpleList
   //     primaryText={record => record['pair:label']}
@@ -25,7 +25,8 @@ const OrganizationList = props => (
   //     scrollWheelZoom
   //   />
   // </List>
-  <MultiViewsList
+  
+  return <MultiViewsList
     aside={<SectorFilterSidebar />}
     views={{
       list: {
@@ -63,6 +64,6 @@ const OrganizationList = props => (
     {...props}
   />
 
-);
+};
 
 export default OrganizationList;

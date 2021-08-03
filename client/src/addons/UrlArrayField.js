@@ -1,7 +1,6 @@
 import React from 'react';
 import UrlArrayField from '../components/UrlArrayfield';
 
-
 const UrlArrayField = ({ record, source }) => {
     var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
     for (var i=0; i < array.length ;i++) {
@@ -9,7 +8,7 @@ const UrlArrayField = ({ record, source }) => {
         array[i] = array[i].split('https://')[1]
       }
     }
-  
+
     return record ? (
       <>
         {

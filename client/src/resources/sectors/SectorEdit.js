@@ -14,6 +14,9 @@ export const SectorEdit = (props) =>{
         <ImageInput source="image" label="logo" accept="image/*">
           <ImageField source="src"/>
         </ImageInput>
+        <ImageInput source="pair:banner" label="Bannière" accept="image/*">
+          <ImageField source="src"/>
+        </ImageInput>
       </SimpleForm>
     </Edit>
   );

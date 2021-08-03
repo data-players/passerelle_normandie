@@ -14,7 +14,6 @@ const EventEdit = props => (
       <TextInput source="pair:label" label="Nom" fullWidth />
       <TextInput source="pair:comment" label="Courte description" fullWidth />
       <MarkdownInput multiline source="pair:description" label="Description" fullWidth />
-      <TextInput source="pair:homePage" label="Site web" fullWidth />
       <ArrayInput source="pair:homePage" >
         <SimpleFormIterator>
           <TextInput label="" fullWidth />
@@ -52,10 +51,10 @@ const EventEdit = props => (
           }}
           fullWidth
         />
-      <UriArrayInput label="Proposé par" reference="Organization" source="pair:deliveredBy">
+      <UriArrayInput label="Organisation en charge de l'évènement" reference="Organization" source="pair:deliveredBy">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
       </UriArrayInput>
-      <UriArrayInput label="Participant" reference="Person" source="pair:involvedIn">
+      <UriArrayInput label="Personnes participant à l'évènement" reference="Person" source="pair:involvedIn">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`} fullWidth/>
       </UriArrayInput>
       <UriArrayInput label="Thématiques (cocher la ou les thématiques en lien avec l'événement)" source="pair:hasSector" reference="Sector" fullWidth>

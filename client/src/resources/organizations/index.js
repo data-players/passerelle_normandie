@@ -32,7 +32,7 @@ export default {
         'pair:membershipActor': 'Membre',
         'pair:membershipRole': 'Role',
         'pair:hasLocation':'Emplacement',
-        'pair:homePage':'Liens utile',
+        'pair:homePage':'Liens utiles',
         'pair:video':'Vidéo',
         'pair:aboutPage':'Réseaux Sociaux',
         'pair:hasSector': 'Thématiques',

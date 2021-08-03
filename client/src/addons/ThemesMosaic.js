@@ -36,7 +36,11 @@ const tileData = [
      title: 'Culture & vivre ensemble',
      cols: 3
    },
-   
+   {
+    slug: 'democratie',
+    title: 'Démocratie & politiques publiques',
+    cols: 3
+  },
    {
     slug: 'education',
     title: 'Education & formation',
@@ -45,11 +49,6 @@ const tileData = [
    {
      slug: 'habitat',
      title: 'Habitat & Energie',
-     cols: 3
-   },
-   {
-     slug: 'democratie',
-     title: 'Démocratie & politiques publiques',
      cols: 3
    },
    {

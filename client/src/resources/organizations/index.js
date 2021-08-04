@@ -21,7 +21,7 @@ export default {
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'organizations',
     dereference: ['pair:hasLocation/pair:hasPostalAddress'],
     slugField: 'pair:label',
-    forceArray: ['pair:organizationOfMembership','pair:supports']
+    forceArray: ['pair:organizationOfMembership','pair:supports', 'pair:aboutPage', 'pair:homePage']
   },
   translations: {
     fr: {

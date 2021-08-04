@@ -34,7 +34,7 @@ export const OrganizationEdit = (props) =>{
         <SimpleFormIterator>
           <TextInput label="" fullWidth />
         </SimpleFormIterator>
-      </ArrayInput>
+      </ArrayInput>      
       <ArrayInput source="pair:aboutPage" >
         <SimpleFormIterator>
           <TextInput label="" fullWidth />

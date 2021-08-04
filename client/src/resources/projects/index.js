@@ -18,7 +18,8 @@ export default {
   dataModel: {
     types: ['pair:Project'],
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'projects',
-    slugField: 'pair:label'
+    slugField: 'pair:label',
+    forceArray: ['pair:aboutPage', 'pair:homePage']
   },
   translations: {
     fr: {

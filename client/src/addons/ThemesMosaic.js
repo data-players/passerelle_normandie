@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useQueryWithStore } from 'react-admin';
 import { GridList, GridListTile, GridListTileBar, makeStyles } from '@material-ui/core';
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
 const useStyles = makeStyles(() => ({
   tile: {
@@ -11,8 +12,8 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     height: '100%',
     position: 'relative',
-    transform: 'translateX(-50%)'
-  }
+    transform: 'translateX(-50%)',
+  },
 }))
 
 const tileData = [

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Layout as RaLayout, Link } from 'react-admin';
+import { Layout as RaLayout } from 'react-admin';
 import { makeStyles, Typography, Box } from '@material-ui/core';
 import AppBar from './AppBar';
 import TreeMenu from './TreeMenu/TreeMenu';
+import { Link } from '@material-ui/core';
 
 const useStyles = makeStyles({
   appFrame: {
@@ -22,7 +23,9 @@ const Layout = ({ appBar, menu, userMenu, children, classes, ...otherProps }) =>
   return (
     <RaLayout {...otherProps} classes={{...classes, appFrame: innerClasses.appFrame }} appBar={appBar} menu={menu}>
       <Typography variant="h4" color="primary" className={innerClasses.title} id="react-admin-title" component="h1" />
-      {children}
+      <Box>
+        {children}
+      </Box>
       <Box>
         <Typography variant="subtitle2" color="textSecondary" align="right" >
           <Link to="/Page/a-propos/show" className={classes.footerLink}>A propos</Link>
@@ -33,7 +36,7 @@ const Layout = ({ appBar, menu, userMenu, children, classes, ...otherProps }) =>
           &nbsp;&nbsp;|&nbsp;&nbsp;
           <Link to="/Page/conditions-generales-d-utilisation/show" className={classes.footerLink}>Conditions générales d'utilisation</Link>
           &nbsp;&nbsp;|&nbsp;&nbsp;
-          <a href="https://semapps.org/" target="_blank" rel="noopener noreferrer" className={classes.footerLink}>Propulsé par SemApps</a>
+          <Link href="https://semapps.org/" className={innerClasses.link}> Propulsé par SemApps</Link>
           &nbsp;&nbsp;|&nbsp;&nbsp;
           <Link to="/Page/finance-par-la-region-normandie-et-le-fnadt/show" className={classes.footerLink}>Financé par la Région Normandie et le FNADT</Link>
 

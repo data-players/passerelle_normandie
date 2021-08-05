@@ -9,7 +9,7 @@ export default {
   config:{
     list: OrganizationList,
     show: OrganizationShow,
-    create: OrganizationCreate,
+    create: process.env.REACT_APP_ADMIN==='true'?OrganizationCreate:undefined,
     edit: OrganizationEdit,
     icon: AccountBalanceIcon,
     options: {
@@ -21,7 +21,7 @@ export default {
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'organizations',
     dereference: ['pair:hasLocation/pair:hasPostalAddress'],
     slugField: 'pair:label',
-    forceArray: ['pair:organizationOfMembership','pair:supports', 'pair:aboutPage', 'pair:homePage']
+    forceArray: ['pair:organizationOfMembership','pair:supports']
   },
   translations: {
     fr: {

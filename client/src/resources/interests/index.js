@@ -7,8 +7,8 @@ import FavoriteBorderIcon from '@material-ui/icons/Favorite';
 export default {
   config: {
     list: process.env.REACT_APP_ADMIN==='true'?InterestList:undefined,
-    create: InterestCreate,
-    edit: InterestEdit,
+    create: process.env.REACT_APP_ADMIN==='true'?InterestCreate:undefined,
+    edit: process.env.REACT_APP_ADMIN==='true'?InterestEdit:undefined,
     show : InterestShow,
     icon: FavoriteBorderIcon,
     options: {

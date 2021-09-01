@@ -8,7 +8,7 @@ export default {
   config:{
     list: EventList,
     show: EventShow,
-    create: EventCreate,
+    create: process.env.REACT_APP_ADMIN==='true'?EventCreate:undefined,
     edit: EventEdit,
     icon: EventIcon,
     options: {

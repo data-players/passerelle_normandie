@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrayField, ChipField, ReferenceField, SingleFieldList, TextField, } from 'react-admin';
-import { MainList, Show, SideList, Hero, GridList, AvatarField, RightLabel, Column, ColumnShowLayout } from '@semapps/archipelago-layout';
+import { MainList, SideList, Hero, GridList, AvatarField, RightLabel, Column, ColumnShowLayout } from '@semapps/archipelago-layout';
+import { Show } from '../../layout/show/Show.js';
 import { Grid } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
 import HomeIcon from '@material-ui/icons/Home';
@@ -63,7 +64,7 @@ const UserShow = props => {
             </SingleFieldList>
           </ReferenceArrayField>
         <VideoPlayer source="pair:video" addLabel/>
-         
+
       </Column>
 
       <Column xs={12} sm={4} showLabel>
@@ -79,13 +80,13 @@ const UserShow = props => {
           <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
           <TextField label="Téléphone" source="pair:phone" addLabel/>
           <UriArrayField reference="Sector" label="Thématiques" source="pair:hasSector">
-            <SingleFieldList linkType="show">            
+            <SingleFieldList linkType="show">
               <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
                 parent: {
                   width: '100px',
                   margin : '10px'
                 }
-              }}/>          
+              }}/>
             </SingleFieldList>
           </UriArrayField>         </SideList>
       </Column>

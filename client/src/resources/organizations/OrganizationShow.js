@@ -1,6 +1,7 @@
 import React from 'react';
 import { useShowContext, TextField, SingleFieldList, ArrayField,TabbedShowLayout, Tab} from 'react-admin';
-import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField, RightLabel } from '@semapps/archipelago-layout';
+import { Column, ColumnShowLayout, MarkdownField, AvatarField, RightLabel } from '@semapps/archipelago-layout';
+import { Show } from '../../layout/show/Show.js';
 import { makeStyles, Avatar } from '@material-ui/core';
 import { ImageField,ReferenceField, GroupedReferenceHandler, UriArrayField } from '@semapps/semantic-data-provider';
 import { MapField } from '@semapps/geo-components';
@@ -94,13 +95,13 @@ const OrganizationShow = props => {
               <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
               <TextField label="Téléphone" source="pair:phone" addLabel/>
               <UriArrayField reference="Sector" source="pair:hasSector">
-                <SingleFieldList linkType="show">            
+                <SingleFieldList linkType="show">
                   <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
                     parent: {
                       width: '100px',
                       margin : '10px'
                     }
-                  }}/>          
+                  }}/>
                 </SingleFieldList>
               </UriArrayField>
             </Column>

@@ -8,8 +8,8 @@ export default {
   config:{
     list: process.env.REACT_APP_ADMIN==='true'?SectorList:undefined,
     show: SectorShow,
-    create: SectorCreate,
-    edit: SectorEdit,
+    create: process.env.REACT_APP_ADMIN==='true'?SectorCreate:undefined,
+    edit: process.env.REACT_APP_ADMIN==='true'?SectorEdit:undefined,
     icon: SectorIcon,
     options: {
       label: 'Thématiques'

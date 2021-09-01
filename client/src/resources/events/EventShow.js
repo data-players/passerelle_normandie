@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChipField, SingleFieldList, TextField, UrlField, DateField } from 'react-admin';
-import { Column, ColumnShowLayout, Hero, Show, MarkdownField, UserIcon, GridList, AvatarField} from '@semapps/archipelago-layout';
+import { Column, ColumnShowLayout, Hero, MarkdownField, UserIcon, GridList, AvatarField} from '@semapps/archipelago-layout';
+import { Show } from '../../layout/show/Show.js';
 import { UriArrayField } from '@semapps/semantic-data-provider';
 import UrlArrayField from '../../components/UrlArrayfield';
 import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';
@@ -22,13 +23,13 @@ const EventShow = props => (
         <TextField source="pair:comment" variant="h5" addLabel={false}/>
         <MarkdownField source="pair:description" addLabel />
         <UriArrayField label="Organisation en charge de l'évènement" reference="Organization" source="pair:deliveredBy">
-          <SingleFieldList linkType="show">            
+          <SingleFieldList linkType="show">
             <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
               parent: {
                 width: '100px',
                 margin : '10px'
               }
-            }}/>          
+            }}/>
           </SingleFieldList>
         </UriArrayField>
         <UriArrayField label="Personnes participant à l'évènement" reference="Person" source="pair:involvedIn" referenceBasePath="/Person">
@@ -38,7 +39,7 @@ const EventShow = props => (
                 width: '100px',
                 margin : '10px'
               }
-            }}/> 
+            }}/>
           </GridList>
         </UriArrayField>
         <UriArrayField label="Intérêts" reference="Interest" source="pair:hasInterest">
@@ -58,15 +59,15 @@ const EventShow = props => (
         <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
         <UrlArrayField source="pair:homePage" addLabel/>
         <UriArrayField reference="Sector" source="pair:hasSector">
-          <SingleFieldList linkType="show">            
+          <SingleFieldList linkType="show">
             <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
               parent: {
                 width: '100px',
                 margin : '10px'
               }
-            }}/>          
+            }}/>
           </SingleFieldList>
-        </UriArrayField> 
+        </UriArrayField>
       </Column>
     </ColumnShowLayout>
   </Show>

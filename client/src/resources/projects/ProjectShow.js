@@ -1,6 +1,7 @@
 import React from 'react';
 import { SingleFieldList, TextField } from 'react-admin';
-import { Column, ColumnShowLayout, Show, MarkdownField, AvatarField} from '@semapps/archipelago-layout';
+import { Column, ColumnShowLayout, MarkdownField, AvatarField} from '@semapps/archipelago-layout';
+import { Show } from '../../layout/show/Show.js';
 import { UriArrayField, ImageField } from '@semapps/semantic-data-provider';
 import { Typography, makeStyles } from '@material-ui/core';
 import VideoPlayer from '../../addons/videoComponent';
@@ -41,33 +42,33 @@ const ProjectShow = props => {
         <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
         <MarkdownField label="Description" source="pair:description" addLabel />
         <UriArrayField label="Personne(s) impliquée(s) dans le projet" reference="Person" source="pair:involves">
-          <SingleFieldList linkType={false}>            
+          <SingleFieldList linkType={false}>
             <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
               parent: {
                 width: '100px',
                 margin : '10px'
               }
-            }}/>          
+            }}/>
           </SingleFieldList>
         </UriArrayField>
         <UriArrayField label="Personne(s) coordonnant le projet" reference="Person" source="pair:hasResponsible">
-          <SingleFieldList linkType={false}>            
+          <SingleFieldList linkType={false}>
             <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
               parent: {
                 width: '100px',
                 margin : '10px'
               }
-            }}/>          
+            }}/>
           </SingleFieldList>
         </UriArrayField>
         <UriArrayField label="Proposé par" reference="Organization" source="pair:deliveredBy">
-          <SingleFieldList linkType="show">            
+          <SingleFieldList linkType="show">
             <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
               parent: {
                 width: '100px',
                 margin : '10px'
               }
-            }}/>          
+            }}/>
           </SingleFieldList>
         </UriArrayField>
         <VideoPlayer source="pair:video" addLabel/>
@@ -80,18 +81,18 @@ const ProjectShow = props => {
           longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
         />
         <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
-        <UrlArrayField source="pair:homePage" addLabel/>    
-        <TextField label="Email" source="pair:e-mail" type="email" addLabel/>     
+        <UrlArrayField source="pair:homePage" addLabel/>
+        <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
         <UriArrayField reference="Sector" source="pair:hasSector">
-          <SingleFieldList linkType="show">            
+          <SingleFieldList linkType="show">
             <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
               parent: {
                 width: '100px',
                 margin : '10px'
               }
-            }}/>          
+            }}/>
           </SingleFieldList>
-        </UriArrayField>     
+        </UriArrayField>
       </Column>
     </ColumnShowLayout>
   </Show>

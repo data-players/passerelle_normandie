@@ -8,7 +8,7 @@ export default {
   config:{
     list: ProjectList,
     show: ProjectShow,
-    create: ProjectCreate,
+    create: process.env.REACT_APP_ADMIN==='true'?ProjectCreate:undefined,
     edit: ProjectEdit,
     icon: SettingsIcon,
     options: {

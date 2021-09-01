@@ -8,8 +8,8 @@ export default {
   config: {
     list: process.env.REACT_APP_ADMIN==='true'?PageList:undefined,
     show: PageShow,
-    create: PageCreate,
-    edit: PageEdit,
+    create: process.env.REACT_APP_ADMIN==='true'?PageCreate:undefined,
+    edit: process.env.REACT_APP_ADMIN==='true'?PageEdit:undefined,
     icon: DescriptionIcon,
     options: {
       label: 'Pages'

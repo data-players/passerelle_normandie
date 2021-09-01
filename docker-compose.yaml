@@ -33,6 +33,7 @@ services:
       - SEMAPPS_HOME_URL=http://localhost:3000/
       - SEMAPPS_OIDC_ISSUER=https://login.passerellenormandie.fr/auth/realms/master/
       - SEMAPPS_OIDC_CLIENT_ID=passerelle-normandie
+      - SEMAPPS_REDIS_URL=redis://redis:6379/0
     networks:
       - semapps
     ports:
@@ -83,7 +84,23 @@ services:
       - "5010"
     command: bash -c "npm rebuild --silent && npm install --silent && npm start"
 
+  redis:
+    image: redis
+    container_name: redis_passerelle
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+    volumes:
+      - ./data/redis_data:/data
+    networks:
+      - semapps
+    command: ["redis-server", "--appendonly", "yes"]
 
+    
+volumes:
+  redis_data:
 networks:
   semapps:
     name: semapps_network
+    

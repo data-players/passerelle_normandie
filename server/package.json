@@ -13,14 +13,16 @@
   },
   "dependencies": {
     "@semapps/auth": "^0.3.11",
-    "@semapps/jsonld": "^0.3.11",
     "@semapps/fuseki-admin": "^0.3.11",
     "@semapps/inference": "^0.3.11",
+    "@semapps/jsonld": "^0.3.11",
     "@semapps/ldp": "^0.3.11",
     "@semapps/sparql-endpoint": "^0.3.11",
     "@semapps/triplestore": "^0.3.11",
+    "@semapps/webacl": "^0.3.12",
     "@semapps/webid": "^0.3.11",
     "dotenv": "^8.2.0",
+    "ioredis": "^4.27.9",
     "moleculer": "^0.14.4",
     "moleculer-repl": "^0.6.3",
     "moleculer-web": "^0.10.0-beta1"

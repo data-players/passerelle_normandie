@@ -2,6 +2,8 @@ const { LdpService } = require('@semapps/ldp');
 const ontologies = require('../ontologies');
 const urlJoin = require('url-join');
 
+console.log('------------------------------------------------------------------ SERVICE LDP START');
+
 module.exports = {
   mixins: [LdpService],
   settings: {

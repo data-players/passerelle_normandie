@@ -39,7 +39,7 @@ services:
       - "3000:3000"
     expose:
       - "3000"
-    command: bash -c "make link &  sleep 10 && npm run dev"
+    command: bash -c "npm install && npm run dev & make link"
 
   frontend:
     build:
@@ -59,7 +59,7 @@ services:
       - "5000:5000"
     expose:
       - "5000"
-    command: bash -c "make rollup & make link && npm start"
+    command: bash -c "npm install && make rollup & make link && npm start"
 
   admin:
     build:
@@ -79,7 +79,7 @@ services:
       - "5010:5010"
     expose:
       - "5010"
-    command: bash -c "make rollup & make link && npm start"
+    command: bash -c "npm install && make rollup & make link && npm start"
 
 
 networks:

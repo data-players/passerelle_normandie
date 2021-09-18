@@ -3,9 +3,6 @@ const ApiGatewayService = require('moleculer-web');
 const { MIME_TYPES } = require('@semapps/mime-types');
 const path = require('path');
 const urlJoin = require('url-join');
-const {
-  Routes: SparqlEndpointRoutes
-} = require('@semapps/sparql-endpoint');
 
 module.exports = {
   mixins: [ApiGatewayService],
@@ -15,7 +12,8 @@ module.exports = {
       origin: '*',
       methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE', 'HEAD', 'OPTIONS'],
       exposedHeaders: '*'
-    }
+    },
+    requestTimeout:99
   },
   methods: {
     authenticate(ctx, route, req, res) {

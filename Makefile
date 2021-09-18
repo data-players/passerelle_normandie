@@ -36,7 +36,6 @@ docker-start-prod:
 	$(DOCKER_COMPOSE_PROD) up -d --force-recreate
 
 docker-start-dev:
-	make install
 	$(DOCKER_COMPOSE_DEV) up -d --force-recreate
 
 docker-restart: docker-start

@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 .PHONY: link unlink install push allo
 SEMAPPS_PATH=./../../semapps
-PACKAGES=jsonld inference auth webid ldp
+PACKAGES=jsonld inference auth webid ldp middlewares
 
 
 clean :

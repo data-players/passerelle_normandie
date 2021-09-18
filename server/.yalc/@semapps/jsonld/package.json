@@ -1,6 +1,6 @@
 {
   "name": "@semapps/jsonld",
-  "version": "0.3.10",
+  "version": "0.3.12",
   "description": "JsonLD utils for SemApps",
   "license": "Apache-2.0",
   "author": "Virtual Assembly",
@@ -12,5 +12,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "yalcSig": "276487c0446922450220d181f035cfde"
+  "yalcSig": "dbc8b695ca83bc0293b4860c4594269e"
 }

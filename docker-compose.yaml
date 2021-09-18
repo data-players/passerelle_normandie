@@ -95,10 +95,9 @@ services:
       - semapps
     command: ["redis-server", "--appendonly", "yes"]
 
-    
+
 volumes:
   redis_data:
 networks:
   semapps:
     name: semapps_network
-    

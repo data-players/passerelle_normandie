@@ -1,6 +1,6 @@
 {
   "name": "@semapps/inference",
-  "version": "0.3.10",
+  "version": "0.3.12",
   "description": "Inference engine for SemApps",
   "license": "Apache-2.0",
   "author": "Virtual Assembly",
@@ -11,5 +11,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "yalcSig": "3b99808efcda4776cb44400760f92aa9"
+  "yalcSig": "29535f5650e0a839ae88666cde40fec0"
 }

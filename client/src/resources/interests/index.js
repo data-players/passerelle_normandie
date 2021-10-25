@@ -22,7 +22,7 @@ export default {
   },
   translations: {
     fr: {
-      name: 'Interet |||| Interet',
+      name: 'Interet |||| Interets',
       fields: {
         'pair:label': 'Titre',
       }

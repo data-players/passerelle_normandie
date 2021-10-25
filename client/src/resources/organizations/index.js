@@ -25,7 +25,7 @@ export default {
   },
   translations: {
     fr: {
-      name: 'Organisations |||| Organisation',
+      name: 'Organisation |||| Organisation',
       fields: {
         'pair:label': 'Titre',
         'pair:organizationOfMembership': 'Les membres de l\'organisation',

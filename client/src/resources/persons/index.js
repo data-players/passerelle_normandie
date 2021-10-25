@@ -12,7 +12,7 @@ export default {
     edit: UserEdit,
     icon: PersonIcon,
     options: {
-      label: 'Personnes'
+      label: 'Utilisateurs'
     }
   },
   dataModel: {
@@ -25,7 +25,7 @@ export default {
   },
   translations: {
     fr: {
-      name: 'Utilisateurs |||| Utilisateurs',
+      name: 'Utilisateur |||| Utilisateurs',
       fields: {
         'pair:label': 'Titre',
         'pair:actorOfMembership': 'organisation avec Role',

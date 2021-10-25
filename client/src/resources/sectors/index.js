@@ -22,7 +22,7 @@ export default {
   },
   translations: {
     fr: {
-      name: 'Sectors |||| Sectors',
+      name: 'Thématique |||| Thématiques',
       fields: {
         'pair:label': 'Titre',
       }

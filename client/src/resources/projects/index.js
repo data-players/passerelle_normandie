@@ -23,7 +23,7 @@ export default {
   },
   translations: {
     fr: {
-      name: 'Projets |||| Projets',
+      name: 'Projet |||| Projets',
       fields: {
         'pair:label': 'Titre',
         'pair:video': 'Vidéo',

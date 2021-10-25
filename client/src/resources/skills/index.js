@@ -22,7 +22,7 @@ export default {
   },
   translations: {
     fr: {
-      name: 'Compétences |||| Compétences',
+      name: 'Compétence |||| Compétences',
       fields: {
         'pair:label': 'Titre',
       }

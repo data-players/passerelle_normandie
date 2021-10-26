@@ -18,8 +18,7 @@ export default {
   dataModel: {
     types: ['pair:Sector'],
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'sectors',
-    slugField: 'pair:label',
-    dereference: ['pair:sectorOf']
+    slugField: 'pair:label'
   },
   translations: {
     fr: {

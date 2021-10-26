@@ -29,8 +29,7 @@ module.exports = {
             dereference: ['pair:hasLocation/pair:hasPostalAddress', 'pair:organizationOfMembership'],
           },
           {
-            path: '/sectors',
-            dereference: ['pair:sectorOf'],
+            path: '/sectors'
           }
           , '/themas', '/skills', '/places', '/files','/membership-roles','/membership-associations','/Page'],
     // defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),

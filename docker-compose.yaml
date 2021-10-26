@@ -47,12 +47,12 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     container_name: frontend-passerelle
-    volumes:
-      - ./client:/app
     environment:
       - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
       - REACT_APP_ADMIN=false
       - PORT=5000
+    volumes:
+      - ./client:/app
     networks:
       - semapps
     ports:
@@ -66,14 +66,12 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     container_name: admin-passerelle
-    volumes:
-      - ./client:/app
-    depends_on:
-      - frontend
     environment:
       - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
       - REACT_APP_ADMIN=true
       - PORT=5010
+    volumes:
+      - ./client:/app
     networks:
       - semapps
     ports:

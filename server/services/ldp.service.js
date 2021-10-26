@@ -27,7 +27,12 @@ module.exports = {
           },{
             path: '/events',
             dereference: ['pair:hasLocation/pair:hasPostalAddress', 'pair:organizationOfMembership'],
-          }, '/themas', '/skills', '/places', '/files','/membership-roles','/membership-associations','/Page', '/sectors'],
+          },
+          {
+            path: '/sectors',
+            dereference: ['pair:sectorOf'],
+          }
+          , '/themas', '/skills', '/places', '/files','/membership-roles','/membership-associations','/Page'],
     // defaultJsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),
     defaultContainerOptions: {
       jsonContext: urlJoin(process.env.SEMAPPS_HOME_URL, 'context.json'),

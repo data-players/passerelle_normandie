@@ -247,6 +247,9 @@
     "pair:organizationOfMembership": {
       "@type": "@id"
     },
+    "pair:hasMember": {
+      "@type": "@id"
+    },
     "pair:originOf": {
       "@type": "@id"
     },
@@ -272,9 +275,6 @@
       "@type": "@id"
     },
     "pair:references": {
-      "@type": "@id"
-    },
-    "pair:sectorOf": {
       "@type": "@id"
     },
     "pair:solvedBy": {

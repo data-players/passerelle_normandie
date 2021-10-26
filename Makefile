@@ -80,6 +80,7 @@ prettier:
 
 clean:
 	make server-clean
+	make client-clean
 
 link:
 	make client-link
@@ -97,6 +98,9 @@ server-link:
 
 server-clean:
 	cd ./server &&	make clean
+
+client-clean:
+	cd ./client &&	make clean
 
 client-link-yarn:
 	cd ./client && 	make link-yarn

@@ -61,7 +61,7 @@ const ProjectShow = props => {
             }}/>
           </SingleFieldList>
         </UriArrayField>
-        <UriArrayField label="Proposé par" reference="Organization" source="pair:deliveredBy">
+        <UriArrayField label="Organisation(s) porteuse(s) du projet" reference="Organization" source="pair:managedBy">
           <SingleFieldList linkType="show">
             <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
               parent: {

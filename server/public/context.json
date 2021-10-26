@@ -211,6 +211,9 @@
     "pair:involvementRole": {
       "@type": "@id"
     },
+    "pair:managedBy": {
+      "@type": "@id"
+    },
     "pair:membershipActor": {
       "@type": "@id"
     },
@@ -244,6 +247,9 @@
     "pair:organizationOfMembership": {
       "@type": "@id"
     },
+    "pair:hasMember": {
+      "@type": "@id"
+    },
     "pair:originOf": {
       "@type": "@id"
     },
@@ -269,9 +275,6 @@
       "@type": "@id"
     },
     "pair:references": {
-      "@type": "@id"
-    },
-    "pair:sectorOf": {
       "@type": "@id"
     },
     "pair:solvedBy": {

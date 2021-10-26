@@ -4,12 +4,12 @@ SEMAPPS_PATH=./../../semapps
 
 
 install :
-	npm install --force
+	yarn install --force
 
 rollup :
-	npm run dev --prefix $(SEMAPPS_PATH)/src/frontend/packages/archipelago-layout &
-	npm run dev --prefix $(SEMAPPS_PATH)/src/frontend/packages/semantic-data-provider &
-	npm run dev --prefix $(SEMAPPS_PATH)/src/frontend/packages/auth-provider
+	yarn --cwd $(SEMAPPS_PATH)/src/frontend/packages/archipelago-layout run dev &
+	yarn --cwd $(SEMAPPS_PATH)/src/frontend/packages/semantic-data-provider run dev &
+	yarn --cwd $(SEMAPPS_PATH)/src/frontend/packages/auth-provider run dev
 
 link:
 	cd $(SEMAPPS_PATH)/src/frontend/packages/archipelago-layout && yarn link
@@ -18,6 +18,7 @@ link:
 	yarn link @semapps/semantic-data-provider
 	cd $(SEMAPPS_PATH)/src/frontend/packages/auth-provider && yarn link
 	yarn link @semapps/auth-provider
+	make rollup
 
 unlink:
 	yarn unlink @semapps/archipelago-layout --no-save

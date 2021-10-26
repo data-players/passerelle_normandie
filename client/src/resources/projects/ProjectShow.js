@@ -42,7 +42,7 @@ const ProjectShow = props => {
         <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
         <MarkdownField label="Description" source="pair:description" addLabel />
         <UriArrayField label="Personne(s) impliquée(s) dans le projet" reference="Person" source="pair:involves">
-          <SingleFieldList linkType={false}>
+          <SingleFieldList linkType="show">
             <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
               parent: {
                 width: '100px',
@@ -52,7 +52,7 @@ const ProjectShow = props => {
           </SingleFieldList>
         </UriArrayField>
         <UriArrayField label="Personne(s) coordonnant le projet" reference="Person" source="pair:hasResponsible">
-          <SingleFieldList linkType={false}>
+          <SingleFieldList linkType="show">
             <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
               parent: {
                 width: '100px',

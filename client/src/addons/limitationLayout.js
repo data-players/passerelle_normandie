@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
-import { Button } from '@material-ui/core';
+import { IconButton, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 const LimitationLayout = ({record,source,children,action,more,limit, ...otherProps}) => {
     const [filtered,setFiltered]=useState();
@@ -18,24 +19,27 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
         }
       }
     }, [record, source]);
-  
-    return <div style={{'display':'flex'}}>
+
+    return <div style={{'display':'flex','align-items':'center'}}>
       <div>
       {filtered?.[source] && React.Children.map(children, child =>
         child && React.cloneElement(child, {
           ...otherProps,
           source,
           record : filtered,
-  
+
         })
       )}
       </div>
       <div>
       {record?.[source].length > limit&&
         <Button component={Link}
-          to={more}
-          >
-          More...
+            to={more}
+            size="large"
+            color="primary"
+            variant="contained"
+            >
+              <MoreHorizIcon/>
         </Button>
       }
       </div>

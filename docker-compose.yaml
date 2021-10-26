@@ -24,7 +24,7 @@ services:
       - fuseki
     restart: always
     volumes:
-      - ./server/:/server/app
+      - ./server/:/app
     environment:
       - SEMAPPS_SPARQL_ENDPOINT=http://fuseki-passerelle:3030/
       - SEMAPPS_MAIN_DATASET=localData
@@ -40,7 +40,7 @@ services:
       - "3000:3000"
     expose:
       - "3000"
-    command: bash -c "npm rebuild && npm install && npm run dev"
+    command: bash -c "yarn install &&  pm2-runtime 'yarn run dev'"
 
   frontend:
     build:
@@ -48,7 +48,7 @@ services:
       dockerfile: Dockerfile.dev
     container_name: frontend-passerelle
     volumes:
-      - ./client:/client/app
+      - ./client:/app
     environment:
       - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
       - REACT_APP_ADMIN=false
@@ -59,7 +59,7 @@ services:
       - "5000:5000"
     expose:
       - "5000"
-    command: bash -c "npm rebuild --silent && npm install --silent && npm start"
+    command: bash -c "yarn install && yarn start"
 
   admin:
     build:
@@ -67,7 +67,7 @@ services:
       dockerfile: Dockerfile.dev
     container_name: admin-passerelle
     volumes:
-      - ./client:/client/app
+      - ./client:/app
     depends_on:
       - frontend
     environment:
@@ -80,7 +80,7 @@ services:
       - "5010:5010"
     expose:
       - "5010"
-    command: bash -c "npm rebuild --silent && npm install --silent && npm start"
+    command: bash -c "yarn install && yarn start"
 
   redis:
     image: redis

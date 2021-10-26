@@ -1,11 +1,11 @@
 {
   "name": "@semapps/auth",
-  "version": "0.3.12",
+  "version": "0.3.14",
   "description": "Authentification module for SemApps",
   "license": "Apache-2.0",
   "author": "Virtual Assembly",
   "dependencies": {
-    "@semapps/mime-types": "0.3.12",
+    "@semapps/mime-types": "0.3.14",
     "bcrypt": "^5.0.1",
     "express-session": "^1.17.0",
     "jsonwebtoken": "^8.5.1",
@@ -20,5 +20,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "yalcSig": "ffb9d0f42d232698ddabe39a990750f1"
+  "yalcSig": "d44c71eead71b970dfc8c2835b4a8f63"
 }

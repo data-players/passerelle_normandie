@@ -49,8 +49,6 @@ const SectorShow = props => {
   const mainImageStyles = mainImage();
   const columnMoreStyles = columnMore();
 
-  console.log('RRRRRRRRRR');
-
   return <Show title={<ProjectTitle />} {...props}>
     <ColumnShowLayout>
       <Column xs={12} sm={12} showLabel>

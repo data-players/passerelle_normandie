@@ -34,6 +34,8 @@ const ProjectList = props => (
           <MapList
             latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
             longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+            center={[49.138597,0.084088]}
+            zoom= {8}
             label={record => record['pair:label']}
             description={record => record['pair:comment']}
             scrollWheelZoom

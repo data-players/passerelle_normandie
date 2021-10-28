@@ -62,8 +62,8 @@ const SectorShow = props => {
             </SingleFieldList>
           </MoreListLayoutSector>
         </ReferenceArrayField>
-        <ReferenceArrayField perPage={7} reference="Organization" source="pair:sectorOf" label="Organisations" filter={{type: "pair:Organization"}} >
-          <MoreListLayoutSector limit={7}>
+        <ReferenceArrayField perPage={5} reference="Organization" source="pair:sectorOf" label="Organisations" filter={{type: "pair:Organization"}} >
+          <MoreListLayoutSector limit={5}>
             <SingleFieldList linkType="show" >
               <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
                 parent: {

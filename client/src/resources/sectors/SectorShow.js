@@ -24,6 +24,7 @@ const mainImage = makeStyles({
 const MoreListLayoutSector = ({ limit,children,...otherProps }) => {
   const context = useListContext();
   const record = useRecordContext();
+  console.log('context Sector',context);
 
   const to = {
     pathname: `../..${context.basePath}`,

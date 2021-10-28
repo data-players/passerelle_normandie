@@ -6,6 +6,9 @@ import { useRecordContext,useListContext } from 'react-admin';
 
 const MoreListLayout = ({ limit,children,to,...otherProps }) => {
   const context = useListContext();
+  const record= useRecordContext()
+
+  console.log('record',record);
 
   return <div style={{'display':'flex','alignItems':'center'}}>
     <div>
@@ -16,7 +19,7 @@ const MoreListLayout = ({ limit,children,to,...otherProps }) => {
     )}
     </div>
     <div>
-    {context.ids.length>limit&&
+    {context.total>limit&&
       <Button component={Link}
           to={to}
           size="large"

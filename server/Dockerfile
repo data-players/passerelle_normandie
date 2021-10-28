@@ -6,7 +6,7 @@ RUN npm -v
 WORKDIR /app
 
 RUN apk add --update --no-cache autoconf libtool automake alpine-sdk openssh-keygen
-RUN apk add --update --no-cache git bash yarn nano npm
+RUN apk add --update --no-cache git bash yarn nano
 
 RUN yarn global add yalc
 RUN yarn global add pm2

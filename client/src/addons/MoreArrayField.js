@@ -3,7 +3,7 @@ import { IconButton, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
-const LimitationLayout = ({record,source,children,action,more,limit, ...otherProps}) => {
+const MoreArrayField = ({record,source,children,limit,to, ...otherProps}) => {
     const [filtered,setFiltered]=useState();
     useEffect(() => {
       if (record?.[source] && Array.isArray(record[source])) {
@@ -20,21 +20,22 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
       }
     }, [record, source]);
 
-    return <div style={{'display':'flex','align-items':'center'}}>
+    console.log(source,filtered?.[source] );
+
+    return <div style={{'display':'flex','alignItems':'center'}}>
       <div>
       {filtered?.[source] && React.Children.map(children, child =>
         child && React.cloneElement(child, {
           ...otherProps,
           source,
           record : filtered,
-
         })
       )}
       </div>
       <div>
-      {record?.[source].length > limit&&
+      {record?.[source].length>limit&&
         <Button component={Link}
-            to={more}
+            to={to}
             size="large"
             color="primary"
             variant="contained"
@@ -44,6 +45,7 @@ const LimitationLayout = ({record,source,children,action,more,limit, ...otherPro
       }
       </div>
     </div>
+
   }
 
-export default LimitationLayout;
+export default MoreArrayField;

@@ -24,7 +24,7 @@ const OrganizationFilterSidebar = () => {
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
         <ReferenceFilter
-          label="Thématique"
+          label="passerelle.thematique"
           reference="Sector"
           source="pair:hasSector"
           inverseSource="pair:sectorOf"

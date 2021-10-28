@@ -5,7 +5,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useRecordContext,useListContext } from 'react-admin';
 
 const MoreListLayout = ({ limit,children,to,...otherProps }) => {
-    const context = useListContext();
+  const context = useListContext();
 
   return <div style={{'display':'flex','alignItems':'center'}}>
     <div>

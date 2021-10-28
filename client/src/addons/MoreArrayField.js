@@ -20,8 +20,6 @@ const MoreArrayField = ({record,source,children,limit,to, ...otherProps}) => {
       }
     }, [record, source]);
 
-    console.log(source,filtered?.[source] );
-
     return <div style={{'display':'flex','alignItems':'center'}}>
       <div>
       {filtered?.[source] && React.Children.map(children, child =>

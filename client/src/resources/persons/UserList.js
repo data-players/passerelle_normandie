@@ -20,7 +20,7 @@ const PersonList = props => (
         pagination: false,
         list: (
           <GridList xs={2} linkType="show">
-            <AvatarField label={record => record['pair:lastName'] + " " + record['pair:firstName']} image="image" />
+            <AvatarField label={record => record['pair:firstName'] + " " + record['pair:lastName']} image="image" />
           </GridList>
         )
       },
@@ -51,6 +51,8 @@ const PersonList = props => (
           <MapList
             latitude={record => record?.['pair:hasLocation']?.['pair:latitude']}
             longitude={record => record?.['pair:hasLocation']?.['pair:longitude']}
+            center={[49.138597,0.084088]}
+            zoom= {8}
             label={record => record['pair:label']}
             description={record => record['pair:comment']}
             scrollWheelZoom

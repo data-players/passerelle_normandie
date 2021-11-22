@@ -15,7 +15,7 @@ const mainImage = makeStyles({
   image: {
     objectFit: 'cover',
     width: '100%',
-    maxHeight :'20em'
+    maxHeight :'20em',
   }
 });
 
@@ -42,19 +42,92 @@ const ShowContextLayout = ({children, ...otherProps}) => {
   )
 }
 
+const ConditionDisplay = ({ children, ...props }) => {
+  const record = useShowContext().record;
+  if (record?.["pair:organizationOfMembership"] != undefined) {
+    return (
+      <>{React.Children.map(children, child =>
+        child && React.cloneElement(child, {
+          ...props,
+          record,
+        })
+      )}</>
+    )
+  } else {
+    return (<>
+    
+    </>)
+  }
+}
+
 const OrganizationShow = props => {
   const mainImageStyles = mainImage();
   const logoStyle = logoImage();
   return <Show title={<OrganizationTitle />} {...props}>
     <ShowContextLayout>
       <ImageField source="pair:banner" classes={mainImageStyles}/>
-      <TabbedShowLayout value={2} >
-        <Tab label="info" icon={<Avatar alt="test avatar" src="/icon_info.png" />}>
-          <ColumnShowLayout>
-            <Column xs={12} sm={8} showLabel>
-              <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
-              <MarkdownField source="pair:description" addLabel={false}/>
-              <GroupedReferenceHandler
+        <TabbedShowLayout value={2} >
+          <Tab label="info" icon={<Avatar alt="test avatar" src="/icon_info.png" />}>
+            <ColumnShowLayout>
+              <Column xs={12} sm={8} showLabel>
+                <TextField variant="h5" label="Courte description" source="pair:comment" addLabel={false}/>
+                <MarkdownField source="pair:description" addLabel={false}/>
+                <GroupedReferenceHandler
+                  source="pair:organizationOfMembership"
+                  groupReference="MembershipRole"
+                  groupLabel="pair:label"
+                  filterProperty="pair:membershipRole"
+                  addLabel={false}
+                >
+                  <RightLabel>
+                    <LimitationLayout source="pair:organizationOfMembership" limit={5} more={{
+                        pathname: './show/MembershipRole'
+                    }}>
+                      <ArrayField source="pair:organizationOfMembership">
+                        <SingleFieldList linkType={false}>
+                          <ReferenceField reference="Person" source="pair:membershipActor" link="show">
+                            <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                                parent: {
+                                                  width: '100px',
+                                                  margin : '10px'
+                                                }
+                                              }}/>
+
+                          </ReferenceField>
+                        </SingleFieldList>
+                      </ArrayField>
+                    </LimitationLayout>
+                  </RightLabel>
+                </GroupedReferenceHandler>
+                <VideoPlayer source="pair:video" addLabel/>
+              </Column>
+              <Column xs={12} sm={4} showLabel>
+                <MapField
+                  source="pair:hasLocation"
+                  address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+                  latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+                  longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+                />
+                <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
+                <UrlArrayField source="pair:homePage" addLabel/>
+                <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
+                <TextField label="Téléphone" source="pair:phone" addLabel/>
+                <UriArrayField reference="Sector" source="pair:hasSector">
+                  <SingleFieldList linkType="show">
+                    <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
+                      parent: {
+                        width: '100px',
+                        margin : '10px'
+                      }
+                    }}/>
+                  </SingleFieldList>
+                </UriArrayField>
+              </Column>
+            </ColumnShowLayout>
+          </Tab>
+          <ConditionDisplay >
+            <Tab label="membres" path="MembershipRole" icon={<Avatar alt="test avatar" src="/icon_members.png" />}>
+              <GroupedReferenceHandler 
                 source="pair:organizationOfMembership"
                 groupReference="MembershipRole"
                 groupLabel="pair:label"
@@ -81,62 +154,12 @@ const OrganizationShow = props => {
                   </MoreArrayField>
                 </RightLabel>
               </GroupedReferenceHandler>
-              <VideoPlayer source="pair:video" addLabel/>
-            </Column>
-            <Column xs={12} sm={4} showLabel>
-              <MapField
-                source="pair:hasLocation"
-                address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
-                latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
-                longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-              />
-              <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
-              <UrlArrayField source="pair:homePage" addLabel/>
-              <TextField label="Email" source="pair:e-mail" type="email" addLabel/>
-              <TextField label="Téléphone" source="pair:phone" addLabel/>
-              <UriArrayField reference="Sector" source="pair:hasSector">
-                <SingleFieldList linkType="show">
-                  <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
-                    parent: {
-                      width: '100px',
-                      margin : '10px'
-                    }
-                  }}/>
-                </SingleFieldList>
-              </UriArrayField>
-            </Column>
-          </ColumnShowLayout>
-
-        </Tab>
-        <Tab label="membres" path="MembershipRole" icon={<Avatar alt="test avatar" src="/icon_members.png" />}>
-          <GroupedReferenceHandler
-            source="pair:organizationOfMembership"
-            groupReference="MembershipRole"
-            groupLabel="pair:label"
-            filterProperty="pair:membershipRole"
-            addLabel={false}
-          >
-            <RightLabel>
-            <ArrayField source="pair:organizationOfMembership">
-              <SingleFieldList linkType={false}>
-                <ReferenceField reference="Person" source="pair:membershipActor" link="show">
-                  <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                      parent: {
-                                        width: '100px',
-                                        margin : '10px'
-                                      }
-                                    }}/>
-
-                </ReferenceField>
-              </SingleFieldList>
-            </ArrayField>
-            </RightLabel>
-          </GroupedReferenceHandler>
-        </Tab>
-      </TabbedShowLayout>
+            </Tab>
+          </ConditionDisplay>
+        </TabbedShowLayout>
     </ShowContextLayout>
-
-    </Show>
+  </Show>
 };
 
 export default OrganizationShow;
+//    filter: grayscale(100%); style={{    filter: "grayscale(100%)"}}

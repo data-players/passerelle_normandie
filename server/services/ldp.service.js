@@ -7,7 +7,11 @@ module.exports = {
   settings: {
     baseUrl: process.env.SEMAPPS_HOME_URL,
     ontologies,
-    containers: [{
+    containers: [
+          {
+            path: '/'
+          },
+          {
             path: '/organizations',
             acceptedTypes: ['pair:Organization'],
             dereference: ['pair:hasLocation/pair:hasPostalAddress', 'pair:organizationOfMembership'],

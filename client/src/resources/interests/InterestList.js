@@ -5,6 +5,7 @@ const InterestList = props => (
   <List {...props}>
     <SimpleList
       primaryText={record => record['pair:label']}
+      linkType="show"
     />
   </List>
 );

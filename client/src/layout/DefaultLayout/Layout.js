@@ -15,6 +15,9 @@ const useStyles = makeStyles({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     overflow: 'hidden'
+  },
+  footer: {
+    paddingTop: "20px"
   }
 });
 
@@ -27,7 +30,7 @@ const Layout = ({ appBar, menu, userMenu, children, classes, ...otherProps }) =>
         {children}
       </Box>
       <Box>
-        <Typography variant="subtitle2" color="textSecondary" align="right" >
+        <Typography variant="subtitle2" className={innerClasses.footer} color="textSecondary" align="center" >
           <Link to="/Page/a-propos/show" className={classes.footerLink}>A propos</Link>
           &nbsp;&nbsp;|&nbsp;&nbsp;
           <Link to="/Page/contact/show" className={classes.footerLink}>Contact</Link>

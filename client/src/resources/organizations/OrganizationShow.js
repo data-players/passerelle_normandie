@@ -80,7 +80,7 @@ const OrganizationShow = props => {
                   addLabel={false}
                 >
                   <RightLabel>
-                    <LimitationLayout source="pair:organizationOfMembership" limit={5} more={{
+                    <MoreArrayField source="pair:organizationOfMembership" limit={5} more={{
                         pathname: './show/MembershipRole'
                     }}>
                       <ArrayField source="pair:organizationOfMembership">
@@ -96,7 +96,7 @@ const OrganizationShow = props => {
                           </ReferenceField>
                         </SingleFieldList>
                       </ArrayField>
-                    </LimitationLayout>
+                    </MoreArrayField>
                   </RightLabel>
                 </GroupedReferenceHandler>
                 <VideoPlayer source="pair:video" addLabel/>

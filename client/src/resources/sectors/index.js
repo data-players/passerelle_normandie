@@ -12,7 +12,7 @@ export default {
     edit: process.env.REACT_APP_ADMIN==='true'?SectorEdit:undefined,
     icon: SectorIcon,
     options: {
-      label: 'Thématiques'
+      label: 'Thématique'
     }
   },
   dataModel: {

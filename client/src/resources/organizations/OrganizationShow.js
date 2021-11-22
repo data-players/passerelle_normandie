@@ -9,7 +9,7 @@ import OrganizationTitle from './OrganizationTitle';
 import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';
 import VideoPlayer from '../../addons/videoComponent';
 import UrlArrayField from '../../components/UrlArrayfield';
-import LimitationLayout from '../../addons/limitationLayout';
+import MoreArrayField from '../../addons/MoreArrayField';
 
 const mainImage = makeStyles({
   image: {
@@ -62,7 +62,7 @@ const OrganizationShow = props => {
                 addLabel={false}
               >
                 <RightLabel>
-                  <LimitationLayout source="pair:organizationOfMembership" limit={5} more={{
+                  <MoreArrayField source="pair:organizationOfMembership" limit={5}  to={{
                       pathname: './show/MembershipRole'
                   }}>
                     <ArrayField source="pair:organizationOfMembership">
@@ -78,7 +78,7 @@ const OrganizationShow = props => {
                         </ReferenceField>
                       </SingleFieldList>
                     </ArrayField>
-                  </LimitationLayout>
+                  </MoreArrayField>
                 </RightLabel>
               </GroupedReferenceHandler>
               <VideoPlayer source="pair:video" addLabel/>

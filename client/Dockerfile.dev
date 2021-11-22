@@ -2,13 +2,13 @@ FROM node:16-alpine
 
 RUN node -v
 RUN npm -v
+RUN yarn -v
 
 WORKDIR /app
 
-RUN apk add --update --no-cache git bash yarn nano
+RUN apk add --update --no-cache git bash nano
 
 RUN apk add --update --no-cache autoconf libtool automake alpine-sdk
 
-COPY . /app
-
-RUN yarn install
+RUN yarn global add yalc
+RUN yarn global add nodemon

@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "packages": {
+    "@semapps/archipelago-layout": {
+      "signature": "145d229b7554c806e3847eb7b4cf1cfc"
+    },
+    "@semapps/semantic-data-provider": {
+      "signature": "c34139b6f95a6dc0c475654d2cdb5863"
+    },
+    "@semapps/auth-provider": {
+      "signature": "53aa3da93d38bf83da851b9aba3b3193"
+    }
+  }
+}

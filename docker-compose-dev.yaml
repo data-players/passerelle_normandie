@@ -46,6 +46,7 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     container_name: frontend-passerelle
+    user : node
     environment:
       - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
       - REACT_APP_ADMIN=false
@@ -59,13 +60,14 @@ services:
       - "5000:5000"
     expose:
       - "5000"
-    command: bash -c "yarn install && npm run startwithlink"
+    command: bash -c "npm run startwithlink"
 
   admin:
     build:
       context: ./client
       dockerfile: Dockerfile.dev
     container_name: admin-passerelle
+    user : node
     volumes:
       - ./client:/app
       - ./../semapps:/semapps

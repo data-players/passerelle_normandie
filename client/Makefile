@@ -1,10 +1,13 @@
 .DEFAULT_GOAL := help
 .PHONY: link link-yarn unlink unlink-yarn
 SEMAPPS_PATH=./../../semapps
-
+PACKAGES=archipelago-layout semantic-data-provider auth-provider
 
 install :
 	yarn install --force
+
+clean :
+	sudo rm -rf node_modules
 
 rollup :
 	yarn --cwd $(SEMAPPS_PATH)/src/frontend/packages/archipelago-layout run dev &
@@ -12,19 +15,22 @@ rollup :
 	yarn --cwd $(SEMAPPS_PATH)/src/frontend/packages/auth-provider run dev
 
 link:
-	cd $(SEMAPPS_PATH)/src/frontend/packages/archipelago-layout && yarn link
-	yarn link @semapps/archipelago-layout
-	cd $(SEMAPPS_PATH)/src/frontend/packages/semantic-data-provider && yarn link
-	yarn link @semapps/semantic-data-provider
-	cd $(SEMAPPS_PATH)/src/frontend/packages/auth-provider && yarn link
-	yarn link @semapps/auth-provider
-	make rollup
+	$(foreach package,$(PACKAGES),$(call link-package,$(package)))
+	nodemon -w $(SEMAPPS_PATH)/src/frontend/packages -x "make push"
+
+push:
+	$(foreach package,$(PACKAGES),$(call push-package,$(package)))
 
 unlink:
-	yarn unlink @semapps/archipelago-layout --no-save
-	cd $(SEMAPPS_PATH)/src/frontend/packages/archipelago-layout && yarn unlink
-	yarn unlink @semapps/semantic-data-provider --no-save
-	cd $(SEMAPPS_PATH)/src/frontend/packages/semantic-data-provider && yarn unlink
-	yarn unlink @semapps/auth-provider--no-save
-	cd $(SEMAPPS_PATH)/src/frontend/packages/auth-provider && yarn unlink
+	yalc installations clean
+	yalc remove --all
 	make install
+
+define link-package
+	yalc publish $(SEMAPPS_PATH)/src/frontend/packages/$(1);
+	yalc link @semapps/$(1);
+endef
+
+define push-package
+	yalc push $(SEMAPPS_PATH)/src/frontend/packages/$(1) --changed;
+endef

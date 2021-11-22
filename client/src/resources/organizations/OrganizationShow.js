@@ -9,7 +9,7 @@ import OrganizationTitle from './OrganizationTitle';
 import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';
 import VideoPlayer from '../../addons/videoComponent';
 import UrlArrayField from '../../components/UrlArrayfield';
-import LimitationLayout from '../../addons/limitationLayout';
+import MoreArrayField from '../../addons/MoreArrayField';
 
 const mainImage = makeStyles({
   image: {
@@ -135,19 +135,23 @@ const OrganizationShow = props => {
                 addLabel={false}
               >
                 <RightLabel>
-                <ArrayField source="pair:organizationOfMembership">
-                  <SingleFieldList linkType={false}>
-                    <ReferenceField reference="Person" source="pair:membershipActor" link="show">
-                      <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                          parent: {
-                                            width: '100px',
-                                            margin : '10px'
-                                          }
-                                        }}/>
+                  <MoreArrayField source="pair:organizationOfMembership" limit={5}  to={{
+                      pathname: './show/MembershipRole'
+                  }}>
+                    <ArrayField source="pair:organizationOfMembership">
+                      <SingleFieldList linkType={false}>
+                        <ReferenceField reference="Person" source="pair:membershipActor" link="show">
+                          <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                              parent: {
+                                                width: '100px',
+                                                margin : '10px'
+                                              }
+                                            }}/>
 
-                    </ReferenceField>
-                  </SingleFieldList>
-                </ArrayField>
+                        </ReferenceField>
+                      </SingleFieldList>
+                    </ArrayField>
+                  </MoreArrayField>
                 </RightLabel>
               </GroupedReferenceHandler>
             </Tab>

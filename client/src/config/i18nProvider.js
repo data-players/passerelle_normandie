@@ -4,6 +4,9 @@ import * as resources from '../resources';
 
 const getMessages = lang => ({
   ...frenchMessages,
+  passerelle:{
+    thematique:'Thématique'
+  },
   resources: Object.fromEntries(Object.entries(resources).map(([k, v]) => [k, v.translations[lang]]))
 });
 

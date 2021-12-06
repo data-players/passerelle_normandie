@@ -39,7 +39,7 @@ services:
       - "3000:3000"
     expose:
       - "3000"
-    command: bash -c "yarn install && npm run devwithlink"
+    command: bash -c "yarn install && yarn run devwithlink"
 
   frontend:
     build:

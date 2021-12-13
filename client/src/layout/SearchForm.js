@@ -4,6 +4,7 @@ import { Grid, Select, MenuItem, TextField, Button } from '@material-ui/core';
 import { Form, Field } from 'react-final-form';
 import { useHistory, useLocation } from 'react-router-dom';
 import { shallowEqual, useSelector } from 'react-redux';
+import SearchIcon from '@material-ui/icons/Search';
 
 const FilterText = ({ input, ...otherProps }) => <TextField {...input} {...otherProps} />;
 
@@ -52,7 +53,7 @@ const SearchForm = () => {
             </Grid>
             <Grid item xs={2}>
               <Button variant="outlined" type="submit" fullWidth>
-                Hop
+                <SearchIcon/>
               </Button>
             </Grid>
           </Grid>

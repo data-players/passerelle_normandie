@@ -55,7 +55,7 @@ const ConditionDisplay = ({ children, ...props }) => {
     )
   } else {
     return (<>
-    
+
     </>)
   }
 }
@@ -80,8 +80,8 @@ const OrganizationShow = props => {
                   addLabel={false}
                 >
                   <RightLabel>
-                    <MoreArrayField source="pair:organizationOfMembership" limit={5} more={{
-                        pathname: './show/MembershipRole'
+                    <MoreArrayField source="pair:organizationOfMembership" limit={5} to={{
+                        pathname: './show/1'
                     }}>
                       <ArrayField source="pair:organizationOfMembership">
                         <SingleFieldList linkType={false}>
@@ -127,7 +127,7 @@ const OrganizationShow = props => {
           </Tab>
           <ConditionDisplay >
             <Tab label="membres" path="MembershipRole" icon={<Avatar alt="test avatar" src="/icon_members.png" />}>
-              <GroupedReferenceHandler 
+              <GroupedReferenceHandler
                 source="pair:organizationOfMembership"
                 groupReference="MembershipRole"
                 groupLabel="pair:label"
@@ -135,23 +135,21 @@ const OrganizationShow = props => {
                 addLabel={false}
               >
                 <RightLabel>
-                  <MoreArrayField source="pair:organizationOfMembership" limit={5}  to={{
-                      pathname: './show/MembershipRole'
-                  }}>
-                    <ArrayField source="pair:organizationOfMembership">
-                      <SingleFieldList linkType={false}>
-                        <ReferenceField reference="Person" source="pair:membershipActor" link="show">
-                          <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
-                                              parent: {
-                                                width: '100px',
-                                                margin : '10px'
-                                              }
-                                            }}/>
 
-                        </ReferenceField>
-                      </SingleFieldList>
-                    </ArrayField>
-                  </MoreArrayField>
+                  <ArrayField source="pair:organizationOfMembership">
+                    <SingleFieldList linkType={false}>
+                      <ReferenceField reference="Person" source="pair:membershipActor" link="show">
+                        <AvatarField label={record => `${record['pair:firstName']} ${record['pair:lastName']}`} image="image" classes={{
+                                            parent: {
+                                              width: '100px',
+                                              margin : '10px'
+                                            }
+                                          }}/>
+
+                      </ReferenceField>
+                    </SingleFieldList>
+                  </ArrayField>
+
                 </RightLabel>
               </GroupedReferenceHandler>
             </Tab>

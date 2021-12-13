@@ -10,22 +10,22 @@
     "bootstrap": "lerna bootstrap",
     "dev": "moleculer-runner --repl --hot services",
     "devwithlink": "make link & sleep 5 && npm run dev",
-    "start": "moleculer-runner --instances=max services"
+    "start": "moleculer-runner services"
   },
   "dependencies": {
-    "@semapps/auth": "^0.3.17",
-    "@semapps/fuseki-admin": "^0.3.17",
-    "@semapps/inference": "^0.3.17",
-    "@semapps/jsonld": "^0.3.17",
-    "@semapps/ldp": "^0.3.17",
-    "@semapps/sparql-endpoint": "^0.3.17",
-    "@semapps/triplestore": "^0.3.17",
-    "@semapps/webacl": "^0.3.17",
-    "@semapps/webid": "^0.3.17",
+    "@semapps/auth": "^0.3.21",
+    "@semapps/fuseki-admin": "^0.3.21",
+    "@semapps/inference": "^0.3.21",
+    "@semapps/jsonld": "^0.3.21",
+    "@semapps/ldp": "^0.3.21",
+    "@semapps/sparql-endpoint": "^0.3.21",
+    "@semapps/triplestore": "^0.3.21",
+    "@semapps/webacl": "^0.3.21",
+    "@semapps/webid": "^0.3.21",
     "dotenv": "^8.2.0",
     "ioredis": "^4.27.9",
     "moleculer": "^0.14.4",
     "moleculer-repl": "^0.6.3",
-    "moleculer-web": "^0.10.0-beta1"
+    "moleculer-web": "^0.10.0-beta4"
   }
 }

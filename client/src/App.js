@@ -7,6 +7,11 @@ import { default as AppBar } from './layout/DefaultLayout/AppBar';
 import { LoginPage, LogoutButton, UserMenu } from '@semapps/auth-provider';
 import { createBrowserHistory as createHistory } from 'history';
 
+
+// import { Layout, AppBar, theme } from '@semapps/archipelago-layout';
+
+
+
 import i18nProvider from './config/i18nProvider';
 import dataProvider from './config/dataProvider';
 import * as resources from './resources';
